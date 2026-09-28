@@ -346,9 +346,9 @@ export function renderBalanceHistoryChart(container, data) {
         </defs>
         ${gridHtml}
         <!-- Area fill -->
-        <path d="${areaPathD}" fill="url(#balanceGradient)" />
+        <path class="chart-spline-area" d="${areaPathD}" fill="url(#balanceGradient)" />
         <!-- Line stroke -->
-        <path d="${linePathD}" fill="none" stroke="var(--chart-primary)" stroke-width="3.5" stroke-linecap="round" />
+        <path class="chart-spline-line" d="${linePathD}" fill="none" stroke="var(--chart-primary)" stroke-width="3.5" stroke-linecap="round" />
         ${xLabelsHtml}
       </svg>
       <div class="chart-tooltip"></div>

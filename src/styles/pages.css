@@ -421,12 +421,13 @@
   justify-content: space-between;
   gap: 20px;
   box-shadow: var(--shadow-card);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.2s ease;
 }
 
 .my-investment-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.08);
+  border-color: var(--border-strong);
 }
 
 .my-inv-left {
@@ -445,6 +446,11 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.my-investment-card:hover .my-inv-icon {
+  transform: scale(1.1) rotate(3deg);
 }
 
 .my-inv-title {
@@ -618,12 +624,13 @@
   grid-template-columns: 48px 1fr 1fr 1.25fr 1fr auto;
   align-items: center;
   gap: 20px;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.2s ease;
 }
 
 .card-list-item-box:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.08);
+  border-color: var(--border-strong);
 }
 
 .card-list-icon {
@@ -634,6 +641,11 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card-list-item-box:hover .card-list-icon {
+  transform: scale(1.1) rotate(3deg);
 }
 
 .card-list-col {
@@ -709,12 +721,12 @@
   padding: 10px 14px;
   border-radius: var(--radius-md);
   cursor: pointer;
-  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  transition: background-color 0.2s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card-setting-figma-item:hover {
   background-color: var(--bg-surface-subtle);
-  transform: translateX(4px);
+  transform: translateX(6px);
 }
 
 .card-setting-figma-icon {
@@ -725,6 +737,11 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card-setting-figma-item:hover .card-setting-figma-icon {
+  transform: scale(1.1) rotate(4deg);
 }
 
 .card-setting-figma-title {

@@ -92,8 +92,11 @@ function navigateTo(routeId) {
   // Render Page Content
   const mainContent = document.getElementById('main-content');
   if (mainContent) {
+    mainContent.classList.remove('page-enter');
+    void mainContent.offsetWidth; // trigger reflow for smooth re-animation
     mainContent.innerHTML = '';
     routePageMap[routeId].render(mainContent, navigateTo);
+    mainContent.classList.add('page-enter');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
