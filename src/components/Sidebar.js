@@ -90,16 +90,10 @@ export function renderSidebar(container, activeId, onNavigate) {
 
   container.innerHTML = `
     <div class="sidebar-header">
-      <div class="sidebar-logo">
-        <div class="sidebar-logo-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="5" width="20" height="14" rx="3"></rect>
-            <line x1="2" y1="10" x2="22" y2="10"></line>
-            <line x1="6" y1="15" x2="10" y2="15"></line>
-          </svg>
-        </div>
-        <div class="sidebar-logo-text">BankDash.</div>
-      </div>
+      <a href="#dashboard" class="sidebar-logo" aria-label="BankDash">
+        <img src="/assets/logo-icon.png" alt="BankDash" class="sidebar-logo-icon-img" />
+        <span class="sidebar-logo-text">BankDash.</span>
+      </a>
       <button id="sidebar-close-btn" class="sidebar-close-btn" aria-label="Close sidebar">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="18" y1="6" x2="6" y2="18"></line>
