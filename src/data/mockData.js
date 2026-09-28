@@ -376,33 +376,87 @@ export const invoicesSentData = [
 
 export const investmentsData = {
   kpis: [
-    { label: 'Total Invested Amount', value: 150000, change: '+15.2%', type: 'emerald' },
-    { label: 'Number of Investments', value: 1250, change: '+8.0%', type: 'indigo' },
-    { label: 'Rate of Return', value: 5.8, isPercent: true, change: '+1.4%', type: 'amber' }
+    { label: 'Total Invested Amount', value: '$150,000', icon: 'wallet', type: 'emerald' },
+    { label: 'Number of Investments', value: '1,250', icon: 'pie', type: 'rose' },
+    { label: 'Rate of Return', value: '+5.80%', icon: 'sync', type: 'indigo' }
   ],
-  yearlyTrend: [
-    { year: '2021', value: 45000 },
-    { year: '2022', value: 72000 },
-    { year: '2023', value: 95000 },
-    { year: '2024', value: 118000 },
-    { year: '2025', value: 135000 },
-    { year: '2026', value: 150000 }
-  ],
-  monthlyRevenue: [
-    { month: 'Jan', value: 8500 },
-    { month: 'Feb', value: 9200 },
-    { month: 'Mar', value: 7800 },
-    { month: 'Apr', value: 11400 },
-    { month: 'May', value: 12800 },
-    { month: 'Jun', value: 14200 }
+  yearlyTotalInvestment: {
+    yTicks: [0, 10000, 20000, 30000, 40000],
+    maxVal: 40000,
+    points: [
+      { year: '2016', value: 5000 },
+      { year: '2017', value: 23000 },
+      { year: '2018', value: 16000 },
+      { year: '2019', value: 37000 },
+      { year: '2020', value: 21000 },
+      { year: '2021', value: 29000 }
+    ]
+  },
+  monthlyRevenueCurve: {
+    yTicks: [0, 10000, 20000, 30000, 40000],
+    years: ['2016', '2017', '2018', '2019', '2020', '2021'],
+    maxVal: 40000,
+    controlPoints: [
+      { x: 0, y: 11000 },
+      { x: 0.1, y: 13000 },
+      { x: 0.2, y: 20000 },
+      { x: 0.28, y: 10000 },
+      { x: 0.4, y: 27000 },
+      { x: 0.48, y: 31000 },
+      { x: 0.58, y: 20000 },
+      { x: 0.68, y: 28000 },
+      { x: 0.78, y: 26000 },
+      { x: 0.88, y: 15000 },
+      { x: 1.0, y: 35000 }
+    ]
+  },
+  myInvestments: [
+    {
+      id: 'mi-1',
+      title: 'Apple Store',
+      category: 'E-commerce, Marketplace',
+      value: '$54,000',
+      valueLabel: 'Envestment Value',
+      returnRate: '+16%',
+      returnLabel: 'Return Value',
+      isPositive: true,
+      iconBg: 'rgba(244, 63, 94, 0.12)',
+      iconColor: '#f43f5e',
+      iconType: 'apple'
+    },
+    {
+      id: 'mi-2',
+      title: 'Samsung Mobile',
+      category: 'E-commerce, Marketplace',
+      value: '$25,300',
+      valueLabel: 'Envestment Value',
+      returnRate: '-4%',
+      returnLabel: 'Return Value',
+      isPositive: false,
+      iconBg: 'rgba(99, 102, 241, 0.12)',
+      iconColor: '#6366f1',
+      iconType: 'google'
+    },
+    {
+      id: 'mi-3',
+      title: 'Tesla Motors',
+      category: 'Electric Vehicles',
+      value: '$8,200',
+      valueLabel: 'Envestment Value',
+      returnRate: '+25%',
+      returnLabel: 'Return Value',
+      isPositive: true,
+      iconBg: 'rgba(245, 158, 11, 0.12)',
+      iconColor: '#f59e0b',
+      iconType: 'tesla'
+    }
   ],
   trendingStocks: [
-    { sl: '01', name: 'Apple Inc.', ticker: 'AAPL', price: 182.5, returnVal: '+2.45%', positive: true, sparkline: [175, 178, 176, 180, 181, 182.5] },
-    { sl: '02', name: 'Tesla Motors', ticker: 'TSLA', price: 240.1, returnVal: '-1.20%', positive: false, sparkline: [250, 248, 242, 245, 239, 240.1] },
-    { sl: '03', name: 'Alphabet Inc.', ticker: 'GOOGL', price: 142.3, returnVal: '+3.15%', positive: true, sparkline: [136, 138, 140, 139, 141, 142.3] },
-    { sl: '04', name: 'Amazon.com', ticker: 'AMZN', price: 175.2, returnVal: '+1.80%', positive: true, sparkline: [170, 171, 169, 173, 174, 175.2] },
-    { sl: '05', name: 'Microsoft Corp', ticker: 'MSFT', price: 415.5, returnVal: '+0.95%', positive: true, sparkline: [405, 410, 408, 412, 414, 415.5] },
-    { sl: '06', name: 'NVIDIA Corp', ticker: 'NVDA', price: 890.0, returnVal: '+4.65%', positive: true, sparkline: [820, 840, 855, 870, 880, 890.0] }
+    { sl: '01.', name: 'Trivago', price: '$520', returnVal: '+5%', positive: true },
+    { sl: '02.', name: 'Canon', price: '$480', returnVal: '+10%', positive: true },
+    { sl: '03.', name: 'Uber Food', price: '$350', returnVal: '-3%', positive: false },
+    { sl: '04.', name: 'Nokia', price: '$940', returnVal: '+2%', positive: true },
+    { sl: '05.', name: 'Tiktok', price: '$670', returnVal: '-12%', positive: false }
   ]
 };
 

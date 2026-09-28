@@ -347,22 +347,172 @@
 /* --------------------------------------------------------------------------
    4. INVESTMENTS PAGE
    -------------------------------------------------------------------------- */
+.investments-page-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.investments-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.investments-kpi-card {
+  padding: 20px 24px;
+}
+
 .investments-charts-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
-  margin-bottom: 30px;
 }
 
-@media (max-width: 992px) {
-  .investments-charts-row {
+.investments-bottom-row {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+/* My Investment 3 Stacked Cards */
+.my-investments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.my-investment-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.my-investment-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.my-inv-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1.3;
+  min-width: 170px;
+}
+
+.my-inv-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.my-inv-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+  white-space: nowrap;
+}
+
+.my-inv-subtitle {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.my-inv-col-value {
+  flex: 1;
+  text-align: left;
+}
+
+.my-inv-val {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.my-inv-col-return {
+  flex: 0.8;
+  text-align: right;
+}
+
+.my-inv-rate {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.my-inv-rate.positive {
+  color: var(--accent-success);
+}
+
+.my-inv-rate.negative {
+  color: var(--accent-rose);
+}
+
+.my-inv-sublabel {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Trending Stock Table Box */
+.trending-stock-box {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 8px 24px;
+  box-shadow: var(--shadow-card);
+}
+
+.trending-stock-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.trending-stock-table th {
+  padding: 14px 10px;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: left;
+  border-bottom: 1px solid var(--border-default);
+}
+
+.trending-stock-table td {
+  padding: 14px 10px;
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: middle;
+}
+
+.trending-stock-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+@media (max-width: 1100px) {
+  .investments-kpi-grid {
     grid-template-columns: 1fr;
   }
-}
 
-.stock-sparkline {
-  width: 90px;
-  height: 28px;
+  .investments-charts-row,
+  .investments-bottom-row {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
 }
 
 /* --------------------------------------------------------------------------
