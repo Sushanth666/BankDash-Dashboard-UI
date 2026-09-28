@@ -7,85 +7,85 @@
    ========================================================================== */
 
 :root,
-[data-theme="emerald"] {
-  /* Brand Primary Colors - Luxe Emerald / Teal */
-  --primary: #0d9488;
-  --primary-hover: #0f766e;
-  --primary-active: #115e59;
-  --primary-light: #f0fdfa;
-  --primary-tint: rgba(13, 148, 136, 0.12);
-  --primary-glow: rgba(13, 148, 136, 0.28);
-  --primary-gradient: linear-gradient(135deg, #0d9488 0%, #10b981 100%);
+[data-theme="sapphire"] {
+  /* Brand Primary Colors - Electric Sapphire Blue */
+  --primary: #2d60ff;
+  --primary-hover: #1e4ed8;
+  --primary-active: #183ec2;
+  --primary-light: #f4f7fe;
+  --primary-tint: rgba(45, 96, 255, 0.12);
+  --primary-glow: rgba(45, 96, 255, 0.32);
+  --primary-gradient: linear-gradient(135deg, #2d60ff 0%, #1814f3 100%);
 
   /* Accent Colors */
-  --accent-secondary: #6366f1; /* Electric Indigo */
-  --accent-secondary-tint: rgba(99, 102, 241, 0.12);
-  --accent-amber: #f59e0b; /* Golden Amber */
-  --accent-amber-tint: rgba(245, 158, 11, 0.12);
-  --accent-rose: #f43f5e; /* Rose / Expense Red */
-  --accent-rose-tint: rgba(244, 63, 94, 0.12);
-  --accent-cyan: #06b6d4; /* Vibrant Cyan */
-  --accent-cyan-tint: rgba(6, 182, 212, 0.12);
-  --accent-purple: #8b5cf6; /* Amethyst */
-  --accent-purple-tint: rgba(139, 92, 246, 0.12);
-  --accent-success: #10b981; /* Fresh Emerald */
-  --accent-success-tint: rgba(16, 185, 129, 0.12);
+  --accent-secondary: #fe5c73; /* Vibrant Coral */
+  --accent-secondary-tint: rgba(254, 92, 115, 0.12);
+  --accent-amber: #ffbb38; /* Bright Amber Gold */
+  --accent-amber-tint: rgba(255, 187, 56, 0.12);
+  --accent-rose: #ff4b61; /* Vibrant Rose / Expense Red */
+  --accent-rose-tint: rgba(255, 75, 97, 0.12);
+  --accent-cyan: #16dbcc; /* Electric Aqua Cyan */
+  --accent-cyan-tint: rgba(22, 219, 204, 0.12);
+  --accent-purple: #703bf7; /* Royal Violet */
+  --accent-purple-tint: rgba(112, 59, 247, 0.12);
+  --accent-success: #16dbaa; /* Mint Emerald Success */
+  --accent-success-tint: rgba(22, 219, 170, 0.12);
 
   /* Backgrounds & Surfaces */
-  --bg-app: #f8fafc;
+  --bg-app: #f5f7fa;
   --bg-sidebar: #ffffff;
   --bg-header: #ffffff;
   --bg-surface: #ffffff;
   --bg-surface-elevated: #ffffff;
-  --bg-surface-subtle: #f1f5f9;
-  --bg-surface-active: #e2e8f0;
-  --bg-input: #f8fafc;
+  --bg-surface-subtle: #f4f7fe;
+  --bg-surface-active: #e8eefb;
+  --bg-input: #f5f7fa;
   --bg-input-focus: #ffffff;
 
   /* Text Colors */
-  --text-primary: #0f172a;
-  --text-secondary: #334155;
-  --text-muted: #64748b;
-  --text-subtle: #94a3b8;
+  --text-primary: #232323;
+  --text-secondary: #343c6a;
+  --text-muted: #718ebf;
+  --text-subtle: #8ba3cb;
   --text-on-primary: #ffffff;
-  --text-link: #0d9488;
+  --text-link: #2d60ff;
 
   /* Borders & Dividers */
-  --border-subtle: #f1f5f9;
-  --border-default: #e2e8f0;
-  --border-strong: #cbd5e1;
-  --border-focus: #0d9488;
+  --border-subtle: #f4f5f7;
+  --border-default: #e6eff5;
+  --border-strong: #d0dbe8;
+  --border-focus: #2d60ff;
 
-  /* Credit Cards Styling */
-  --card-dark-bg: linear-gradient(135deg, #042f2e 0%, #0f766e 60%, #115e59 100%);
+  /* Credit Cards Styling (Luxury Sapphire Dark & Crisp White) */
+  --card-dark-bg: linear-gradient(135deg, #0a1e5c 0%, #17389e 50%, #2d60ff 100%);
   --card-dark-text: #ffffff;
-  --card-dark-muted: rgba(255, 255, 255, 0.7);
-  --card-dark-border: rgba(20, 184, 166, 0.25);
-  --card-dark-footer: rgba(4, 47, 46, 0.55);
+  --card-dark-muted: rgba(255, 255, 255, 0.75);
+  --card-dark-border: rgba(45, 96, 255, 0.35);
+  --card-dark-footer: rgba(10, 30, 92, 0.65);
 
   --card-light-bg: #ffffff;
-  --card-light-text: #0f172a;
-  --card-light-muted: #64748b;
-  --card-light-border: #e2e8f0;
+  --card-light-text: #343c6a;
+  --card-light-muted: #718ebf;
+  --card-light-border: #dfeaf2;
   --card-light-footer: #f8fafc;
 
   /* Shadows */
   --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
-  --shadow-sm: 0 2px 4px -1px rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.03);
-  --shadow-card: 0 4px 16px -2px rgba(15, 23, 42, 0.04), 0 2px 6px -2px rgba(15, 23, 42, 0.02);
-  --shadow-hover: 0 12px 24px -4px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
-  --shadow-dropdown: 0 10px 25px -3px rgba(15, 23, 42, 0.12), 0 4px 8px -2px rgba(15, 23, 42, 0.06);
+  --shadow-sm: 0 2px 6px -1px rgba(45, 96, 255, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.03);
+  --shadow-card: 0 6px 20px -3px rgba(45, 96, 255, 0.06), 0 2px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-hover: 0 14px 28px -4px rgba(45, 96, 255, 0.12), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
+  --shadow-dropdown: 0 12px 28px -3px rgba(45, 96, 255, 0.14), 0 4px 10px -2px rgba(0, 0, 0, 0.06);
   --shadow-modal: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
-  --shadow-primary-btn: 0 4px 14px 0 rgba(13, 148, 136, 0.35);
+  --shadow-primary-btn: 0 4px 16px 0 rgba(45, 96, 255, 0.38);
 
   /* Charts Color Scheme */
-  --chart-primary: #0d9488;
-  --chart-secondary: #6366f1;
-  --chart-amber: #f59e0b;
-  --chart-rose: #f43f5e;
-  --chart-cyan: #06b6d4;
-  --chart-grid: #e2e8f0;
-  --chart-tooltip-bg: #0f172a;
+  --chart-primary: #1814f3;
+  --chart-secondary: #16dbcc;
+  --chart-amber: #ffbb38;
+  --chart-rose: #ff4b61;
+  --chart-cyan: #16dbcc;
+  --chart-grid: #edf2f7;
+  --chart-tooltip-bg: #1a1f36;
   --chart-tooltip-text: #ffffff;
 
   /* Component Dimensions & Tokens */
@@ -101,6 +101,79 @@
   --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   THEME: EMERALD LUXE
+   ========================================================================== */
+[data-theme="emerald"] {
+  --primary: #0d9488;
+  --primary-hover: #0f766e;
+  --primary-active: #115e59;
+  --primary-light: #f0fdfa;
+  --primary-tint: rgba(13, 148, 136, 0.12);
+  --primary-glow: rgba(13, 148, 136, 0.28);
+  --primary-gradient: linear-gradient(135deg, #0d9488 0%, #10b981 100%);
+
+  --accent-secondary: #6366f1;
+  --accent-secondary-tint: rgba(99, 102, 241, 0.12);
+  --accent-amber: #f59e0b;
+  --accent-amber-tint: rgba(245, 158, 11, 0.12);
+  --accent-rose: #f43f5e;
+  --accent-rose-tint: rgba(244, 63, 94, 0.12);
+  --accent-cyan: #06b6d4;
+  --accent-cyan-tint: rgba(6, 182, 212, 0.12);
+  --accent-purple: #8b5cf6;
+  --accent-purple-tint: rgba(139, 92, 246, 0.12);
+  --accent-success: #10b981;
+  --accent-success-tint: rgba(16, 185, 129, 0.12);
+
+  --bg-app: #f8fafc;
+  --bg-sidebar: #ffffff;
+  --bg-header: #ffffff;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #ffffff;
+  --bg-surface-subtle: #f1f5f9;
+  --bg-surface-active: #e2e8f0;
+  --bg-input: #f8fafc;
+  --bg-input-focus: #ffffff;
+
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --text-subtle: #94a3b8;
+  --text-on-primary: #ffffff;
+  --text-link: #0d9488;
+
+  --border-subtle: #f1f5f9;
+  --border-default: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --border-focus: #0d9488;
+
+  --card-dark-bg: linear-gradient(135deg, #042f2e 0%, #0f766e 60%, #115e59 100%);
+  --card-dark-text: #ffffff;
+  --card-dark-muted: rgba(255, 255, 255, 0.7);
+  --card-dark-border: rgba(20, 184, 166, 0.25);
+  --card-dark-footer: rgba(4, 47, 46, 0.55);
+
+  --card-light-bg: #ffffff;
+  --card-light-text: #0f172a;
+  --card-light-muted: #64748b;
+  --card-light-border: #e2e8f0;
+  --card-light-footer: #f8fafc;
+
+  --shadow-card: 0 4px 16px -2px rgba(15, 23, 42, 0.04), 0 2px 6px -2px rgba(15, 23, 42, 0.02);
+  --shadow-hover: 0 12px 24px -4px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
+  --shadow-primary-btn: 0 4px 14px 0 rgba(13, 148, 136, 0.35);
+
+  --chart-primary: #0d9488;
+  --chart-secondary: #6366f1;
+  --chart-amber: #f59e0b;
+  --chart-rose: #f43f5e;
+  --chart-cyan: #06b6d4;
+  --chart-grid: #e2e8f0;
+  --chart-tooltip-bg: #0f172a;
+  --chart-tooltip-text: #ffffff;
 }
 
 /* ==========================================================================

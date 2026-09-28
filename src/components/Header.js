@@ -45,7 +45,7 @@ export function renderHeader(container, { activeTitle, onThemeChange, currentThe
             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
           </svg>
-          <span id="theme-label" style="text-transform: capitalize;">${currentTheme === 'emerald' ? 'Emerald' : currentTheme === 'dark' ? 'Dark' : 'Indigo'}</span>
+          <span id="theme-label" style="text-transform: capitalize;">${currentTheme === 'sapphire' ? 'Sapphire' : currentTheme === 'emerald' ? 'Emerald' : currentTheme === 'dark' ? 'Dark' : 'Indigo'}</span>
         </button>
 
         <!-- Setting Shortcut Button -->

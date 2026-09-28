@@ -70,13 +70,11 @@
   display: none;
 }
 
-[data-theme="dark"] .sidebar-logo-light,
-[data-theme="indigo"] .sidebar-logo-light {
+[data-theme="dark"] .sidebar-logo-light {
   display: none !important;
 }
 
-[data-theme="dark"] .sidebar-logo-dark,
-[data-theme="indigo"] .sidebar-logo-dark {
+[data-theme="dark"] .sidebar-logo-dark {
   display: block !important;
 }
 

@@ -18,7 +18,7 @@ import { showToast } from './components/Toast.js';
 // Application State
 const state = {
   currentRoute: 'dashboard',
-  currentTheme: localStorage.getItem('bankdash_theme') || 'emerald'
+  currentTheme: localStorage.getItem('bankdash_theme') || 'sapphire'
 };
 
 const routePageMap = {
@@ -41,20 +41,27 @@ function applyTheme(theme) {
 
   const themeLabel = document.getElementById('theme-label');
   if (themeLabel) {
-    themeLabel.innerText = theme === 'emerald' ? 'Emerald' : theme === 'dark' ? 'Dark' : 'Indigo';
+    const labelNames = {
+      sapphire: 'Sapphire',
+      dark: 'Dark',
+      indigo: 'Indigo',
+      emerald: 'Emerald'
+    };
+    themeLabel.innerText = labelNames[theme] || 'Sapphire';
   }
 }
 
 function cycleTheme() {
-  const themes = ['emerald', 'dark', 'indigo'];
+  const themes = ['sapphire', 'dark', 'indigo', 'emerald'];
   const nextIdx = (themes.indexOf(state.currentTheme) + 1) % themes.length;
   const newTheme = themes[nextIdx];
   applyTheme(newTheme);
 
   const friendlyNames = {
-    emerald: 'Emerald Fintech Theme (Default)',
+    sapphire: 'Electric Sapphire Blue (Default)',
     dark: 'Midnight Obsidian Dark Theme',
-    indigo: 'Nordic Cobalt Theme'
+    indigo: 'Nordic Cobalt Theme',
+    emerald: 'Emerald Luxe Theme'
   };
   showToast('Theme Changed', `Switched to ${friendlyNames[newTheme]}`, 'info', 2000);
 }
@@ -159,8 +166,10 @@ function openMobileSidebar() {
 
 // Bootstrap Application
 function initApp() {
-  // Apply saved theme
-  applyTheme(state.currentTheme);
+  // Apply Electric Sapphire Blue theme as default
+  const savedTheme = localStorage.getItem('bankdash_theme');
+  const activeTheme = (!savedTheme || savedTheme === 'emerald') ? 'sapphire' : savedTheme;
+  applyTheme(activeTheme);
 
   // Initial Route from URL Hash
   const hash = window.location.hash.replace('#', '');
@@ -216,7 +225,7 @@ function initApp() {
   setTimeout(() => {
     showToast(
       'Welcome to BankDash',
-      'Modern Emerald Fintech theme active. Use the top Theme Switcher to test Dark and Nordic Cobalt modes!',
+      'Electric Sapphire Blue theme active. Use the top Theme Switcher to test Dark, Indigo, and Emerald modes!',
       'success',
       4500
     );
