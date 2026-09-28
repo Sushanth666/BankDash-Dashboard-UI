@@ -1,0 +1,258 @@
+/* ==========================================================================
+   BANKDASH DESIGN SYSTEM - CSS VARIABLES & THEMES
+   Modern, professional color system completely distinct from Figma original.
+   Default: "Emerald Fintech" (Modern, high-trust, elite banking aesthetic)
+   Alternative 1: "Midnight Obsidian" (Sleek dark mode)
+   Alternative 2: "Nordic Cobalt" (Deep sapphire & cyan)
+   ========================================================================== */
+
+:root,
+[data-theme="emerald"] {
+  /* Brand Primary Colors - Luxe Emerald / Teal */
+  --primary: #0d9488;
+  --primary-hover: #0f766e;
+  --primary-active: #115e59;
+  --primary-light: #f0fdfa;
+  --primary-tint: rgba(13, 148, 136, 0.12);
+  --primary-glow: rgba(13, 148, 136, 0.28);
+  --primary-gradient: linear-gradient(135deg, #0d9488 0%, #10b981 100%);
+
+  /* Accent Colors */
+  --accent-secondary: #6366f1; /* Electric Indigo */
+  --accent-secondary-tint: rgba(99, 102, 241, 0.12);
+  --accent-amber: #f59e0b; /* Golden Amber */
+  --accent-amber-tint: rgba(245, 158, 11, 0.12);
+  --accent-rose: #f43f5e; /* Rose / Expense Red */
+  --accent-rose-tint: rgba(244, 63, 94, 0.12);
+  --accent-cyan: #06b6d4; /* Vibrant Cyan */
+  --accent-cyan-tint: rgba(6, 182, 212, 0.12);
+  --accent-purple: #8b5cf6; /* Amethyst */
+  --accent-purple-tint: rgba(139, 92, 246, 0.12);
+  --accent-success: #10b981; /* Fresh Emerald */
+  --accent-success-tint: rgba(16, 185, 129, 0.12);
+
+  /* Backgrounds & Surfaces */
+  --bg-app: #f8fafc;
+  --bg-sidebar: #ffffff;
+  --bg-header: #ffffff;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #ffffff;
+  --bg-surface-subtle: #f1f5f9;
+  --bg-surface-active: #e2e8f0;
+  --bg-input: #f8fafc;
+  --bg-input-focus: #ffffff;
+
+  /* Text Colors */
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --text-subtle: #94a3b8;
+  --text-on-primary: #ffffff;
+  --text-link: #0d9488;
+
+  /* Borders & Dividers */
+  --border-subtle: #f1f5f9;
+  --border-default: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --border-focus: #0d9488;
+
+  /* Credit Cards Styling */
+  --card-dark-bg: linear-gradient(135deg, #042f2e 0%, #0f766e 60%, #115e59 100%);
+  --card-dark-text: #ffffff;
+  --card-dark-muted: rgba(255, 255, 255, 0.7);
+  --card-dark-border: rgba(20, 184, 166, 0.25);
+  --card-dark-footer: rgba(4, 47, 46, 0.55);
+
+  --card-light-bg: #ffffff;
+  --card-light-text: #0f172a;
+  --card-light-muted: #64748b;
+  --card-light-border: #e2e8f0;
+  --card-light-footer: #f8fafc;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  --shadow-sm: 0 2px 4px -1px rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.03);
+  --shadow-card: 0 4px 16px -2px rgba(15, 23, 42, 0.04), 0 2px 6px -2px rgba(15, 23, 42, 0.02);
+  --shadow-hover: 0 12px 24px -4px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
+  --shadow-dropdown: 0 10px 25px -3px rgba(15, 23, 42, 0.12), 0 4px 8px -2px rgba(15, 23, 42, 0.06);
+  --shadow-modal: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+  --shadow-primary-btn: 0 4px 14px 0 rgba(13, 148, 136, 0.35);
+
+  /* Charts Color Scheme */
+  --chart-primary: #0d9488;
+  --chart-secondary: #6366f1;
+  --chart-amber: #f59e0b;
+  --chart-rose: #f43f5e;
+  --chart-cyan: #06b6d4;
+  --chart-grid: #e2e8f0;
+  --chart-tooltip-bg: #0f172a;
+  --chart-tooltip-text: #ffffff;
+
+  /* Component Dimensions & Tokens */
+  --sidebar-width: 250px;
+  --header-height: 84px;
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 25px;
+  --radius-full: 9999px;
+
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   THEME: MIDNIGHT OBSIDIAN (Dark Mode)
+   ========================================================================== */
+[data-theme="dark"] {
+  --primary: #14b8a6;
+  --primary-hover: #2dd4bf;
+  --primary-active: #0d9488;
+  --primary-light: rgba(20, 184, 166, 0.15);
+  --primary-tint: rgba(20, 184, 166, 0.18);
+  --primary-glow: rgba(20, 184, 166, 0.4);
+  --primary-gradient: linear-gradient(135deg, #14b8a6 0%, #10b981 100%);
+
+  --accent-secondary: #818cf8;
+  --accent-secondary-tint: rgba(129, 140, 248, 0.15);
+  --accent-amber: #fbbf24;
+  --accent-amber-tint: rgba(251, 191, 36, 0.15);
+  --accent-rose: #fb7185;
+  --accent-rose-tint: rgba(251, 113, 133, 0.15);
+  --accent-cyan: #22d3ee;
+  --accent-cyan-tint: rgba(34, 211, 238, 0.15);
+  --accent-purple: #a78bfa;
+  --accent-purple-tint: rgba(167, 139, 250, 0.15);
+  --accent-success: #34d399;
+  --accent-success-tint: rgba(52, 211, 153, 0.15);
+
+  --bg-app: #0b0f19;
+  --bg-sidebar: #0f172a;
+  --bg-header: #0f172a;
+  --bg-surface: #131d33;
+  --bg-surface-elevated: #1a2642;
+  --bg-surface-subtle: #19233c;
+  --bg-surface-active: #223052;
+  --bg-input: #101828;
+  --bg-input-focus: #151f33;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-subtle: #64748b;
+  --text-on-primary: #042f2e;
+  --text-link: #2dd4bf;
+
+  --border-subtle: #1a243a;
+  --border-default: #23314d;
+  --border-strong: #334466;
+  --border-focus: #2dd4bf;
+
+  --card-dark-bg: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0d9488 100%);
+  --card-dark-text: #ffffff;
+  --card-dark-muted: rgba(255, 255, 255, 0.7);
+  --card-dark-border: rgba(45, 212, 191, 0.3);
+  --card-dark-footer: rgba(15, 23, 42, 0.7);
+
+  --card-light-bg: #162038;
+  --card-light-text: #f8fafc;
+  --card-light-muted: #94a3b8;
+  --card-light-border: #23314d;
+  --card-light-footer: #111a2e;
+
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  --shadow-sm: 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.35);
+  --shadow-hover: 0 12px 28px -4px rgba(0, 0, 0, 0.5);
+  --shadow-dropdown: 0 10px 25px -3px rgba(0, 0, 0, 0.6);
+  --shadow-modal: 0 25px 50px -12px rgba(0, 0, 0, 0.75);
+  --shadow-primary-btn: 0 4px 14px 0 rgba(20, 184, 166, 0.35);
+
+  --chart-primary: #2dd4bf;
+  --chart-secondary: #818cf8;
+  --chart-amber: #fbbf24;
+  --chart-rose: #fb7185;
+  --chart-cyan: #22d3ee;
+  --chart-grid: #23314d;
+  --chart-tooltip-bg: #1e293b;
+  --chart-tooltip-text: #f8fafc;
+}
+
+/* ==========================================================================
+   THEME: NORDIC COBALT (Deep Sapphire & Mint)
+   ========================================================================== */
+[data-theme="indigo"] {
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --primary-active: #3730a3;
+  --primary-light: #eef2ff;
+  --primary-tint: rgba(79, 70, 229, 0.12);
+  --primary-glow: rgba(79, 70, 229, 0.3);
+  --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+
+  --accent-secondary: #06b6d4;
+  --accent-secondary-tint: rgba(6, 182, 212, 0.12);
+  --accent-amber: #f59e0b;
+  --accent-amber-tint: rgba(245, 158, 11, 0.12);
+  --accent-rose: #f43f5e;
+  --accent-rose-tint: rgba(244, 63, 94, 0.12);
+  --accent-cyan: #10b981;
+  --accent-cyan-tint: rgba(16, 185, 129, 0.12);
+  --accent-purple: #8b5cf6;
+  --accent-purple-tint: rgba(139, 92, 246, 0.12);
+  --accent-success: #10b981;
+  --accent-success-tint: rgba(16, 185, 129, 0.12);
+
+  --bg-app: #f4f7fc;
+  --bg-sidebar: #ffffff;
+  --bg-header: #ffffff;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #ffffff;
+  --bg-surface-subtle: #edf2f9;
+  --bg-surface-active: #e2e8f4;
+  --bg-input: #f4f7fc;
+  --bg-input-focus: #ffffff;
+
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --text-subtle: #94a3b8;
+  --text-on-primary: #ffffff;
+  --text-link: #4f46e5;
+
+  --border-subtle: #edf2f9;
+  --border-default: #dbe3ee;
+  --border-strong: #c5d2e3;
+  --border-focus: #4f46e5;
+
+  --card-dark-bg: linear-gradient(135deg, #1e1b4b 0%, #312e81 60%, #4338ca 100%);
+  --card-dark-text: #ffffff;
+  --card-dark-muted: rgba(255, 255, 255, 0.7);
+  --card-dark-border: rgba(99, 102, 241, 0.3);
+  --card-dark-footer: rgba(30, 27, 75, 0.6);
+
+  --card-light-bg: #ffffff;
+  --card-light-text: #0f172a;
+  --card-light-muted: #64748b;
+  --card-light-border: #dbe3ee;
+  --card-light-footer: #f4f7fc;
+
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  --shadow-sm: 0 2px 4px -1px rgba(0, 0, 0, 0.05);
+  --shadow-card: 0 4px 16px -2px rgba(30, 27, 75, 0.05);
+  --shadow-hover: 0 12px 24px -4px rgba(30, 27, 75, 0.1);
+  --shadow-dropdown: 0 10px 25px -3px rgba(30, 27, 75, 0.12);
+  --shadow-modal: 0 25px 50px -12px rgba(30, 27, 75, 0.25);
+  --shadow-primary-btn: 0 4px 14px 0 rgba(79, 70, 229, 0.35);
+
+  --chart-primary: #4f46e5;
+  --chart-secondary: #06b6d4;
+  --chart-amber: #f59e0b;
+  --chart-rose: #f43f5e;
+  --chart-cyan: #10b981;
+  --chart-grid: #dbe3ee;
+  --chart-tooltip-bg: #1e1b4b;
+  --chart-tooltip-text: #ffffff;
+}

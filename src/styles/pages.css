@@ -1,0 +1,507 @@
+/* ==========================================================================
+   PAGES SPECIFIC LAYOUTS & MODULE STYLES
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. DASHBOARD / OVERVIEW
+   -------------------------------------------------------------------------- */
+.dashboard-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Row 1: Cards (60%) + Recent Transactions (40%) */
+.dashboard-row-cards {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 30px;
+}
+
+/* Row 2: Weekly Activity (65%) + Expense Statistics (35%) */
+.dashboard-row-activity {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 30px;
+}
+
+/* Row 3: Quick Transfer (40%) + Balance History (60%) */
+.dashboard-row-transfer {
+  display: grid;
+  grid-template-columns: 1.1fr 1.6fr;
+  gap: 30px;
+}
+
+@media (max-width: 1200px) {
+  .dashboard-row-cards,
+  .dashboard-row-activity,
+  .dashboard-row-transfer {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. TRANSACTIONS PAGE
+   -------------------------------------------------------------------------- */
+.transactions-top-cards {
+  margin-bottom: 28px;
+}
+
+.transactions-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.transactions-search-filter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.table-search-input {
+  height: 42px;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  padding: 0 16px 0 38px;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  min-width: 220px;
+  transition: all var(--transition-fast);
+}
+
+.table-search-input:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px var(--primary-tint);
+}
+
+.filter-select {
+  height: 42px;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  padding: 0 16px;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  outline: none;
+}
+
+.filter-select:focus {
+  border-color: var(--border-focus);
+}
+
+/* Receipt Modal Styling */
+.receipt-box {
+  background: var(--bg-surface-subtle);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.receipt-header {
+  text-align: center;
+  border-bottom: 1px solid var(--border-default);
+  padding-bottom: 12px;
+}
+
+.receipt-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+}
+
+.receipt-row.total {
+  border-top: 1px solid var(--border-default);
+  padding-top: 10px;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   3. ACCOUNTS PAGE
+   -------------------------------------------------------------------------- */
+.accounts-overview-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 30px;
+  margin-top: 28px;
+}
+
+.invoices-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.invoice-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.invoice-item:last-child {
+  border-bottom: none;
+}
+
+.invoice-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.invoice-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.invoice-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.invoice-time {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.invoice-amount {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+@media (max-width: 1000px) {
+  .accounts-overview-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. INVESTMENTS PAGE
+   -------------------------------------------------------------------------- */
+.investments-charts-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 992px) {
+  .investments-charts-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stock-sparkline {
+  width: 90px;
+  height: 28px;
+}
+
+/* --------------------------------------------------------------------------
+   5. CREDIT CARDS PAGE
+   -------------------------------------------------------------------------- */
+.credit-cards-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.card-settings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.card-setting-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.card-setting-item:last-child {
+  border-bottom: none;
+}
+
+.card-setting-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.card-setting-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-surface-subtle);
+  color: var(--primary);
+}
+
+.card-setting-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.card-setting-desc {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+/* Add Card Interactive Preview */
+.add-card-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 36px;
+  align-items: flex-start;
+}
+
+@media (max-width: 992px) {
+  .credit-cards-row,
+  .add-card-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. LOANS PAGE
+   -------------------------------------------------------------------------- */
+.loans-table-wrapper {
+  margin-top: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   7. SERVICES PAGE
+   -------------------------------------------------------------------------- */
+.services-highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.service-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all var(--transition-normal);
+}
+
+.service-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--primary);
+}
+
+.service-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.service-card-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.service-card-desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.service-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.service-badge {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* --------------------------------------------------------------------------
+   8. MY PRIVILEGES PAGE
+   -------------------------------------------------------------------------- */
+.privilege-tier-card {
+  background: var(--card-dark-bg);
+  color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 30px;
+  box-shadow: var(--shadow-hover);
+}
+
+.privilege-tier-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+}
+
+.privilege-tier-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-full);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.privilege-tier-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.privilege-tier-desc {
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 20px;
+}
+
+.tier-progress-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.tier-progress-fill {
+  height: 100%;
+  background: #ffffff;
+  border-radius: var(--radius-full);
+  width: 78%;
+}
+
+.tier-progress-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.privileges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* --------------------------------------------------------------------------
+   9. SETTING PAGE
+   -------------------------------------------------------------------------- */
+.settings-content-wrapper {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-card);
+}
+
+.profile-edit-avatar-section {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.profile-avatar-wrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.profile-large-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--border-default);
+}
+
+.avatar-edit-badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast);
+}
+
+.avatar-edit-badge:hover {
+  transform: scale(1.1);
+}
+
+.security-session-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.security-session-item:last-child {
+  border-bottom: none;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="emerald">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BankDash — Modern Fintech Banking Dashboard</title>
+    <meta
+      name="description"
+      content="BankDash is a modern, responsive fintech banking admin dashboard UI featuring comprehensive financial management, transactions, investments, card management, loans, and analytics."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/styles/variables.css" />
+    <link rel="stylesheet" href="/src/styles/base.css" />
+    <link rel="stylesheet" href="/src/styles/layout.css" />
+    <link rel="stylesheet" href="/src/styles/components.css" />
+    <link rel="stylesheet" href="/src/styles/pages.css" />
+  </head>
+  <body>
+    <div id="app" class="app-layout">
+      <!-- Mobile Overlay -->
+      <div id="sidebar-overlay" class="sidebar-overlay" aria-hidden="true"></div>
+
+      <!-- Left Sidebar Navigation -->
+      <aside id="app-sidebar" class="app-sidebar" aria-label="Main Navigation">
+        <!-- Rendered by Sidebar.js -->
+      </aside>
+
+      <!-- Main Layout Wrapper -->
+      <div class="main-wrapper">
+        <!-- Top Application Header -->
+        <header id="app-header" class="app-header">
+          <!-- Rendered by Header.js -->
+        </header>
+
+        <!-- Dynamic Content Region -->
+        <main id="main-content" class="main-content" role="main" tabindex="-1">
+          <!-- Rendered dynamically by Router / Pages -->
+        </main>
+      </div>
+
+      <!-- Global Modal Container -->
+      <div id="modal-root"></div>
+
+      <!-- Global Toast Notification Container -->
+      <div id="toast-container" class="toast-container" aria-live="polite"></div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
