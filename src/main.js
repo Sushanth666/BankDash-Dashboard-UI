@@ -59,6 +59,45 @@ function cycleTheme() {
   showToast('Theme Changed', `Switched to ${friendlyNames[newTheme]}`, 'info', 2000);
 }
 
+// ==========================================================================
+// BROWSER TAB TITLE CONTINUOUS SCROLLING MARQUEE ANIMATION
+// ==========================================================================
+let titleMarqueeTimer = null;
+let currentMarqueeText = '';
+let marqueeIndex = 0;
+
+function updateAnimatedTabTitle(pageTitle) {
+  if (titleMarqueeTimer) {
+    clearInterval(titleMarqueeTimer);
+    titleMarqueeTimer = null;
+  }
+
+  // Selected format: BankDash | Modern Fintech & Smart Banking Dashboard
+  const brandSuffix = 'BankDash | Modern Fintech & Smart Banking Dashboard';
+  currentMarqueeText = `${pageTitle} — ${brandSuffix}   •   `;
+  marqueeIndex = 0;
+  document.title = currentMarqueeText;
+
+  titleMarqueeTimer = setInterval(() => {
+    marqueeIndex = (marqueeIndex + 1) % currentMarqueeText.length;
+    document.title = currentMarqueeText.slice(marqueeIndex) + currentMarqueeText.slice(0, marqueeIndex);
+  }, 260);
+}
+
+// Pause/resume when tab switches for battery efficiency & clean UX
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    if (titleMarqueeTimer) {
+      clearInterval(titleMarqueeTimer);
+      titleMarqueeTimer = null;
+    }
+    document.title = '💳 BankDash | Modern Fintech & Smart Banking Dashboard';
+  } else {
+    const currentTitle = routePageMap[state.currentRoute]?.title || 'Overview';
+    updateAnimatedTabTitle(currentTitle);
+  }
+});
+
 // Router Navigation
 function navigateTo(routeId) {
   if (!routePageMap[routeId]) {
@@ -87,7 +126,7 @@ function navigateTo(routeId) {
   if (pageHeading) {
     pageHeading.innerText = title;
   }
-  document.title = `${title} — BankDash Fintech`;
+  updateAnimatedTabTitle(title);
 
   // Render Page Content
   const mainContent = document.getElementById('main-content');
