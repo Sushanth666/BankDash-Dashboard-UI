@@ -102,10 +102,10 @@
 /* Sidebar Navigation Items */
 .sidebar-nav {
   flex: 1;
-  padding: 10px 0;
+  padding: 12px 0;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
   overflow: hidden;
   scrollbar-width: none;
 }
@@ -114,10 +114,10 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 11px 24px 11px 32px;
-  color: var(--text-muted);
-  font-size: 0.95rem;
+  gap: 20px;
+  padding: 12px 24px 12px 38px;
+  color: #B1B1B1;
+  font-size: 1.05rem;
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
@@ -125,14 +125,14 @@
 }
 
 .nav-item:hover {
-  color: var(--primary);
-  background-color: var(--bg-surface-subtle);
+  color: #2D60FF;
+  background-color: transparent;
 }
 
 .nav-item.active {
-  color: var(--primary);
+  color: #2D60FF;
   font-weight: 600;
-  background-color: var(--primary-tint);
+  background-color: transparent;
 }
 
 .nav-item.active::before {
@@ -143,12 +143,12 @@
   bottom: 0;
   width: 6px;
   border-radius: 0 10px 10px 0;
-  background-color: var(--primary);
+  background-color: #2D60FF;
 }
 
 .nav-item-icon {
-  width: 36px;
-  height: 36px;
+  width: 25px;
+  height: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -160,18 +160,42 @@
   transform: scale(1.08);
 }
 
-.nav-item.active .nav-item-icon {
-  color: var(--primary);
+.nav-icon-mask {
+  width: 25px;
+  height: 25px;
+  display: block;
+  background-color: #B1B1B1;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  transition: background-color var(--transition-fast);
 }
 
-.nav-item-badge {
-  margin-left: auto;
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: var(--radius-full);
-  background-color: var(--primary-light);
-  color: var(--primary);
+.nav-item:hover .nav-icon-mask,
+.nav-item.active .nav-icon-mask {
+  background-color: #2D60FF;
+}
+
+[data-theme="dark"] .nav-item {
+  color: #64748B;
+}
+
+[data-theme="dark"] .nav-icon-mask {
+  background-color: #64748B;
+}
+
+[data-theme="dark"] .nav-item:hover,
+[data-theme="dark"] .nav-item.active {
+  color: #38BDF8;
+}
+
+[data-theme="dark"] .nav-item.active::before,
+[data-theme="dark"] .nav-item:hover .nav-icon-mask,
+[data-theme="dark"] .nav-item.active .nav-icon-mask {
+  background-color: #38BDF8;
 }
 
 
