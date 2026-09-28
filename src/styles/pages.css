@@ -32,12 +32,27 @@
   gap: 30px;
 }
 
-@media (max-width: 1200px) {
+@media (min-width: 769px) and (max-width: 1199px) {
+  .dashboard-row-cards {
+    grid-template-columns: 1.4fr 1fr;
+    gap: 20px;
+  }
+  .dashboard-row-activity {
+    grid-template-columns: 1.6fr 1fr;
+    gap: 20px;
+  }
+  .dashboard-row-transfer {
+    grid-template-columns: 1fr 1.4fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
   .dashboard-row-cards,
   .dashboard-row-activity,
   .dashboard-row-transfer {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
   }
 }
 
@@ -332,12 +347,26 @@
   color: var(--text-primary);
 }
 
-@media (max-width: 1100px) {
+@media (min-width: 769px) and (max-width: 1199px) {
+  .accounts-kpis-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .accounts-row-grid {
+    grid-template-columns: 1.5fr 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .accounts-kpis-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
   .accounts-row-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
   }
-
   .accounts-tx-row {
     flex-wrap: wrap;
     gap: 12px;
@@ -503,15 +532,30 @@
   border-bottom: none;
 }
 
-@media (max-width: 1100px) {
+@media (min-width: 769px) and (max-width: 1199px) {
+  .investments-kpi-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .investments-charts-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .investments-bottom-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
   .investments-kpi-grid {
     grid-template-columns: 1fr;
+    gap: 14px;
   }
-
   .investments-charts-row,
   .investments-bottom-row {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
   }
 }
 
@@ -750,23 +794,31 @@
   align-items: flex-start;
 }
 
-@media (max-width: 1100px) {
-  .credit-cards-row-middle,
-  .credit-cards-row-bottom {
-    grid-template-columns: 1fr;
-    gap: 24px;
+@media (min-width: 769px) and (max-width: 1199px) {
+  .credit-cards-row-middle {
+    grid-template-columns: 310px 1fr;
+    gap: 20px;
   }
-
+  .credit-cards-row-bottom {
+    grid-template-columns: 1.5fr 1fr;
+    gap: 20px;
+  }
   .card-list-item-box {
-    flex-wrap: wrap;
-    gap: 16px;
+    grid-template-columns: 44px 1fr 1fr 1.2fr 1fr auto;
+    gap: 14px;
+    padding: 14px 18px;
   }
 }
 
-@media (max-width: 992px) {
-  .credit-cards-row,
-  .add-card-wrapper {
+@media (max-width: 768px) {
+  .credit-cards-row-middle,
+  .credit-cards-row-bottom {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .card-list-item-box {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
   }
 }
 
@@ -909,18 +961,31 @@
   font-size: 0.9375rem;
 }
 
-@media (max-width: 1200px) {
+@media (min-width: 769px) and (max-width: 1199px) {
   .loans-kpi-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .loans-kpi-card {
+    padding: 16px 14px;
+    gap: 14px;
+  }
+  .loans-kpi-value {
+    font-size: 1.1rem;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+  .loans-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+}
+
+@media (max-width: 480px) {
   .loans-kpi-grid {
     grid-template-columns: 1fr;
   }
-
   .loans-table-card {
     padding: 14px 16px;
   }
@@ -1094,15 +1159,29 @@
   color: var(--primary);
 }
 
-@media (max-width: 1100px) {
+@media (min-width: 769px) and (max-width: 1199px) {
+  .services-highlights-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .service-highlight-card {
+    padding: 18px 20px;
+    gap: 16px;
+  }
+  .bank-service-card-item {
+    padding: 14px 20px;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 768px) {
   .services-highlights-grid {
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 16px;
   }
-
   .bank-service-card-item {
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 14px;
   }
 }
 
@@ -1342,13 +1421,25 @@
   transform: translateY(-1px);
 }
 
-@media (max-width: 900px) {
+@media (min-width: 769px) and (max-width: 1199px) {
+  .settings-content-wrapper {
+    padding: 28px 28px;
+  }
+  .settings-tabs-nav {
+    gap: 32px;
+  }
+  .settings-profile-layout {
+    gap: 36px;
+  }
+}
+
+@media (max-width: 768px) {
   .settings-content-wrapper {
     padding: 24px 20px;
   }
 
   .settings-tabs-nav {
-    gap: 24px;
+    gap: 20px;
   }
 
   .settings-profile-layout {
