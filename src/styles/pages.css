@@ -929,67 +929,181 @@
 /* --------------------------------------------------------------------------
    7. SERVICES PAGE
    -------------------------------------------------------------------------- */
-.services-highlight-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
-  margin-bottom: 30px;
+.services-page-container {
+  display: flex;
+  flex-direction: column;
 }
 
-.service-card {
+/* Row 1: 3 Highlight Cards */
+.services-highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.service-highlight-card {
   background-color: var(--bg-surface);
   border: 1px solid var(--border-default);
   border-radius: var(--radius-lg);
-  padding: 24px;
+  padding: 24px 28px;
   box-shadow: var(--shadow-card);
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: all var(--transition-normal);
+  align-items: center;
+  gap: 22px;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.service-card:hover {
-  transform: translateY(-3px);
+.service-highlight-card:hover {
+  transform: translateY(-2px);
   box-shadow: var(--shadow-hover);
-  border-color: var(--primary);
 }
 
-.service-icon-box {
-  width: 52px;
-  height: 52px;
+.service-highlight-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.service-highlight-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  white-space: nowrap;
+}
+
+.service-highlight-desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Row 2: Bank Services List */
+.bank-services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bank-service-card-item {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 16px 28px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.bank-service-card-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.bank-service-main-col {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex: 1.5;
+  min-width: 220px;
+}
+
+.bank-service-icon {
+  width: 48px;
+  height: 48px;
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16px;
+  flex-shrink: 0;
 }
 
-.service-card-title {
-  font-size: 1.125rem;
+.bank-service-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.bank-service-name {
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 8px;
+  white-space: nowrap;
 }
 
-.service-card-desc {
-  font-size: 0.875rem;
-  color: var(--text-muted);
-  line-height: 1.5;
-  margin-bottom: 20px;
-}
-
-.service-card-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 14px;
-  border-top: 1px solid var(--border-subtle);
-}
-
-.service-badge {
+.bank-service-sub {
   font-size: 0.8125rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.bank-service-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.bank-service-col-val {
+  font-size: 0.9375rem;
   font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.bank-service-col-sub {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.bank-service-action {
+  flex: 0.8;
+  text-align: right;
+}
+
+.bank-service-btn {
+  height: 36px;
+  padding: 0 24px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.bank-service-btn:hover {
+  border-color: var(--primary);
   color: var(--primary);
+  background: var(--bg-surface-subtle);
+}
+
+.bank-service-btn.active {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+@media (max-width: 1100px) {
+  .services-highlights-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .bank-service-card-item {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
 }
 
 /* --------------------------------------------------------------------------

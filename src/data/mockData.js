@@ -624,6 +624,127 @@ export const loansData = {
   }
 };
 
+export const servicesPageData = {
+  highlights: [
+    {
+      id: 'hl-1',
+      title: 'Life Insurance',
+      desc: 'Unlimited protection',
+      iconType: 'shield-heart',
+      iconBg: 'rgba(59, 130, 246, 0.12)',
+      iconColor: '#3B82F6'
+    },
+    {
+      id: 'hl-2',
+      title: 'Shopping',
+      desc: 'Buy. Think. Grow.',
+      iconType: 'shopping-bag',
+      iconBg: 'rgba(245, 158, 11, 0.12)',
+      iconColor: '#F59E0B'
+    },
+    {
+      id: 'hl-3',
+      title: 'Safety',
+      desc: 'We are your allies',
+      iconType: 'shield-check',
+      iconBg: 'rgba(20, 184, 166, 0.12)',
+      iconColor: '#14B8A6'
+    }
+  ],
+  servicesList: [
+    {
+      id: 'bs-1',
+      title: 'Business loans',
+      desc: 'It is a long established',
+      iconType: 'loan',
+      iconBg: 'rgba(244, 63, 94, 0.12)',
+      iconColor: '#F43F5E',
+      col1Title: 'Lorem Ipsum',
+      col1Desc: 'Many publishing',
+      col2Title: 'Lorem Ipsum',
+      col2Desc: 'Many publishing',
+      col3Title: 'Lorem Ipsum',
+      col3Desc: 'Many publishing',
+      isHighlightBtn: false
+    },
+    {
+      id: 'bs-2',
+      title: 'Checking accounts',
+      desc: 'It is a long established',
+      iconType: 'briefcase',
+      iconBg: 'rgba(245, 158, 11, 0.12)',
+      iconColor: '#F59E0B',
+      col1Title: 'Lorem Ipsum',
+      col1Desc: 'Many publishing',
+      col2Title: 'Lorem Ipsum',
+      col2Desc: 'Many publishing',
+      col3Title: 'Lorem Ipsum',
+      col3Desc: 'Many publishing',
+      isHighlightBtn: false
+    },
+    {
+      id: 'bs-3',
+      title: 'Savings accounts',
+      desc: 'It is a long established',
+      iconType: 'chart',
+      iconBg: 'rgba(244, 63, 94, 0.12)',
+      iconColor: '#F43F5E',
+      col1Title: 'Lorem Ipsum',
+      col1Desc: 'Many publishing',
+      col2Title: 'Lorem Ipsum',
+      col2Desc: 'Many publishing',
+      col3Title: 'Lorem Ipsum',
+      col3Desc: 'Many publishing',
+      isHighlightBtn: true
+    },
+    {
+      id: 'bs-4',
+      title: 'Debit and credit cards',
+      desc: 'It is a long established',
+      iconType: 'user',
+      iconBg: 'rgba(59, 130, 246, 0.12)',
+      iconColor: '#3B82F6',
+      col1Title: 'Lorem Ipsum',
+      col1Desc: 'Many publishing',
+      col2Title: 'Lorem Ipsum',
+      col2Desc: 'Many publishing',
+      col3Title: 'Lorem Ipsum',
+      col3Desc: 'Many publishing',
+      isHighlightBtn: false
+    },
+    {
+      id: 'bs-5',
+      title: 'Life Insurance',
+      desc: 'It is a long established',
+      iconType: 'shield-check',
+      iconBg: 'rgba(20, 184, 166, 0.12)',
+      iconColor: '#14B8A6',
+      col1Title: 'Lorem Ipsum',
+      col1Desc: 'Many publishing',
+      col2Title: 'Lorem Ipsum',
+      col2Desc: 'Many publishing',
+      col3Title: 'Lorem Ipsum',
+      col3Desc: 'Many publishing',
+      isHighlightBtn: false
+    },
+    {
+      id: 'bs-6',
+      title: 'Business loans',
+      desc: 'It is a long established',
+      iconType: 'loan',
+      iconBg: 'rgba(244, 63, 94, 0.12)',
+      iconColor: '#F43F5E',
+      col1Title: 'Lorem Ipsum',
+      col1Desc: 'Many publishing',
+      col2Title: 'Lorem Ipsum',
+      col2Desc: 'Many publishing',
+      col3Title: 'Lorem Ipsum',
+      col3Desc: 'Many publishing',
+      isHighlightBtn: false
+    }
+  ]
+};
+
 export const servicesData = [
   {
     id: 'srv-1',
