@@ -4,19 +4,19 @@
 
 export const currentUser = {
   name: 'Charlene Reed',
-  userName: 'charlenereed',
+  userName: 'Charlene Reed',
   email: 'charlenereed@gmail.com',
-  dob: '1992-01-25',
+  dob: '25 January 1990',
   presentAddress: 'San Jose, California, USA',
   permanentAddress: 'San Jose, California, USA',
   city: 'San Jose',
-  postalCode: '95962',
+  postalCode: '45962',
   country: 'USA',
   role: 'Fintech Executive',
   avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=160&auto=format&fit=crop&q=80',
   currency: 'USD',
   currencySymbol: '$',
-  timeZone: '(GMT-05:00) Eastern Time',
+  timeZone: '(GMT-12:00) International Date Line West',
   notifications: {
     digitalCurrency: true,
     merchantOrder: false,
