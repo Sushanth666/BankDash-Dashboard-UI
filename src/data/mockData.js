@@ -282,6 +282,53 @@ export const accountsKPIs = [
   }
 ];
 
+export const accountsLastTransactions = [
+  {
+    id: 'alt-1',
+    title: 'Spotify Subscription',
+    date: '25 Jan 2021',
+    category: 'Shopping',
+    card: '1234 ****',
+    status: 'Pending',
+    amount: -150,
+    iconBg: 'rgba(16, 185, 129, 0.12)',
+    iconColor: '#10b981',
+    iconType: 'sync'
+  },
+  {
+    id: 'alt-2',
+    title: 'Mobile Service',
+    date: '25 Jan 2021',
+    category: 'Service',
+    card: '1234 ****',
+    status: 'Completed',
+    amount: -340,
+    iconBg: 'rgba(99, 102, 241, 0.12)',
+    iconColor: '#6366f1',
+    iconType: 'tool'
+  },
+  {
+    id: 'alt-3',
+    title: 'Emilly Wilson',
+    date: '25 Jan 2021',
+    category: 'Transfer',
+    card: '1234 ****',
+    status: 'Completed',
+    amount: 780,
+    iconBg: 'rgba(244, 63, 94, 0.12)',
+    iconColor: '#f43f5e',
+    iconType: 'user'
+  }
+];
+
+export const debitCreditWeeklyData = {
+  debitedAmount: '7,560',
+  creditedAmount: '5,420',
+  labels: ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+  debit: [240, 130, 260, 370, 240, 240, 330],
+  credit: [480, 340, 320, 230, 480, 180, 400]
+};
+
 export const debitCreditMonthlyData = {
   labels: ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan'],
   debit: [2800, 3200, 2900, 3800, 4200, 3460],
@@ -292,42 +339,38 @@ export const invoicesSentData = [
   {
     id: 'inv-1',
     company: 'Apple Store',
-    category: 'MacBook Pro M3 Max',
     time: '5h ago',
     amount: 450,
-    status: 'Paid',
-    iconBg: '#f0fdf4',
-    iconColor: '#16a34a'
+    iconBg: 'rgba(16, 185, 129, 0.12)',
+    iconColor: '#10b981',
+    iconType: 'apple'
   },
   {
     id: 'inv-2',
-    company: 'Michael Richard',
-    category: 'Consulting Contract',
+    company: 'Michael',
     time: '2 days ago',
     amount: 160,
-    status: 'Pending',
-    iconBg: '#eff6ff',
-    iconColor: '#2563eb'
+    iconBg: 'rgba(245, 158, 11, 0.12)',
+    iconColor: '#f59e0b',
+    iconType: 'user'
   },
   {
     id: 'inv-3',
-    company: 'PlayStation Network',
-    category: 'Console Hardware DevKit',
+    company: 'Playstation',
     time: '5 days ago',
     amount: 1085,
-    status: 'Paid',
-    iconBg: '#faf5ff',
-    iconColor: '#9333ea'
+    iconBg: 'rgba(99, 102, 241, 0.12)',
+    iconColor: '#6366f1',
+    iconType: 'playstation'
   },
   {
     id: 'inv-4',
-    company: 'William Harris',
-    category: 'Design Retainer',
+    company: 'William',
     time: '10 days ago',
     amount: 90,
-    status: 'Paid',
-    iconBg: '#fff7ed',
-    iconColor: '#ea580c'
+    iconBg: 'rgba(244, 63, 94, 0.12)',
+    iconColor: '#f43f5e',
+    iconType: 'user'
   }
 ];
 
