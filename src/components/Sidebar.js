@@ -65,8 +65,8 @@ export function renderSidebar(container, activeId, onNavigate) {
   container.innerHTML = `
     <div class="sidebar-header">
       <a href="#dashboard" class="sidebar-logo" aria-label="BankDash">
-        <img src="/assets/logo-icon.png" alt="BankDash" class="sidebar-logo-icon-img" />
-        <span class="sidebar-logo-text">BankDash.</span>
+        <img src="/assets/logo.png" alt="BankDash." class="sidebar-logo-img sidebar-logo-light" />
+        <img src="/assets/logo-dark.png" alt="BankDash." class="sidebar-logo-img sidebar-logo-dark" />
       </a>
       <button id="sidebar-close-btn" class="sidebar-close-btn" aria-label="Close sidebar">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
