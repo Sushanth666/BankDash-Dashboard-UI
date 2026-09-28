@@ -571,18 +571,57 @@ export const creditCardsPageData = {
 
 export const loansData = {
   kpis: [
-    { label: 'Personal Loans', value: 50000, monthly: '$3,500 / mo', type: 'emerald' },
-    { label: 'Corporate Loans', value: 100000, monthly: '$8,200 / mo', type: 'indigo' },
-    { label: 'Business Loans', value: 500000, monthly: '$24,000 / mo', type: 'amber' },
-    { label: 'Custom Loans', value: 14500, monthly: '$1,100 / mo', type: 'rose' }
+    {
+      id: 'kpi-personal',
+      label: 'Personal Loans',
+      value: '$50,000',
+      iconType: 'user',
+      iconBg: 'rgba(59, 130, 246, 0.12)',
+      iconColor: '#3B82F6'
+    },
+    {
+      id: 'kpi-corporate',
+      label: 'Corporate Loans',
+      value: '$100,000',
+      iconType: 'briefcase',
+      iconBg: 'rgba(245, 158, 11, 0.12)',
+      iconColor: '#F59E0B'
+    },
+    {
+      id: 'kpi-business',
+      label: 'Business Loans',
+      value: '$500,000',
+      iconType: 'chart',
+      iconBg: 'rgba(244, 63, 94, 0.12)',
+      iconColor: '#F43F5E'
+    },
+    {
+      id: 'kpi-custom',
+      label: 'Custom Loans',
+      value: 'Choose Money',
+      iconType: 'tool',
+      iconBg: 'rgba(20, 184, 166, 0.12)',
+      iconColor: '#14B8A6'
+    }
   ],
   activeLoans: [
-    { sl: '01', loanId: 'LN-9481', money: 100000, left: 40500, duration: '8 Months', rate: '12%', installment: 2000, status: 'Active' },
-    { sl: '02', loanId: 'LN-7822', money: 500000, left: 250000, duration: '36 Months', rate: '10%', installment: 8000, status: 'Active' },
-    { sl: '03', loanId: 'LN-3104', money: 10000, left: 2000, duration: '6 Months', rate: '8%', installment: 1600, status: 'Active' },
-    { sl: '04', loanId: 'LN-6059', money: 160000, left: 110000, duration: '12 Months', rate: '14%', installment: 4500, status: 'Active' },
-    { sl: '05', loanId: 'LN-1428', money: 50000, left: 12000, duration: '5 Months', rate: '9%', installment: 2500, status: 'Active' }
-  ]
+    { sl: '01.', money: '$100,000', left: '$40,500', duration: '8 Months', rate: '12%', installment: '$2,000 / month', rawLeft: 40500, rawInst: 2000, isFirst: true },
+    { sl: '02.', money: '$500,000', left: '$250,000', duration: '36 Months', rate: '10%', installment: '$8,000 / month', rawLeft: 250000, rawInst: 8000, isFirst: false },
+    { sl: '03.', money: '$900,000', left: '$40,500', duration: '12 Months', rate: '12%', installment: '$5,000 / month', rawLeft: 40500, rawInst: 5000, isFirst: false },
+    { sl: '04.', money: '$50,000', left: '$40,500', duration: '25 Months', rate: '5%', installment: '$2,000 / month', rawLeft: 40500, rawInst: 2000, isFirst: false },
+    { sl: '05.', money: '$50,000', left: '$40,500', duration: '5 Months', rate: '16%', installment: '$10,000 / month', rawLeft: 40500, rawInst: 10000, isFirst: false },
+    { sl: '06.', money: '$80,000', left: '$25,500', duration: '14 Months', rate: '8%', installment: '$2,000 / month', rawLeft: 25500, rawInst: 2000, isFirst: false },
+    { sl: '07.', money: '$12,000', left: '$5,500', duration: '9 Months', rate: '13%', installment: '$500 / month', rawLeft: 5500, rawInst: 500, isFirst: false },
+    { sl: '08.', money: '$160,000', left: '$100,800', duration: '3 Months', rate: '12%', installment: '$900 / month', rawLeft: 100800, rawInst: 900, isFirst: false }
+  ],
+  total: {
+    sl: 'Total',
+    money: '$125,0000',
+    left: '$750,000',
+    duration: '',
+    rate: '',
+    installment: '$50,000 / month'
+  }
 };
 
 export const servicesData = [
