@@ -85,7 +85,6 @@ export function renderSidebar(container, activeId, onNavigate) {
     <a class="nav-item ${item.id === activeId ? 'active' : ''}" data-nav-id="${item.id}" href="#${item.id}">
       <span class="nav-item-icon">${item.icon}</span>
       <span class="nav-item-label">${item.label}</span>
-      ${item.id === 'privileges' ? '<span class="nav-item-badge">VIP</span>' : ''}
     </a>
   `).join('');
 
@@ -112,14 +111,6 @@ export function renderSidebar(container, activeId, onNavigate) {
     <nav class="sidebar-nav">
       ${linksHtml}
     </nav>
-
-    <div class="sidebar-footer">
-      <div class="sidebar-upgrade-card">
-        <div class="sidebar-upgrade-title">Diamond Elite</div>
-        <div class="sidebar-upgrade-desc">Enjoy institutional spreads, private vaults & 24/7 concierge.</div>
-        <a href="#privileges" class="sidebar-upgrade-btn">View Perks</a>
-      </div>
-    </div>
   `;
 
   // Attach navigation listeners
