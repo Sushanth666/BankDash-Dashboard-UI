@@ -579,10 +579,10 @@
 .card-expense-legend-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px 24px;
-  margin-top: 22px;
+  gap: 12px 28px;
+  margin-top: 20px;
   width: 100%;
-  max-width: 260px;
+  max-width: 250px;
 }
 
 .card-expense-legend-item {
@@ -593,6 +593,12 @@
   font-weight: 500;
   color: var(--text-muted);
   white-space: nowrap;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.card-expense-legend-item:hover {
+  color: var(--text-primary);
 }
 
 /* Card List */

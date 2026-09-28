@@ -491,10 +491,10 @@ export const creditCardsPageData = {
     }
   ],
   cardExpenseDonut: [
-    { label: 'DBL Bank', value: 30, color: 'var(--chart-primary)' },
-    { label: 'BRC Bank', value: 25, color: 'var(--accent-rose)' },
-    { label: 'ABM Bank', value: 25, color: 'var(--accent-cyan)' },
-    { label: 'MCP Bank', value: 20, color: 'var(--accent-amber)' }
+    { id: 'dbl', label: 'DBL Bank', value: 30, color: '#4C78FF' },
+    { id: 'brc', label: 'BRC Bank', value: 15, color: '#FF6B9D' },
+    { id: 'abm', label: 'ABM Bank', value: 35, color: '#16DBCC' },
+    { id: 'mcp', label: 'MCP Bank', value: 20, color: '#FFBB38' }
   ],
   cardList: [
     {

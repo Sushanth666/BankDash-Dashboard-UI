@@ -267,60 +267,168 @@ export function renderCreditCardsPage(container) {
 }
 
 /**
+/**
  * Card Expense Statistics Donut Chart
- * Matching Figma layout with 4 colored slices and 2x2 legend below
+ * Exact multi-radius 4-quadrant polar donut chart matching Figma/user reference:
+ * - Top-Right: ABM Bank (Teal #16DBCC, outer radius 92px)
+ * - Bottom-Right: BRC Bank (Pink #FF6B9D, outer radius 62px)
+ * - Bottom-Left: MCP Bank (Amber #FFBB38, outer radius 76px)
+ * - Top-Left: DBL Bank (Blue #4C78FF, outer radius 76px)
+ * - Central circular hole (radius 36px)
+ * - 2x2 Legend: [DBL Bank | BRC Bank] / [ABM Bank | MCP Bank]
  */
 function renderCardExpenseDonutChart(container, data) {
   if (!container) return;
 
-  const size = 220;
-  const strokeWidth = 32;
-  const radius = (size - strokeWidth) / 2;
-  const circumference = 2 * Math.PI * radius;
-  let accumulatedPercent = 0;
+  const width = 256;
+  const height = 196;
+  const cx = 124;
+  const cy = 97;
 
-  let circlesHtml = '';
-  data.forEach(d => {
-    const strokeDasharray = `${(d.value / 100) * circumference} ${circumference}`;
-    const strokeDashoffset = -((accumulatedPercent / 100) * circumference);
-
-    circlesHtml += `
-      <circle
-        cx="${size / 2}"
-        cy="${size / 2}"
-        r="${radius}"
-        fill="transparent"
-        stroke="${d.color}"
-        stroke-width="${strokeWidth}"
-        stroke-dasharray="${strokeDasharray}"
-        stroke-dashoffset="${strokeDashoffset}"
-        style="transition: filter var(--transition-fast); cursor: pointer;"
-        data-label="${d.label}"
-        data-val="${d.value}%"
-      />
-    `;
-    accumulatedPercent += d.value;
-  });
+  // Exact quadrant paths calculated for seamless junctions and shared inner circle
+  const quadrants = [
+    {
+      id: 'abm',
+      label: 'ABM Bank',
+      val: '35%',
+      color: '#16DBCC',
+      path: `M ${cx} ${cy - 36} L ${cx} ${cy - 92} A 92 92 0 0 1 ${cx + 92} ${cy} L ${cx + 36} ${cy} A 36 36 0 0 0 ${cx} ${cy - 36} Z`
+    },
+    {
+      id: 'brc',
+      label: 'BRC Bank',
+      val: '15%',
+      color: '#FF6B9D',
+      path: `M ${cx + 36} ${cy} L ${cx + 62} ${cy} A 62 62 0 0 1 ${cx} ${cy + 62} L ${cx} ${cy + 36} A 36 36 0 0 0 ${cx + 36} ${cy} Z`
+    },
+    {
+      id: 'mcp',
+      label: 'MCP Bank',
+      val: '20%',
+      color: '#FFBB38',
+      path: `M ${cx} ${cy + 36} L ${cx} ${cy + 76} A 76 76 0 0 1 ${cx - 76} ${cy} L ${cx - 36} ${cy} A 36 36 0 0 0 ${cx} ${cy + 36} Z`
+    },
+    {
+      id: 'dbl',
+      label: 'DBL Bank',
+      val: '30%',
+      color: '#4C78FF',
+      path: `M ${cx - 36} ${cy} L ${cx - 76} ${cy} A 76 76 0 0 1 ${cx} ${cy - 76} L ${cx} ${cy - 36} A 36 36 0 0 0 ${cx - 36} ${cy} Z`
+    }
+  ];
 
   container.innerHTML = `
-    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px 0;">
-      <div style="position: relative;">
-        <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" style="transform: rotate(-90deg); overflow: visible;">
-          ${circlesHtml}
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4px 0 10px; position: relative;">
+      <!-- Chart Tooltip -->
+      <div id="card-expense-tooltip" class="chart-tooltip" style="position: absolute; display: none; z-index: 10; pointer-events: none;"></div>
+
+      <div style="position: relative; display: flex; justify-content: center;">
+        <svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" style="overflow: visible;">
+          <defs>
+            <filter id="card-donut-shadow" x="-20%" y="-20%" width="150%" height="150%">
+              <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.07" />
+            </filter>
+          </defs>
+          <g filter="url(#card-donut-shadow)">
+            ${quadrants.map(q => `
+              <path
+                id="donut-segment-${q.id}"
+                class="card-expense-quadrant-path"
+                d="${q.path}"
+                fill="${q.color}"
+                data-id="${q.id}"
+                data-label="${q.label}"
+                data-val="${q.val}"
+                style="cursor: pointer; transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), filter 0.2s ease; transform-origin: ${cx}px ${cy}px;"
+              />
+            `).join('')}
+          </g>
         </svg>
       </div>
 
-      <!-- 2x2 Legend beneath chart matching Figma -->
+      <!-- 2x2 Legend beneath chart matching user reference:
+           Row 1: DBL Bank (Blue)  |  BRC Bank (Pink)
+           Row 2: ABM Bank (Teal)  |  MCP Bank (Yellow)
+      -->
       <div class="card-expense-legend-grid">
-        ${data.map(d => `
-          <div class="card-expense-legend-item">
-            <span class="legend-dot" style="background-color: ${d.color};"></span>
-            <span>${d.label}</span>
-          </div>
-        `).join('')}
+        <div class="card-expense-legend-item" data-id="dbl">
+          <span class="legend-dot" style="background-color: #4C78FF;"></span>
+          <span>DBL Bank</span>
+        </div>
+        <div class="card-expense-legend-item" data-id="brc">
+          <span class="legend-dot" style="background-color: #FF6B9D;"></span>
+          <span>BRC Bank</span>
+        </div>
+        <div class="card-expense-legend-item" data-id="abm">
+          <span class="legend-dot" style="background-color: #16DBCC;"></span>
+          <span>ABM Bank</span>
+        </div>
+        <div class="card-expense-legend-item" data-id="mcp">
+          <span class="legend-dot" style="background-color: #FFBB38;"></span>
+          <span>MCP Bank</span>
+        </div>
       </div>
     </div>
   `;
+
+  // Attach hover interactions for quadrants & legend
+  const tooltip = container.querySelector('#card-expense-tooltip');
+  const paths = container.querySelectorAll('.card-expense-quadrant-path');
+  const legendItems = container.querySelectorAll('.card-expense-legend-item');
+
+  function highlight(id, label, val, e) {
+    paths.forEach(p => {
+      if (p.getAttribute('data-id') === id) {
+        p.style.transform = 'scale(1.05)';
+        p.style.filter = 'brightness(1.12)';
+      } else {
+        p.style.opacity = '0.7';
+      }
+    });
+    if (tooltip && label && val) {
+      tooltip.style.display = 'block';
+      tooltip.innerHTML = `<strong>${label}</strong>: ${val}`;
+      if (e) {
+        const rect = container.getBoundingClientRect();
+        tooltip.style.left = `${e.clientX - rect.left}px`;
+        tooltip.style.top = `${e.clientY - rect.top - 36}px`;
+      }
+    }
+  }
+
+  function resetHighlight() {
+    paths.forEach(p => {
+      p.style.transform = 'scale(1)';
+      p.style.filter = 'none';
+      p.style.opacity = '1';
+    });
+    if (tooltip) {
+      tooltip.style.display = 'none';
+    }
+  }
+
+  paths.forEach(p => {
+    p.addEventListener('mouseenter', (e) => {
+      highlight(p.getAttribute('data-id'), p.getAttribute('data-label'), p.getAttribute('data-val'), e);
+    });
+    p.addEventListener('mousemove', (e) => {
+      if (tooltip && tooltip.style.display === 'block') {
+        const rect = container.getBoundingClientRect();
+        tooltip.style.left = `${e.clientX - rect.left}px`;
+        tooltip.style.top = `${e.clientY - rect.top - 36}px`;
+      }
+    });
+    p.addEventListener('mouseleave', resetHighlight);
+  });
+
+  legendItems.forEach(item => {
+    const id = item.getAttribute('data-id');
+    const q = quadrants.find(itemQ => itemQ.id === id);
+    item.addEventListener('mouseenter', () => {
+      if (q) highlight(q.id, q.label, q.val, null);
+    });
+    item.addEventListener('mouseleave', resetHighlight);
+  });
 }
 
 // ---------------------------------------------------------------------------
