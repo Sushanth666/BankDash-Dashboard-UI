@@ -170,60 +170,6 @@
   color: var(--primary);
 }
 
-/* Sidebar Footer / Quick Support */
-.sidebar-footer {
-  padding: 20px 24px;
-  border-top: 1px solid var(--border-subtle);
-}
-
-.sidebar-upgrade-card {
-  background: var(--primary-gradient);
-  border-radius: var(--radius-md);
-  padding: 16px;
-  color: #ffffff;
-  position: relative;
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-}
-
-.sidebar-upgrade-card::after {
-  content: '';
-  position: absolute;
-  top: -20px;
-  right: -20px;
-  width: 80px;
-  height: 80px;
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 50%;
-}
-
-.sidebar-upgrade-title {
-  font-size: 0.875rem;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-
-.sidebar-upgrade-desc {
-  font-size: 0.75rem;
-  opacity: 0.9;
-  margin-bottom: 12px;
-  line-height: 1.4;
-}
-
-.sidebar-upgrade-btn {
-  font-size: 0.75rem;
-  font-weight: 600;
-  background: #ffffff;
-  color: var(--primary);
-  padding: 6px 14px;
-  border-radius: var(--radius-full);
-  display: inline-block;
-  transition: transform var(--transition-fast);
-}
-
-.sidebar-upgrade-btn:hover {
-  transform: translateY(-1px);
-}
 
 /* --------------------------------------------------------------------------
    MAIN WRAPPER & HEADER
