@@ -5,8 +5,9 @@
 import { showToast } from './Toast.js';
 
 export function createCreditCardHtml(card) {
-  const isDark = card.theme === 'dark';
-  const cardClass = isDark ? 'card-dark' : 'card-light';
+  let cardClass = 'card-dark';
+  if (card.theme === 'light') cardClass = 'card-light';
+  else if (card.theme === 'indigo') cardClass = 'card-indigo';
 
   const brandHtml = card.brand === 'mastercard'
     ? `<div class="mastercard-circles">

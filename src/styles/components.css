@@ -84,6 +84,24 @@
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Indigo / Purple Card */
+.credit-card.card-indigo {
+  background: linear-gradient(135deg, #1e1b4b 0%, #3730a3 50%, #4f46e5 100%);
+  color: #ffffff;
+  border: 1px solid rgba(99, 102, 241, 0.35);
+}
+
+.credit-card.card-indigo .card-subtext {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.credit-card.card-indigo .card-footer {
+  background: rgba(30, 27, 75, 0.6);
+  margin: 0 -24px -24px;
+  padding: 16px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 /* Light Card (Secondary) */
 .credit-card.card-light {
   background: var(--card-light-bg);
@@ -100,6 +118,18 @@
   margin: 0 -24px -24px;
   padding: 16px 24px;
   border-top: 1px solid var(--border-default);
+}
+
+.credit-card.card-light .card-chip {
+  background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 50%, #94a3b8 100%);
+}
+
+.credit-card.card-light .circle-left {
+  background-color: rgba(148, 163, 184, 0.85);
+}
+
+.credit-card.card-light .circle-right {
+  background-color: rgba(203, 213, 225, 0.85);
 }
 
 /* Credit Card Sub-elements */

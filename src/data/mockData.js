@@ -460,6 +460,115 @@ export const investmentsData = {
   ]
 };
 
+export const creditCardsPageData = {
+  myCards: [
+    {
+      id: 'cc-1',
+      balance: 5756,
+      cardHolder: 'Eddy Cusuma',
+      validThru: '12/22',
+      cardNumber: '3778 **** **** 1234',
+      theme: 'dark',
+      brand: 'mastercard'
+    },
+    {
+      id: 'cc-2',
+      balance: 5756,
+      cardHolder: 'Eddy Cusuma',
+      validThru: '12/22',
+      cardNumber: '3778 **** **** 1234',
+      theme: 'indigo',
+      brand: 'mastercard'
+    },
+    {
+      id: 'cc-3',
+      balance: 5756,
+      cardHolder: 'Eddy Cusuma',
+      validThru: '12/22',
+      cardNumber: '3778 **** **** 1234',
+      theme: 'light',
+      brand: 'mastercard'
+    }
+  ],
+  cardExpenseDonut: [
+    { label: 'DBL Bank', value: 30, color: 'var(--chart-primary)' },
+    { label: 'BRC Bank', value: 25, color: 'var(--accent-rose)' },
+    { label: 'ABM Bank', value: 25, color: 'var(--accent-cyan)' },
+    { label: 'MCP Bank', value: 20, color: 'var(--accent-amber)' }
+  ],
+  cardList: [
+    {
+      id: 'cl-1',
+      cardType: 'Secondary',
+      bank: 'DBL Bank',
+      cardNumber: '**** **** 5600',
+      namainCard: 'William',
+      iconBg: 'rgba(99, 102, 241, 0.12)',
+      iconColor: '#6366f1'
+    },
+    {
+      id: 'cl-2',
+      cardType: 'Secondary',
+      bank: 'BRC Bank',
+      cardNumber: '**** **** 4300',
+      namainCard: 'Michel',
+      iconBg: 'rgba(244, 63, 94, 0.12)',
+      iconColor: '#f43f5e'
+    },
+    {
+      id: 'cl-3',
+      cardType: 'Secondary',
+      bank: 'ABM Bank',
+      cardNumber: '**** **** 7560',
+      namainCard: 'Edward',
+      iconBg: 'rgba(245, 158, 11, 0.12)',
+      iconColor: '#f59e0b'
+    }
+  ],
+  cardSettings: [
+    {
+      id: 'cs-1',
+      title: 'Block Card',
+      desc: 'Instantly block your card',
+      iconType: 'card',
+      iconBg: 'rgba(245, 158, 11, 0.12)',
+      iconColor: '#f59e0b'
+    },
+    {
+      id: 'cs-2',
+      title: 'Change Pin Code',
+      desc: 'Choose another pin code',
+      iconType: 'lock',
+      iconBg: 'rgba(99, 102, 241, 0.12)',
+      iconColor: '#6366f1'
+    },
+    {
+      id: 'cs-3',
+      title: 'Add to Google Pay',
+      desc: 'Withdraw without any card',
+      iconType: 'google',
+      iconBg: 'rgba(244, 63, 94, 0.12)',
+      iconColor: '#f43f5e'
+    },
+    {
+      id: 'cs-4',
+      title: 'Add to Apple Pay',
+      desc: 'Withdraw without any card',
+      iconType: 'apple',
+      iconBg: 'rgba(16, 185, 129, 0.12)',
+      iconColor: '#10b981'
+    },
+    {
+      id: 'cs-5',
+      title: 'Add to Apple Store',
+      desc: 'Withdraw without any card',
+      iconType: 'apple',
+      iconBg: 'rgba(16, 185, 129, 0.12)',
+      iconColor: '#10b981'
+    }
+  ]
+};
+
 export const loansData = {
   kpis: [
     { label: 'Personal Loans', value: 50000, monthly: '$3,500 / mo', type: 'emerald' },
