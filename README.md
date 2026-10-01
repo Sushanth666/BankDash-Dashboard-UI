@@ -80,6 +80,11 @@ BankDash Dashboard UI/
 │   │
 │   └── main.js                   # Main application entry, hash router & theme engine
 │
+├── screenshots/                  # High-resolution multi-device screenshot captures
+│   ├── desktop/                  # 11 Desktop view screenshots (1920×1080)
+│   ├── tablet/                   # 11 Tablet view screenshots (963px iPad)
+│   └── mobile/                   # 11 Mobile view screenshots (357px Smartphone)
+│
 ├── index.html                    # Single HTML5 entrypoint
 ├── vite.config.js                # Vite configuration
 ├── package.json                  # Dependencies & scripts
@@ -105,6 +110,147 @@ The application features a bespoke fintech color scheme engineered for financial
 - **Tablet (769px – 992px)**: Sidebar transforms into an off-canvas drawer with hamburger button (`#mobile-toggle-btn`), close button, and backdrop blur overlay. Charts and widgets stack cleanly into 1 column.
 - **Mobile (≤ 768px)**: 1-column layouts, expandable mobile search, touch-friendly transfer carousel, and responsive scrollable tables.
 - **Small Mobile (≤ 480px)**: Auto-scaling credit cards, 1-column KPI summary cards, compact buttons, and fluid modal dialogs.
+
+---
+
+## 📸 Device Views & Screenshots Showcase
+
+BankDash is fully responsive and meticulously optimized across desktop, tablet, and mobile displays. Below is the complete gallery of high-resolution captures showing all 11 application views across every device form factor.
+
+### 🧭 Quick View Jump Links
+- [🖥️ 1. Desktop View Screenshots (1920 × 1080)](#-1-desktop-view-screenshots)
+- [📱 2. Tablet View Screenshots (iPad / 963px)](#-2-tablet-view-screenshots)
+- [📲 3. Mobile View Screenshots (Smartphone / 357px)](#-3-mobile-view-screenshots)
+
+---
+
+### 🖥️ 1. Desktop View Screenshots
+
+Captured at **1920 × 1080** full high-definition resolution, showcasing the multi-column modular grid, persistent sidebar navigation, interactive charts, and rich financial widgets.
+
+#### 01. Dashboard (Overview)
+*Real-time net worth tracking, interactive credit card slider, recent transactions, weekly bar charts, expense breakdown donut chart, and instant quick-transfer slider.*
+
+![Desktop - Dashboard Overview](screenshots/desktop/01-dashboard.png)
+
+#### 02. Transactions Ledger
+*Comprehensive financial transaction ledger with category filters (All, Income, Expense), live search, status badges, and download receipt capabilities.*
+
+![Desktop - Transactions](screenshots/desktop/02-transactions.png)
+
+#### 03. Accounts Monitoring
+*Account health KPI cards (Total Balance, Income, Expense, Total Savings), debit/credit flow comparisons, and sent invoice records.*
+
+![Desktop - Accounts](screenshots/desktop/03-accounts.png)
+
+#### 04. Investments Portfolio
+*Portfolio performance metrics, total return valuations, yearly investment area charts, and live trending stock watchlists.*
+
+![Desktop - Investments](screenshots/desktop/04-investments.png)
+
+#### 05. Credit Cards Management
+*Card portfolio showcase featuring dual smoke green cards, expense category donut chart, real-time "Add New Card" 2×2 form, and card security settings.*
+
+![Desktop - Credit Cards](screenshots/desktop/05-credit-cards.png)
+
+#### 06. Loans & Repayment
+*Personal, corporate, and business loan tracking with interest rate indicators, repayment schedules, and interactive loan application modals.*
+
+![Desktop - Loans](screenshots/desktop/06-loans.png)
+
+#### 07. Banking Services Catalog
+*Banking services catalog (Life Insurance, Shopping, Safety, Accounts) with interactive "View Details" modals and automated advisor callbacks.*
+
+![Desktop - Services](screenshots/desktop/07-services.png)
+
+#### 08. My Privileges (VIP Diamond Tier)
+*Diamond VIP tier status dashboard, reward point redemptions, instant digital credential generation, and dedicated private wealth advisor messaging.*
+
+![Desktop - Privileges](screenshots/desktop/08-privileges.png)
+
+#### 09. Setting — Edit Profile
+*User profile management with profile photo upload, personal information fields, and date/address validation.*
+
+![Desktop - Setting Edit Profile](screenshots/desktop/09-setting-profile.png)
+
+#### 10. Setting — Preferences
+*Currency selection, time zone customization, and notification triggers for financial activities.*
+
+![Desktop - Setting Preferences](screenshots/desktop/10-setting-preferences.png)
+
+#### 11. Setting — Security & 2FA
+*Two-factor authentication toggle, password update form, and security activity credentials.*
+
+![Desktop - Setting Security](screenshots/desktop/11-setting-security.png)
+
+---
+
+### 📱 2. Tablet View Screenshots
+
+Captured at **963px (iPad / Medium Viewport)**, demonstrating the responsive single-column widget layout, off-canvas navigation drawer, and tailored financial card chip dimensions.
+
+#### 01. Dashboard (Overview)
+![Tablet - Dashboard Overview](screenshots/tablet/01-dashboard.png)
+
+#### 02. Transactions Ledger
+![Tablet - Transactions](screenshots/tablet/02-transactions.png)
+
+#### 03. Accounts Monitoring
+![Tablet - Accounts](screenshots/tablet/03-accounts.png)
+
+#### 04. Investments Portfolio
+![Tablet - Investments](screenshots/tablet/04-investments.png)
+
+#### 05. Credit Cards Management
+![Tablet - Credit Cards](screenshots/tablet/05-credit-cards.png)
+
+#### 06. Loans & Repayment
+![Tablet - Loans](screenshots/tablet/06-loans.png)
+
+#### 07. Banking Services Catalog
+![Tablet - Services](screenshots/tablet/07-services.png)
+
+#### 08. My Privileges (VIP Diamond Tier)
+![Tablet - Privileges](screenshots/tablet/08-privileges.png)
+
+#### 09. Setting — Edit Profile
+![Tablet - Setting Edit Profile](screenshots/tablet/09-setting-profile.png)
+
+#### 10. Setting — Preferences
+![Tablet - Setting Preferences](screenshots/tablet/10-setting-preferences.png)
+
+#### 11. Setting — Security & 2FA
+![Tablet - Setting Security](screenshots/tablet/11-setting-security.png)
+
+---
+
+### 📲 3. Mobile View Screenshots
+
+Captured at **357px (Smartphone / Portrait Viewport)**, demonstrating the compact 1-column layouts, touch-friendly navigation, mobile search, and responsive cards scaled for handheld devices.
+
+| 01. Dashboard (Overview) | 02. Transactions Ledger |
+| :---: | :---: |
+| <img src="screenshots/mobile/01-dashboard.png" width="340" alt="Mobile Dashboard Overview" /><br><sub><b>01. Dashboard</b></sub> | <img src="screenshots/mobile/02-transactions.png" width="340" alt="Mobile Transactions" /><br><sub><b>02. Transactions</b></sub> |
+
+| 03. Accounts Monitoring | 04. Investments Portfolio |
+| :---: | :---: |
+| <img src="screenshots/mobile/03-accounts.png" width="340" alt="Mobile Accounts" /><br><sub><b>03. Accounts</b></sub> | <img src="screenshots/mobile/04-investments.png" width="340" alt="Mobile Investments" /><br><sub><b>04. Investments</b></sub> |
+
+| 05. Credit Cards Management | 06. Loans & Repayment |
+| :---: | :---: |
+| <img src="screenshots/mobile/05-credit-cards.png" width="340" alt="Mobile Credit Cards" /><br><sub><b>05. Credit Cards</b></sub> | <img src="screenshots/mobile/06-loans.png" width="340" alt="Mobile Loans" /><br><sub><b>06. Loans</b></sub> |
+
+| 07. Banking Services Catalog | 08. My Privileges (VIP Tier) |
+| :---: | :---: |
+| <img src="screenshots/mobile/07-services.png" width="340" alt="Mobile Services" /><br><sub><b>07. Services</b></sub> | <img src="screenshots/mobile/08-privileges.png" width="340" alt="Mobile Privileges" /><br><sub><b>08. My Privileges</b></sub> |
+
+| 09. Setting — Edit Profile | 10. Setting — Preferences |
+| :---: | :---: |
+| <img src="screenshots/mobile/09-setting-profile.png" width="340" alt="Mobile Setting Profile" /><br><sub><b>09. Edit Profile</b></sub> | <img src="screenshots/mobile/10-setting-preferences.png" width="340" alt="Mobile Setting Preferences" /><br><sub><b>10. Preferences</b></sub> |
+
+| 11. Setting — Security & 2FA |
+| :---: |
+| <img src="screenshots/mobile/11-setting-security.png" width="340" alt="Mobile Setting Security" /><br><sub><b>11. Security & 2FA</b></sub> |
 
 ---
 

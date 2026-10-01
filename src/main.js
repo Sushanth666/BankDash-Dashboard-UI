@@ -202,15 +202,6 @@ function initApp() {
     onThemeChange: cycleTheme
   });
 
-  setTimeout(() => {
-    const av = document.querySelector('.user-avatar');
-    console.log('AVATAR_DEBUG: ' + JSON.stringify(av ? {
-      rect: av.getBoundingClientRect(),
-      parentDisplay: window.getComputedStyle(av.parentElement).display,
-      rightDisplay: window.getComputedStyle(document.querySelector('.header-right')).display,
-      actionsDisplay: window.getComputedStyle(document.querySelector('.header-actions')).display
-    } : 'NO_AVATAR'));
-  }, 100);
 
   // Bind Header Button Events
   const mobileToggleBtn = document.getElementById('mobile-toggle-btn');
