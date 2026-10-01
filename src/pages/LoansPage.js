@@ -17,7 +17,7 @@ export function renderLoansPage(container) {
       <section class="loans-kpi-grid">
         ${loansData.kpis.map(kpi => `
           <div class="loans-kpi-card">
-            <div class="loans-kpi-icon" style="background-color: ${kpi.iconBg}; color: ${kpi.iconColor};">
+            <div class="loans-kpi-icon" style="background-color: transparent;">
               ${getLoanKpiIconSvg(kpi.iconType)}
             </div>
             <div class="loans-kpi-info">
@@ -35,58 +35,59 @@ export function renderLoansPage(container) {
         </div>
 
         <div class="loans-table-card">
-          <div class="table-responsive-wrapper">
-            <table class="loans-table">
-              <thead>
+          <table class="loans-table">
+            <thead>
+              <tr>
+                <th class="loans-th-sl" style="width: 8%;">SL No</th>
+                <th class="loans-th-money" style="width: 15%;">Loan Money</th>
+                <th class="loans-th-left" style="width: 15%;">Left to repay</th>
+                <th class="loans-th-duration" style="width: 15%;">Duration</th>
+                <th class="loans-th-rate" style="width: 15%;">Interest rate</th>
+                <th class="loans-th-inst" style="width: 17%;">Installment</th>
+                <th class="loans-th-repay" style="width: 15%;">Repay</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${loansData.activeLoans.map((loan, idx) => `
                 <tr>
-                  <th style="width: 10%;">SL No</th>
-                  <th style="width: 16%;">Loan Money</th>
-                  <th style="width: 16%;">Left to repay</th>
-                  <th style="width: 16%;">Duration</th>
-                  <th style="width: 14%;">Interest rate</th>
-                  <th style="width: 16%;">Installment</th>
-                  <th style="width: 12%; text-align: right;">Repay</th>
+                  <td class="loans-td-sl">${loan.sl}</td>
+                  <td class="loans-td-money">${loan.money}</td>
+                  <td class="loans-td-left">${loan.left}</td>
+                  <td class="loans-td-duration">${loan.duration}</td>
+                  <td class="loans-td-rate">${loan.rate}</td>
+                  <td class="loans-td-inst">${loan.installment}</td>
+                  <td class="loans-td-repay">
+                    <button
+                      class="loans-repay-btn ${loan.isFirst ? 'active' : ''}"
+                      data-index="${idx}"
+                      data-sl="${loan.sl}"
+                      data-money="${loan.money}"
+                      data-left="${loan.left}"
+                      data-raw-left="${loan.rawLeft}"
+                      data-inst="${loan.installment}"
+                      data-raw-inst="${loan.rawInst}"
+                    >
+                      Repay
+                    </button>
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                ${loansData.activeLoans.map((loan, idx) => `
-                  <tr>
-                    <td class="loans-td-sl">${loan.sl}</td>
-                    <td class="loans-td-money">${loan.money}</td>
-                    <td class="loans-td-left">${loan.left}</td>
-                    <td class="loans-td-duration">${loan.duration}</td>
-                    <td class="loans-td-rate">${loan.rate}</td>
-                    <td class="loans-td-inst">${loan.installment}</td>
-                    <td style="text-align: right;">
-                      <button
-                        class="loans-repay-btn ${loan.isFirst ? 'active' : ''}"
-                        data-index="${idx}"
-                        data-sl="${loan.sl}"
-                        data-money="${loan.money}"
-                        data-left="${loan.left}"
-                        data-raw-left="${loan.rawLeft}"
-                        data-inst="${loan.installment}"
-                        data-raw-inst="${loan.rawInst}"
-                      >
-                        Repay
-                      </button>
-                    </td>
-                  </tr>
-                `).join('')}
-              </tbody>
-              <tfoot>
-                <tr class="loans-total-row">
-                  <td class="loans-total-text">${loansData.total.sl}</td>
-                  <td class="loans-total-val">${loansData.total.money}</td>
-                  <td class="loans-total-val">${loansData.total.left}</td>
-                  <td></td>
-                  <td></td>
-                  <td class="loans-total-val">${loansData.total.installment}</td>
-                  <td></td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
+              `).join('')}
+            </tbody>
+            <tfoot>
+              <tr class="loans-total-row">
+                <td class="loans-total-text loans-td-sl">${loansData.total.sl}</td>
+                <td class="loans-total-val loans-td-money">
+                  <span class="loans-mobile-total-label">Total</span>
+                  ${loansData.total.money}
+                </td>
+                <td class="loans-total-val loans-td-left">${loansData.total.left}</td>
+                <td class="loans-td-duration"></td>
+                <td class="loans-td-rate"></td>
+                <td class="loans-total-val loans-td-inst">${loansData.total.installment}</td>
+                <td class="loans-td-repay"></td>
+              </tr>
+            </tfoot>
+          </table>
         </div>
       </section>
     </div>
@@ -166,36 +167,12 @@ export function renderLoansPage(container) {
 // SVG Helper for Loan KPI Icons
 // ---------------------------------------------------------------------------
 function getLoanKpiIconSvg(type) {
-  if (type === 'user') {
-    // Personal Loans User Icon
-    return `
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-      </svg>
-    `;
-  } else if (type === 'briefcase') {
-    // Corporate Loans Briefcase Icon
-    return `
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-      </svg>
-    `;
-  } else if (type === 'chart') {
-    // Business Loans Growth Chart Icon
-    return `
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="18" y1="20" x2="18" y2="8"></line>
-        <line x1="12" y1="20" x2="12" y2="13"></line>
-        <line x1="6" y1="20" x2="6" y2="16"></line>
-      </svg>
-    `;
-  } else {
-    // Custom Loans Crossed Tools Icon
-    return `
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
-      </svg>
-    `;
-  }
+  const iconMap = {
+    'user': '/assets/icons/loan-personal.png',
+    'briefcase': '/assets/icons/loan-corporate.png',
+    'chart': '/assets/icons/loan-business.png',
+    'tool': '/assets/icons/loan-custom.png',
+  };
+  const src = iconMap[type] || '/assets/icons/loan-personal.png';
+  return `<img src="${src}?v=1" alt="${type}" style="width: 100%; height: 100%; object-fit: contain; display: block;" />`;
 }

@@ -14,13 +14,13 @@ export function renderInvestmentsPage(container) {
       <!-- ROW 1: 3 KPI CARDS -->
       <section class="investments-kpi-grid">
         ${investmentsData.kpis.map(kpi => `
-          <div class="kpi-card investments-kpi-card">
-            <div class="kpi-icon-wrap ${kpi.type}">
-              ${getKpiIconSvg(kpi.icon)}
+          <div class="investments-kpi-card">
+            <div class="investments-kpi-icon" style="background-color: ${kpi.iconBg};">
+              ${getInvestmentsKpiIconSvg(kpi.iconType)}
             </div>
-            <div class="kpi-info">
-              <span class="kpi-label">${kpi.label}</span>
-              <span class="kpi-value">${kpi.value}</span>
+            <div class="investments-kpi-info">
+              <span class="investments-kpi-label">${kpi.label}</span>
+              <span class="investments-kpi-value">${kpi.value}</span>
             </div>
           </div>
         `).join('')}
@@ -29,7 +29,7 @@ export function renderInvestmentsPage(container) {
       <!-- ROW 2: YEARLY TOTAL INVESTMENT & MONTHLY REVENUE -->
       <section class="investments-charts-row" style="margin-top: 28px;">
         <!-- Left: Yearly Total Investment -->
-        <div>
+        <div class="investments-col">
           <div class="section-header">
             <h2 class="section-title">Yearly Total Investment</h2>
           </div>
@@ -39,7 +39,7 @@ export function renderInvestmentsPage(container) {
         </div>
 
         <!-- Right: Monthly Revenue -->
-        <div>
+        <div class="investments-col">
           <div class="section-header">
             <h2 class="section-title">Monthly Revenue</h2>
           </div>
@@ -52,7 +52,7 @@ export function renderInvestmentsPage(container) {
       <!-- ROW 3: MY INVESTMENT (60%) & TRENDING STOCK (40%) -->
       <section class="investments-bottom-row" style="margin-top: 28px;">
         <!-- Left: My Investment Cards -->
-        <div>
+        <div class="investments-col">
           <div class="section-header">
             <h2 class="section-title">My Investment</h2>
           </div>
@@ -61,7 +61,7 @@ export function renderInvestmentsPage(container) {
               <div class="my-investment-card">
                 <!-- Col 1: Icon + Name & Category -->
                 <div class="my-inv-left">
-                  <div class="my-inv-icon" style="background-color: ${inv.iconBg}; color: ${inv.iconColor};">
+                  <div class="my-inv-icon" style="background-color: transparent; color: ${inv.iconColor};">
                     ${getBrandIconSvg(inv.iconType)}
                   </div>
                   <div>
@@ -89,7 +89,7 @@ export function renderInvestmentsPage(container) {
         </div>
 
         <!-- Right: Trending Stock Table -->
-        <div>
+        <div class="investments-col">
           <div class="section-header">
             <h2 class="section-title">Trending Stock</h2>
           </div>
@@ -325,44 +325,42 @@ function renderMonthlyRevenueWaveChart(container, data) {
 // SVG Icon Helpers
 // ---------------------------------------------------------------------------
 
-function getKpiIconSvg(icon) {
-  if (icon === 'wallet') {
-    // Money bag matching Card 1
-    return `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h1l1-3c0-2-1.5-3.5-3-3.5h-1c0-.5 0-1-.5-1.5"></path>
-      <circle cx="16" cy="10" r="1"></circle>
-    </svg>`;
-  } else if (icon === 'pie') {
-    // Pie chart / circle divided matching Card 2
-    return `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
-      <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
-    </svg>`;
+function getInvestmentsKpiIconSvg(iconType) {
+  if (iconType === 'bag') {
+    return `
+      <svg width="44" height="44" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11.5 10.5 C10.8 9.2 9.2 7.8 10 6.6 C10.8 5.6 12 7.2 12.8 8.2 C13.4 6.8 14.2 5 15 5 C15.8 5 16.6 6.8 17.2 8.2 C18 7.2 19.2 5.6 20 6.6 C20.8 7.8 19.2 9.2 18.5 10.5 C21.6 11.8 24 14.5 24 18 C24 22.5 20.2 25.5 15 25.5 C9.8 25.5 6 22.5 6 18 C6 14.5 8.4 11.8 11.5 10.5 Z" fill="#16DBCC"/>
+        <text x="15" y="18.5" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="800" fill="#FFFFFF" text-anchor="middle" dominant-baseline="central">$</text>
+      </svg>
+    `;
+  } else if (iconType === 'pie-split') {
+    return `
+      <svg width="44" height="44" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 16 3.5 A 11.5 11.5 0 0 1 16 26.5 Z" fill="#FF82AC"/>
+        <text x="21" y="15" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" font-weight="800" fill="#FFFFFF" text-anchor="middle" dominant-baseline="central">$</text>
+        <path d="M 14 3.5 A 11.5 11.5 0 0 0 3.5 14 L 14 14 Z" fill="#FF82AC"/>
+        <text x="9.5" y="9.5" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="7.5" font-weight="800" fill="#FFFFFF" text-anchor="middle" dominant-baseline="central">%</text>
+        <path d="M 3.5 16 A 11.5 11.5 0 0 0 14 26.5 L 14 16 Z" fill="#FF82AC"/>
+      </svg>
+    `;
   } else {
-    // Repeat / sync arrows matching Card 3
-    return `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="23 4 23 10 17 10"></polyline>
-      <polyline points="1 20 1 14 7 14"></polyline>
-      <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
-    </svg>`;
+    return `
+      <svg width="44" height="44" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 8.5 14.5 C 8.5 12 10 11 13 11 L 17.5 11" stroke="#2D60FF" stroke-width="3.4" stroke-linecap="round"/>
+        <polygon points="16.5,6.8 23,11 16.5,15.2" fill="#2D60FF" stroke="#2D60FF" stroke-width="1" stroke-linejoin="round"/>
+        <path d="M 21.5 15.5 C 21.5 18 20 19 17 19 L 12.5 19" stroke="#2D60FF" stroke-width="3.4" stroke-linecap="round"/>
+        <polygon points="13.5,14.8 7,19 13.5,23.2" fill="#2D60FF" stroke="#2D60FF" stroke-width="1" stroke-linejoin="round"/>
+      </svg>
+    `;
   }
 }
 
 function getBrandIconSvg(iconType) {
   if (iconType === 'apple') {
-    // Apple logo
-    return `<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.84c.64-.78 1.08-1.87.96-2.96-.93.04-2.07.62-2.73 1.4-.58.67-1.09 1.77-.95 2.83 1.04.08 2.08-.51 2.72-1.27z"/>
-    </svg>`;
+    return `<img src="/assets/icons/mi-apple.png" alt="Apple Store" style="width: 50px; height: 50px; border-radius: 18px; display: block; object-fit: cover;" />`;
   } else if (iconType === 'google') {
-    // Google "G" logo
-    return `<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 2a9.96 9.96 0 0 1 6.29 2.22l-2.6 2.6A6.29 6.29 0 0 0 12 5.71c-3.48 0-6.29 2.81-6.29 6.29s2.81 6.29 6.29 6.29c3.16 0 5.76-2.32 6.21-5.36H12v-3.71h9.92c.11.64.17 1.31.17 2 0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2z"/>
-    </svg>`;
+    return `<img src="/assets/icons/mi-google.png" alt="Samsung Mobile" style="width: 50px; height: 50px; border-radius: 18px; display: block; object-fit: cover;" />`;
   } else {
-    // Tesla "T" logo
-    return `<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 4.5c2.6 0 4.9.7 6.8 1.8l.8-2.2C17.2 2.9 14.7 2.3 12 2.3s-5.2.6-7.6 1.8l.8 2.2c1.9-1.1 4.2-1.8 6.8-1.8zm8.6 3.1c-.2-.1-.5-.2-.8-.3-.5 1.5-1.7 2.6-3.3 3.1l1.5 8.6c1.8-1.4 3-3.6 3.2-6.1.1-1.9-.3-3.7-.6-5.3zM3.4 7.6c-.3 1.6-.7 3.4-.6 5.3.2 2.5 1.4 4.7 3.2 6.1l1.5-8.6c-1.6-.5-2.8-1.6-3.3-3.1-.3.1-.6.2-.8.3zm7.6 3.9h2v10.2h-2V11.5z"/>
-    </svg>`;
+    return `<img src="/assets/icons/mi-tesla.png" alt="Tesla Motors" style="width: 50px; height: 50px; border-radius: 18px; display: block; object-fit: cover;" />`;
   }
 }

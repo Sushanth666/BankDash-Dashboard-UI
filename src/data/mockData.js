@@ -13,7 +13,7 @@ export const currentUser = {
   postalCode: '45962',
   country: 'USA',
   role: 'Fintech Executive',
-  avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=160&auto=format&fit=crop&q=80',
+  avatar: '/assets/avatar.png',
   currency: 'USD',
   currencySymbol: '$',
   timeZone: '(GMT-12:00) International Date Line West',
@@ -32,10 +32,10 @@ export const userCards = [
     id: 'card-1',
     balance: 5756,
     cardHolder: 'Eddy Cusuma',
-    validThru: '12/26',
+    validThru: '12/22',
     cardNumber: '3778 **** **** 1234',
     rawNumber: '3778 5412 8901 1234',
-    theme: 'dark', // Emerald gradient
+    theme: 'dark', // Blue gradient
     brand: 'mastercard',
     type: 'Platinum Credit',
     isBlocked: false,
@@ -44,12 +44,12 @@ export const userCards = [
   },
   {
     id: 'card-2',
-    balance: 3250,
+    balance: 5756,
     cardHolder: 'Eddy Cusuma',
-    validThru: '08/28',
-    cardNumber: '5289 **** **** 8945',
-    rawNumber: '5289 4512 7890 8945',
-    theme: 'light', // Crisp white
+    validThru: '12/22',
+    cardNumber: '3778 **** **** 1234',
+    rawNumber: '3778 5412 8901 1234',
+    theme: 'secondary', // Shade 2: Deep Smoky Forest Pine
     brand: 'mastercard',
     type: 'Corporate Gold',
     isBlocked: false,
@@ -77,19 +77,19 @@ export const quickTransferContacts = [
     id: 'ct-1',
     name: 'Livia Bator',
     role: 'CEO',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80'
+    avatar: '/assets/avatars/livia-bator.png'
   },
   {
     id: 'ct-2',
     name: 'Randy Press',
     role: 'Director',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80'
+    avatar: '/assets/avatars/randy-press.png'
   },
   {
     id: 'ct-3',
     name: 'Workman',
     role: 'Designer',
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&auto=format&fit=crop&q=80'
+    avatar: '/assets/avatars/workman.png'
   },
   {
     id: 'ct-4',
@@ -109,45 +109,45 @@ export const recentTransactions = [
   {
     id: 'tx-1',
     title: 'Deposit from my Card',
-    date: '28 January 2026',
+    date: '28 January 2021',
     formattedDate: '28 Jan, 12:30 PM',
-    amount: 850,
-    type: 'income',
+    amount: -850,
+    type: 'expense',
     category: 'Deposit',
     card: '1234 ****',
     iconType: 'card',
-    iconBg: 'var(--accent-amber-tint)',
-    iconColor: 'var(--accent-amber)',
+    iconBg: '#FFF5D9',
+    iconColor: '#FFBB38',
     transactionId: '#TX89201',
     status: 'Complete'
   },
   {
     id: 'tx-2',
     title: 'Deposit Paypal',
-    date: '25 January 2026',
+    date: '25 January 2021',
     formattedDate: '25 Jan, 09:15 AM',
     amount: 2500,
     type: 'income',
     category: 'Payment',
     card: '5289 ****',
     iconType: 'paypal',
-    iconBg: 'var(--accent-secondary-tint)',
-    iconColor: 'var(--accent-secondary)',
+    iconBg: '#E7EDFF',
+    iconColor: '#396AFF',
     transactionId: '#TX89202',
     status: 'Complete'
   },
   {
     id: 'tx-3',
     title: 'Jemi Wilson',
-    date: '21 January 2026',
+    date: '21 January 2021',
     formattedDate: '21 Jan, 07:45 PM',
-    amount: -5.4,
-    type: 'expense',
+    amount: 5400,
+    type: 'income',
     category: 'Transfer',
     card: '1234 ****',
-    iconType: 'user',
-    iconBg: 'var(--accent-cyan-tint)',
-    iconColor: 'var(--accent-cyan)',
+    iconType: 'coin',
+    iconBg: '#DCFAF8',
+    iconColor: '#16DBCC',
     transactionId: '#TX89203',
     status: 'Complete'
   },
@@ -161,8 +161,8 @@ export const recentTransactions = [
     category: 'Shopping',
     card: '1234 ****',
     iconType: 'shopping',
-    iconBg: 'var(--accent-rose-tint)',
-    iconColor: 'var(--accent-rose)',
+    iconBg: 'rgba(5, 150, 105, 0.12)',
+    iconColor: '#059669',
     transactionId: '#TX89204',
     status: 'Complete'
   },
@@ -176,8 +176,8 @@ export const recentTransactions = [
     category: 'Income',
     card: '5289 ****',
     iconType: 'card',
-    iconBg: 'var(--primary-tint)',
-    iconColor: 'var(--primary)',
+    iconBg: 'rgba(236, 72, 153, 0.14)',
+    iconColor: '#EC4899',
     transactionId: '#TX89205',
     status: 'Complete'
   },
@@ -191,8 +191,8 @@ export const recentTransactions = [
     category: 'Electronics',
     card: '4111 ****',
     iconType: 'shopping',
-    iconBg: 'var(--accent-purple-tint)',
-    iconColor: 'var(--accent-purple)',
+    iconBg: 'rgba(5, 150, 105, 0.12)',
+    iconColor: '#059669',
     transactionId: '#TX89206',
     status: 'Complete'
   },
@@ -206,8 +206,8 @@ export const recentTransactions = [
     category: 'Entertainment',
     card: '1234 ****',
     iconType: 'shopping',
-    iconBg: 'var(--accent-secondary-tint)',
-    iconColor: 'var(--accent-secondary)',
+    iconBg: 'rgba(236, 72, 153, 0.14)',
+    iconColor: '#EC4899',
     transactionId: '#TX89207',
     status: 'Complete'
   },
@@ -221,8 +221,8 @@ export const recentTransactions = [
     category: 'Salary',
     card: '1234 ****',
     iconType: 'card',
-    iconBg: 'var(--primary-tint)',
-    iconColor: 'var(--primary)',
+    iconBg: 'rgba(6, 182, 212, 0.14)',
+    iconColor: '#06B6D4',
     transactionId: '#TX89208',
     status: 'Complete'
   }
@@ -235,20 +235,20 @@ export const weeklyActivityData = {
 };
 
 export const expenseStatisticsData = [
-  { label: 'Entertainment', value: 30, color: 'var(--accent-secondary)' },
-  { label: 'Bill Expense', value: 15, color: 'var(--accent-amber)' },
-  { label: 'Investment', value: 20, color: 'var(--accent-rose)' },
-  { label: 'Others', value: 35, color: 'var(--primary)' }
+  { label: 'Entertainment', value: 30, color: '#343C6A' },
+  { label: 'Bill Expense', value: 15, color: '#FC7900' },
+  { label: 'Others', value: 35, color: '#10B981' },
+  { label: 'Investment', value: 20, color: '#FA00FF' }
 ];
 
 export const balanceHistoryData = [
   { month: 'Jul', value: 120 },
-  { month: 'Aug', value: 320 },
-  { month: 'Sep', value: 240 },
-  { month: 'Oct', value: 480 },
-  { month: 'Nov', value: 780 },
-  { month: 'Dec', value: 580 },
-  { month: 'Jan', value: 650 }
+  { month: 'Aug', value: 240 },
+  { month: 'Sep', value: 450 },
+  { month: 'Oct', value: 780 },
+  { month: 'Nov', value: 210 },
+  { month: 'Dec', value: 570 },
+  { month: 'Jan', value: 600 }
 ];
 
 export const accountsKPIs = [
@@ -291,8 +291,8 @@ export const accountsLastTransactions = [
     card: '1234 ****',
     status: 'Pending',
     amount: -150,
-    iconBg: 'rgba(16, 185, 129, 0.12)',
-    iconColor: '#10b981',
+    iconBg: '#DCFAF8',
+    iconColor: '#16DBCC',
     iconType: 'sync'
   },
   {
@@ -303,8 +303,8 @@ export const accountsLastTransactions = [
     card: '1234 ****',
     status: 'Completed',
     amount: -340,
-    iconBg: 'rgba(99, 102, 241, 0.12)',
-    iconColor: '#6366f1',
+    iconBg: '#E7EDFF',
+    iconColor: '#396AFF',
     iconType: 'tool'
   },
   {
@@ -315,8 +315,8 @@ export const accountsLastTransactions = [
     card: '1234 ****',
     status: 'Completed',
     amount: 780,
-    iconBg: 'rgba(244, 63, 94, 0.12)',
-    iconColor: '#f43f5e',
+    iconBg: '#FFE0EB',
+    iconColor: '#FF82AC',
     iconType: 'user'
   }
 ];
@@ -341,8 +341,8 @@ export const invoicesSentData = [
     company: 'Apple Store',
     time: '5h ago',
     amount: 450,
-    iconBg: 'rgba(16, 185, 129, 0.12)',
-    iconColor: '#10b981',
+    iconBg: '#DCFAF8',
+    iconColor: '#16DBCC',
     iconType: 'apple'
   },
   {
@@ -350,8 +350,8 @@ export const invoicesSentData = [
     company: 'Michael',
     time: '2 days ago',
     amount: 160,
-    iconBg: 'rgba(245, 158, 11, 0.12)',
-    iconColor: '#f59e0b',
+    iconBg: '#FFF5D9',
+    iconColor: '#FFBB38',
     iconType: 'user'
   },
   {
@@ -359,8 +359,8 @@ export const invoicesSentData = [
     company: 'Playstation',
     time: '5 days ago',
     amount: 1085,
-    iconBg: 'rgba(99, 102, 241, 0.12)',
-    iconColor: '#6366f1',
+    iconBg: '#E7EDFF',
+    iconColor: '#396AFF',
     iconType: 'playstation'
   },
   {
@@ -368,17 +368,38 @@ export const invoicesSentData = [
     company: 'William',
     time: '10 days ago',
     amount: 90,
-    iconBg: 'rgba(244, 63, 94, 0.12)',
-    iconColor: '#f43f5e',
+    iconBg: '#FFE0EB',
+    iconColor: '#FF82AC',
     iconType: 'user'
   }
 ];
 
 export const investmentsData = {
   kpis: [
-    { label: 'Total Invested Amount', value: '$150,000', icon: 'wallet', type: 'emerald' },
-    { label: 'Number of Investments', value: '1,250', icon: 'pie', type: 'rose' },
-    { label: 'Rate of Return', value: '+5.80%', icon: 'sync', type: 'indigo' }
+    {
+      id: 'kpi-total-invested',
+      label: 'Total Invested Amount',
+      value: '$150,000',
+      iconType: 'bag',
+      iconBg: 'rgba(16, 185, 129, 0.12)',
+      iconColor: '#10B981'
+    },
+    {
+      id: 'kpi-num-investments',
+      label: 'Number of Investments',
+      value: '1,250',
+      iconType: 'pie-split',
+      iconBg: 'rgba(128, 0, 32, 0.10)',
+      iconColor: '#800020'
+    },
+    {
+      id: 'kpi-rate-return',
+      label: 'Rate of Return',
+      value: '+5.80%',
+      iconType: 'repeat',
+      iconBg: 'rgba(16, 185, 129, 0.12)',
+      iconColor: '#10B981'
+    }
   ],
   yearlyTotalInvestment: {
     yTicks: [0, 10000, 20000, 30000, 40000],
@@ -420,8 +441,8 @@ export const investmentsData = {
       returnRate: '+16%',
       returnLabel: 'Return Value',
       isPositive: true,
-      iconBg: 'rgba(244, 63, 94, 0.12)',
-      iconColor: '#f43f5e',
+      iconBg: 'rgba(16, 185, 129, 0.12)',
+      iconColor: '#10B981',
       iconType: 'apple'
     },
     {
@@ -433,8 +454,8 @@ export const investmentsData = {
       returnRate: '-4%',
       returnLabel: 'Return Value',
       isPositive: false,
-      iconBg: 'rgba(99, 102, 241, 0.12)',
-      iconColor: '#6366f1',
+      iconBg: 'rgba(128, 0, 32, 0.10)',
+      iconColor: '#800020',
       iconType: 'google'
     },
     {
@@ -446,8 +467,8 @@ export const investmentsData = {
       returnRate: '+25%',
       returnLabel: 'Return Value',
       isPositive: true,
-      iconBg: 'rgba(245, 158, 11, 0.12)',
-      iconColor: '#f59e0b',
+      iconBg: 'rgba(16, 185, 129, 0.12)',
+      iconColor: '#10B981',
       iconType: 'tesla'
     }
   ],
@@ -477,7 +498,7 @@ export const creditCardsPageData = {
       cardHolder: 'Eddy Cusuma',
       validThru: '12/22',
       cardNumber: '3778 **** **** 1234',
-      theme: 'indigo',
+      theme: 'secondary',
       brand: 'mastercard'
     },
     {
@@ -491,10 +512,10 @@ export const creditCardsPageData = {
     }
   ],
   cardExpenseDonut: [
-    { id: 'dbl', label: 'DBL Bank', value: 30, color: '#4C78FF' },
-    { id: 'brc', label: 'BRC Bank', value: 15, color: '#FF6B9D' },
-    { id: 'abm', label: 'ABM Bank', value: 35, color: '#16DBCC' },
-    { id: 'mcp', label: 'MCP Bank', value: 20, color: '#FFBB38' }
+    { id: 'dbl', label: 'DBL Bank', value: 30, color: '#059669' },
+    { id: 'brc', label: 'BRC Bank', value: 15, color: '#F43F5E' },
+    { id: 'abm', label: 'ABM Bank', value: 35, color: '#10B981' },
+    { id: 'mcp', label: 'MCP Bank', value: 20, color: '#06B6D4' }
   ],
   cardList: [
     {
@@ -503,8 +524,8 @@ export const creditCardsPageData = {
       bank: 'DBL Bank',
       cardNumber: '**** **** 5600',
       namainCard: 'William',
-      iconBg: 'rgba(99, 102, 241, 0.12)',
-      iconColor: '#6366f1'
+      iconBg: '#E7EDFF',
+      iconColor: '#2D60FF'
     },
     {
       id: 'cl-2',
@@ -512,8 +533,8 @@ export const creditCardsPageData = {
       bank: 'BRC Bank',
       cardNumber: '**** **** 4300',
       namainCard: 'Michel',
-      iconBg: 'rgba(244, 63, 94, 0.12)',
-      iconColor: '#f43f5e'
+      iconBg: '#FFE0EB',
+      iconColor: '#FF82AC'
     },
     {
       id: 'cl-3',
@@ -521,8 +542,8 @@ export const creditCardsPageData = {
       bank: 'ABM Bank',
       cardNumber: '**** **** 7560',
       namainCard: 'Edward',
-      iconBg: 'rgba(245, 158, 11, 0.12)',
-      iconColor: '#f59e0b'
+      iconBg: '#FFF5D9',
+      iconColor: '#FFBB38'
     }
   ],
   cardSettings: [
@@ -531,40 +552,40 @@ export const creditCardsPageData = {
       title: 'Block Card',
       desc: 'Instantly block your card',
       iconType: 'card',
-      iconBg: 'rgba(245, 158, 11, 0.12)',
-      iconColor: '#f59e0b'
+      iconBg: '#FFF5D9',
+      iconColor: '#FFBB38'
     },
     {
       id: 'cs-2',
       title: 'Change Pin Code',
       desc: 'Choose another pin code',
       iconType: 'lock',
-      iconBg: 'rgba(99, 102, 241, 0.12)',
-      iconColor: '#6366f1'
+      iconBg: '#E7EDFF',
+      iconColor: '#396AFF'
     },
     {
       id: 'cs-3',
       title: 'Add to Google Pay',
       desc: 'Withdraw without any card',
       iconType: 'google',
-      iconBg: 'rgba(244, 63, 94, 0.12)',
-      iconColor: '#f43f5e'
+      iconBg: 'transparent',
+      iconColor: '#396AFF'
     },
     {
       id: 'cs-4',
       title: 'Add to Apple Pay',
       desc: 'Withdraw without any card',
       iconType: 'apple',
-      iconBg: 'rgba(16, 185, 129, 0.12)',
-      iconColor: '#10b981'
+      iconBg: 'transparent',
+      iconColor: '#16DBAA'
     },
     {
       id: 'cs-5',
       title: 'Add to Apple Store',
       desc: 'Withdraw without any card',
-      iconType: 'apple',
-      iconBg: 'rgba(16, 185, 129, 0.12)',
-      iconColor: '#10b981'
+      iconType: 'apple-store',
+      iconBg: 'transparent',
+      iconColor: '#16DBAA'
     }
   ]
 };
@@ -576,32 +597,32 @@ export const loansData = {
       label: 'Personal Loans',
       value: '$50,000',
       iconType: 'user',
-      iconBg: 'rgba(59, 130, 246, 0.12)',
-      iconColor: '#3B82F6'
+      iconBg: '#E7EDFF',
+      iconColor: '#2D60FF'
     },
     {
       id: 'kpi-corporate',
       label: 'Corporate Loans',
       value: '$100,000',
       iconType: 'briefcase',
-      iconBg: 'rgba(245, 158, 11, 0.12)',
-      iconColor: '#F59E0B'
+      iconBg: '#FFF5D9',
+      iconColor: '#FFBB38'
     },
     {
       id: 'kpi-business',
       label: 'Business Loans',
       value: '$500,000',
       iconType: 'chart',
-      iconBg: 'rgba(244, 63, 94, 0.12)',
-      iconColor: '#F43F5E'
+      iconBg: '#FFE0EB',
+      iconColor: '#FF82AC'
     },
     {
       id: 'kpi-custom',
       label: 'Custom Loans',
       value: 'Choose Money',
       iconType: 'tool',
-      iconBg: 'rgba(20, 184, 166, 0.12)',
-      iconColor: '#14B8A6'
+      iconBg: '#DCFAF8',
+      iconColor: '#16DBCC'
     }
   ],
   activeLoans: [
@@ -631,24 +652,24 @@ export const servicesPageData = {
       title: 'Life Insurance',
       desc: 'Unlimited protection',
       iconType: 'shield-heart',
-      iconBg: 'rgba(59, 130, 246, 0.12)',
-      iconColor: '#3B82F6'
+      iconBg: '#E7EDFF',
+      iconColor: '#2D60FF'
     },
     {
       id: 'hl-2',
       title: 'Shopping',
       desc: 'Buy. Think. Grow.',
       iconType: 'shopping-bag',
-      iconBg: 'rgba(245, 158, 11, 0.12)',
-      iconColor: '#F59E0B'
+      iconBg: '#FFF5D9',
+      iconColor: '#FFBB38'
     },
     {
       id: 'hl-3',
       title: 'Safety',
       desc: 'We are your allies',
       iconType: 'shield-check',
-      iconBg: 'rgba(20, 184, 166, 0.12)',
-      iconColor: '#14B8A6'
+      iconBg: '#DCFAF8',
+      iconColor: '#16DBCC'
     }
   ],
   servicesList: [
@@ -657,8 +678,8 @@ export const servicesPageData = {
       title: 'Business loans',
       desc: 'It is a long established',
       iconType: 'loan',
-      iconBg: 'rgba(244, 63, 94, 0.12)',
-      iconColor: '#F43F5E',
+      iconBg: '#FFE0EB',
+      iconColor: '#FF82AC',
       col1Title: 'Lorem Ipsum',
       col1Desc: 'Many publishing',
       col2Title: 'Lorem Ipsum',
@@ -672,8 +693,8 @@ export const servicesPageData = {
       title: 'Checking accounts',
       desc: 'It is a long established',
       iconType: 'briefcase',
-      iconBg: 'rgba(245, 158, 11, 0.12)',
-      iconColor: '#F59E0B',
+      iconBg: '#FFF5D9',
+      iconColor: '#FFBB38',
       col1Title: 'Lorem Ipsum',
       col1Desc: 'Many publishing',
       col2Title: 'Lorem Ipsum',
@@ -687,8 +708,8 @@ export const servicesPageData = {
       title: 'Savings accounts',
       desc: 'It is a long established',
       iconType: 'chart',
-      iconBg: 'rgba(244, 63, 94, 0.12)',
-      iconColor: '#F43F5E',
+      iconBg: '#FFE0EB',
+      iconColor: '#FF82AC',
       col1Title: 'Lorem Ipsum',
       col1Desc: 'Many publishing',
       col2Title: 'Lorem Ipsum',
@@ -702,8 +723,8 @@ export const servicesPageData = {
       title: 'Debit and credit cards',
       desc: 'It is a long established',
       iconType: 'user',
-      iconBg: 'rgba(59, 130, 246, 0.12)',
-      iconColor: '#3B82F6',
+      iconBg: '#E7EDFF',
+      iconColor: '#396AFF',
       col1Title: 'Lorem Ipsum',
       col1Desc: 'Many publishing',
       col2Title: 'Lorem Ipsum',
@@ -717,8 +738,8 @@ export const servicesPageData = {
       title: 'Life Insurance',
       desc: 'It is a long established',
       iconType: 'shield-check',
-      iconBg: 'rgba(20, 184, 166, 0.12)',
-      iconColor: '#14B8A6',
+      iconBg: '#DCFAF8',
+      iconColor: '#16DBCC',
       col1Title: 'Lorem Ipsum',
       col1Desc: 'Many publishing',
       col2Title: 'Lorem Ipsum',
@@ -732,8 +753,8 @@ export const servicesPageData = {
       title: 'Business loans',
       desc: 'It is a long established',
       iconType: 'loan',
-      iconBg: 'rgba(244, 63, 94, 0.12)',
-      iconColor: '#F43F5E',
+      iconBg: '#FFE0EB',
+      iconColor: '#FF82AC',
       col1Title: 'Lorem Ipsum',
       col1Desc: 'Many publishing',
       col2Title: 'Lorem Ipsum',
@@ -761,7 +782,7 @@ export const servicesData = [
     desc: 'Exclusive high-yield commercial procurement card with 5% instant cashback at leading enterprise partners and software vendors.',
     badge: 'Enterprise',
     icon: 'cart',
-    color: 'indigo',
+    color: 'burgundy',
     status: 'Active'
   },
   {
@@ -770,7 +791,7 @@ export const servicesData = [
     desc: 'Multi-signature physical and digital deposit protection with institutional-grade hardware cryptography and 100% loss guarantee.',
     badge: 'High Security',
     icon: 'lock',
-    color: 'amber',
+    color: 'emerald',
     status: 'Active'
   },
   {
@@ -779,7 +800,7 @@ export const servicesData = [
     desc: 'Bespoke global asset allocation, tax optimization, and direct access to top venture capital and private equity syndicates.',
     badge: 'VIP Only',
     icon: 'trend',
-    color: 'purple',
+    color: 'burgundy',
     status: 'Available'
   },
   {
@@ -788,7 +809,7 @@ export const servicesData = [
     desc: 'Instant settlement across 140+ countries in 38 currencies with institutional exchange spreads and zero hidden SWIFT fees.',
     badge: 'Zero Fees',
     icon: 'globe',
-    color: 'cyan',
+    color: 'emerald',
     status: 'Active'
   },
   {
@@ -797,7 +818,7 @@ export const servicesData = [
     desc: 'Real-time AI behavioral fraud detection, instant one-click freezing, and virtual single-use card generation on demand.',
     badge: 'Automated',
     icon: 'credit',
-    color: 'rose',
+    color: 'burgundy',
     status: 'Active'
   }
 ];
@@ -807,18 +828,145 @@ export const privilegesData = {
   points: 24850,
   nextTierPoints: 30000,
   progress: 82,
+  multiplier: '3.5x',
+  lifetimeEarned: 148200,
+  annualSavings: 4850,
+  advisor: {
+    name: 'Genevieve Laurent',
+    role: 'Senior Private Banker',
+    status: 'Online',
+    response: 'Typically replies in 2 mins',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=160&auto=format&fit=crop&q=80'
+  },
+  tiers: [
+    { id: 'silver', name: 'Silver Elite', minPoints: 0, perkCount: 2, active: false },
+    { id: 'gold', name: 'Gold Executive', minPoints: 5000, perkCount: 4, active: false },
+    { id: 'platinum', name: 'Platinum Premier', minPoints: 15000, perkCount: 5, active: false },
+    { id: 'diamond', name: 'Diamond Member', minPoints: 25000, perkCount: 6, active: true },
+    { id: 'obsidian', name: 'Black Obsidian', minPoints: 50000, perkCount: 8, active: false }
+  ],
   perks: [
-    { title: 'Global Airport Lounge Access', desc: 'Complimentary unlimited access to 1,400+ Priority Pass VIP lounges worldwide for you and a guest.', icon: 'plane' },
-    { title: '24/7 Dedicated Concierge', desc: 'Direct personal banker access via phone, encrypted WhatsApp, or private messaging anytime.', icon: 'concierge' },
-    { title: '5% Travel & Dining Cashback', desc: 'Highest rewards rate on luxury travel, Michelin-starred restaurants, and premier airlines.', icon: 'star' },
-    { title: 'Zero Foreign Transaction Fees', desc: 'Pay anywhere on Earth at live interbank mid-market exchange rates without markup.', icon: 'globe' },
-    { title: 'Exclusive Investor Syndicates', desc: 'First-look allocations into pre-IPO tech ventures and premier private market offerings.', icon: 'crown' },
-    { title: 'Comprehensive Travel Assurance', desc: 'Up to $1,000,000 in international medical, luggage delay, and trip interruption coverage.', icon: 'shield' }
+    {
+      id: 'pk-1',
+      title: 'Global Airport Lounge Access',
+      desc: 'Complimentary unlimited access to 1,400+ Priority Pass VIP lounges worldwide for you and a guest with fast-track security.',
+      icon: 'plane',
+      category: 'travel',
+      badge: 'UNLIMITED ACCESS',
+      badgeBg: 'rgba(16, 185, 129, 0.12)',
+      badgeColor: '#059669',
+      iconBg: '#ECFDF5',
+      iconColor: '#059669'
+    },
+    {
+      id: 'pk-2',
+      title: '24/7 Dedicated Concierge',
+      desc: 'Direct personal banker access via private line, encrypted WhatsApp, or in-app concierge for reservations and global bookings.',
+      icon: 'concierge',
+      category: 'lifestyle',
+      badge: 'DEDICATED ADVISOR',
+      badgeBg: 'rgba(22, 219, 204, 0.12)',
+      badgeColor: '#059669',
+      iconBg: '#DCFAF8',
+      iconColor: '#16DBCC'
+    },
+    {
+      id: 'pk-3',
+      title: '5% Travel & Dining Cashback',
+      desc: 'Highest rewards rate on luxury hotels, Michelin-starred restaurants, and premier international airlines with instant redemption.',
+      icon: 'star',
+      category: 'lifestyle',
+      badge: '3.5X MULTIPLIER',
+      badgeBg: 'rgba(255, 187, 56, 0.14)',
+      badgeColor: '#D97706',
+      iconBg: '#FFF5D9',
+      iconColor: '#FFBB38'
+    },
+    {
+      id: 'pk-4',
+      title: 'Zero Foreign Transaction Fees',
+      desc: 'Spend anywhere on Earth at live interbank mid-market exchange rates without administrative fees, markups, or ATM withdrawal charges.',
+      icon: 'globe',
+      category: 'travel',
+      badge: 'GLOBAL COMMERCE',
+      badgeBg: 'rgba(45, 96, 255, 0.1)',
+      badgeColor: '#2563EB',
+      iconBg: '#E7EDFF',
+      iconColor: '#2D60FF'
+    },
+    {
+      id: 'pk-5',
+      title: 'Exclusive Investor Syndicates',
+      desc: 'First-look priority allocations into vetted pre-IPO tech ventures, unicorn private market funds, and private credit syndications.',
+      icon: 'crown',
+      category: 'wealth',
+      badge: 'PRIVATE ALLOCATION',
+      badgeBg: 'rgba(255, 130, 172, 0.14)',
+      badgeColor: '#E11D48',
+      iconBg: '#FFE0EB',
+      iconColor: '#FF82AC'
+    },
+    {
+      id: 'pk-6',
+      title: 'Comprehensive Travel Assurance',
+      desc: 'Up to $1,000,000 international emergency medical coverage, baggage loss, flight cancellation, and private repatriation protection.',
+      icon: 'shield',
+      category: 'wealth',
+      badge: '$1M COVERAGE',
+      badgeBg: 'rgba(16, 185, 129, 0.12)',
+      badgeColor: '#059669',
+      iconBg: '#DCFAF8',
+      iconColor: '#16DBCC'
+    }
   ],
   vouchers: [
-    { id: 'v1', brand: 'Delta Airlines', offer: '$250 Flight Credit', points: 5000 },
-    { id: 'v2', brand: 'Four Seasons Hotels', offer: 'Complimentary Suite Upgrade', points: 8000 },
-    { id: 'v3', brand: 'Apple', offer: '$100 App Store & Hardware Gift Card', points: 3500 },
-    { id: 'v4', brand: 'Uber Black', offer: '6 Free Airport Rides', points: 4200 }
+    {
+      id: 'v1',
+      brand: 'Delta Airlines',
+      offer: '$250 Flight Credit',
+      points: 5000,
+      category: 'travel',
+      tag: 'AIRLINE PASS',
+      expires: 'Valid 12 Months',
+      logoText: 'DELTA',
+      logoBg: '#FFE0EB',
+      logoColor: '#FF82AC'
+    },
+    {
+      id: 'v2',
+      brand: 'Four Seasons Hotels',
+      offer: 'Complimentary Suite Upgrade',
+      points: 8000,
+      category: 'travel',
+      tag: 'HOTEL STAY',
+      expires: 'Valid 6 Months',
+      logoText: 'FOUR SEASONS',
+      logoBg: '#FFF5D9',
+      logoColor: '#FFBB38'
+    },
+    {
+      id: 'v3',
+      brand: 'Apple Store',
+      offer: '$100 Hardware & App Credit',
+      points: 3500,
+      category: 'lifestyle',
+      tag: 'TECH REWARD',
+      expires: 'No Expiration',
+      logoText: 'APPLE',
+      logoBg: '#E7EDFF',
+      logoColor: '#2D60FF'
+    },
+    {
+      id: 'v4',
+      brand: 'Uber Black',
+      offer: '6 Free Airport Chauffeur Rides',
+      points: 4200,
+      category: 'travel',
+      tag: 'RIDE PASS',
+      expires: 'Valid 90 Days',
+      logoText: 'UBER BLACK',
+      logoBg: '#ECFDF5',
+      logoColor: '#059669'
+    }
   ]
 };

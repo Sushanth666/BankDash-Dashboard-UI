@@ -14,7 +14,7 @@ import {
   invoicesSentData
 } from '../data/mockData.js';
 
-import { createCreditCardHtml, bindCardInteractions } from '../components/CardComponent.js';
+import { createCreditCardHtml, bindCardInteractions } from '../components/Card.js';
 import { openModal } from '../components/Modal.js';
 import { showToast } from '../components/Toast.js';
 
@@ -36,7 +36,7 @@ export function renderAccountsPage(container, onNavigate) {
         ${accountsKPIs.map(kpi => `
           <div class="kpi-card accounts-kpi-card">
             <div class="kpi-icon-wrap ${kpi.type}">
-              ${getKpiIconSvg(kpi.icon)}
+              <img src="${getKpiIconPath(kpi.icon)}" alt="${kpi.label} icon" class="kpi-icon-img" />
             </div>
             <div class="kpi-info">
               <span class="kpi-label">${kpi.label}</span>
@@ -59,7 +59,7 @@ export function renderAccountsPage(container, onNavigate) {
                 <div class="accounts-tx-row">
                   <!-- Col 1: Icon + Title & Date -->
                   <div class="accounts-tx-col-main">
-                    <div class="accounts-tx-icon" style="background-color: ${tx.iconBg}; color: ${tx.iconColor};">
+                    <div class="accounts-tx-icon">
                       ${getTransactionIconSvg(tx.iconType)}
                     </div>
                     <div>
@@ -97,7 +97,7 @@ export function renderAccountsPage(container, onNavigate) {
             ${createCreditCardHtml({
               ...primaryCard,
               validThru: '12/22' // Matching Figma design screenshot
-            })}
+            }, 'accounts-credit-card')}
           </div>
         </div>
       </section>
@@ -124,7 +124,7 @@ export function renderAccountsPage(container, onNavigate) {
               ${invoicesSentData.map(inv => `
                 <div class="accounts-invoice-item">
                   <div class="accounts-invoice-left">
-                    <div class="accounts-invoice-icon" style="background-color: ${inv.iconBg}; color: ${inv.iconColor};">
+                    <div class="accounts-invoice-icon" style="background-color: ${(inv.iconType === 'apple' || inv.iconType === 'playstation') ? 'transparent' : inv.iconBg}; color: ${inv.iconColor};">
                       ${getInvoiceIconSvg(inv.iconType)}
                     </div>
                     <div>
@@ -288,82 +288,45 @@ function renderWeeklyDebitCreditChart(container, data) {
 }
 
 // ---------------------------------------------------------------------------
-// SVG Icon Helpers
+// Icon Helpers — using uploaded PNG images for KPI cards
 // ---------------------------------------------------------------------------
 
-function getKpiIconSvg(icon) {
-  if (icon === 'wallet') {
-    // Money bag icon matching Figma Card 1
-    return `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h1l1-3c0-2-1.5-3.5-3-3.5h-1c0-.5 0-1-.5-1.5"></path>
-      <circle cx="16" cy="10" r="1"></circle>
-    </svg>`;
-  } else if (icon === 'income') {
-    // Hand receiving coin/money matching Figma Card 2
-    return `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17"></path>
-      <path d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.8a2 2 0 0 0-2.8-2.8l-3.6 3.8"></path>
-      <circle cx="18" cy="6" r="3"></circle>
-    </svg>`;
-  } else if (icon === 'expense') {
-    // Cash voucher / receipt icon matching Figma Card 3
-    return `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-      <line x1="2" y1="10" x2="22" y2="10"></line>
-      <circle cx="7" cy="15" r="1"></circle>
-      <circle cx="17" cy="15" r="1"></circle>
-    </svg>`;
-  } else {
-    // Piggy bank icon matching Figma Card 4
-    return `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h1l1-3c0-2-1.5-3.5-3-3.5h-1c0-.5 0-1-.5-1.5"></path>
-      <circle cx="16" cy="10" r="1"></circle>
-    </svg>`;
-  }
+/**
+ * Maps KPI icon name to the corresponding uploaded PNG asset path.
+ * Icons saved in /assets/icons/ from user uploads.
+ */
+function getKpiIconPath(icon) {
+  const iconMap = {
+    'wallet':  '/assets/icons/icon-money-bag.png',   // 💰 Yellow money bag   → My Balance
+    'income':  '/assets/icons/icon-income-hand.png', // 🤲 Blue hand+coin     → Income
+    'expense': '/assets/icons/icon-expense.png',     // 🩷 Pink expense icon  → Expense
+    'piggy':   '/assets/icons/icon-piggy-bank.png',  // 🐷 Cyan piggy bank    → Total Saving
+  };
+  return iconMap[icon] || '/assets/icons/icon-expense.png';
 }
 
 function getTransactionIconSvg(iconType) {
   if (iconType === 'sync') {
-    // Spotify / Sync arrows
-    return `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="23 4 23 10 17 10"></polyline>
-      <polyline points="1 20 1 14 7 14"></polyline>
-      <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
-    </svg>`;
+    return `<img src="/assets/icons/tx-spotify.png" alt="Spotify Subscription" width="50" height="50" style="display: block; border-radius: 18px; width: 50px; height: 50px; object-fit: cover;" />`;
   } else if (iconType === 'tool') {
-    // Mobile Service / Tools
-    return `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
-    </svg>`;
+    return `<img src="/assets/icons/tx-service.png" alt="Mobile Service" width="50" height="50" style="display: block; border-radius: 18px; width: 50px; height: 50px; object-fit: cover;" />`;
   } else {
-    // User / Transfer
-    return `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-      <circle cx="12" cy="7" r="4"></circle>
-    </svg>`;
+    return `<img src="/assets/icons/tx-user.png" alt="Emilly Wilson" width="50" height="50" style="display: block; border-radius: 18px; width: 50px; height: 50px; object-fit: cover;" />`;
   }
 }
 
 function getInvoiceIconSvg(iconType) {
   if (iconType === 'apple') {
-    // Apple logo
-    return `<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.84c.64-.78 1.08-1.87.96-2.96-.93.04-2.07.62-2.73 1.4-.58.67-1.09 1.77-.95 2.83 1.04.08 2.08-.51 2.72-1.27z"/>
-    </svg>`;
+    // Use exact uploaded Apple icon PNG
+    return `<img src="/assets/icons/inv-apple.png" alt="Apple Store" style="width: 50px; height: 50px; border-radius: 18px; display: block; object-fit: cover;" />`;
   } else if (iconType === 'playstation') {
-    // Gamepad / Playstation
-    return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <line x1="6" y1="12" x2="10" y2="12"></line>
-      <line x1="8" y1="10" x2="8" y2="14"></line>
-      <line x1="15" y1="13" x2="15.01" y2="13"></line>
-      <line x1="18" y1="11" x2="18.01" y2="11"></line>
-      <rect x="2" y="6" width="20" height="12" rx="6"></rect>
-    </svg>`;
+    // PlayStation PS logo PNG (extracted exact from Figma reference)
+    return `<img src="/assets/icons/inv-playstation.png?v=2" alt="Playstation" style="width: 50px; height: 50px; border-radius: 18px; display: block; object-fit: cover;" />`;
   } else {
-    // User profile icon
-    return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-      <circle cx="12" cy="7" r="4"></circle>
+    // User outline with circular head and arched shoulders
+    return `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="7.8" r="4.2" />
+      <path d="M 4.8 20 C 4.8 15.5 8 13.2 12 13.2 C 16 13.2 19.2 15.5 19.2 20" />
     </svg>`;
   }
 }

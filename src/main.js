@@ -2,23 +2,24 @@
    BANKDASH - MAIN ENTRYPOINT & APPLICATION CONTROLLER
    ========================================================================== */
 
-import { renderSidebar, NAV_ITEMS } from './components/Sidebar.js';
-import { renderHeader } from './components/Header.js';
-import { renderDashboardPage } from './pages/DashboardPage.js';
-import { renderTransactionsPage } from './pages/TransactionsPage.js';
-import { renderAccountsPage } from './pages/AccountsPage.js';
-import { renderInvestmentsPage } from './pages/InvestmentsPage.js';
-import { renderCreditCardsPage } from './pages/CreditCardsPage.js';
-import { renderLoansPage } from './pages/LoansPage.js';
-import { renderServicesPage } from './pages/ServicesPage.js';
-import { renderPrivilegesPage } from './pages/PrivilegesPage.js';
-import { renderSettingPage } from './pages/SettingPage.js';
-import { showToast } from './components/Toast.js';
+import './styles/index.css';
+import { renderSidebar, NAV_ITEMS, renderHeader, showToast } from './components/index.js';
+import {
+  renderDashboardPage,
+  renderTransactionsPage,
+  renderAccountsPage,
+  renderInvestmentsPage,
+  renderCreditCardsPage,
+  renderLoansPage,
+  renderServicesPage,
+  renderPrivilegesPage,
+  renderSettingPage
+} from './pages/index.js';
 
-// Application State
+// Application State (Strictly default to Light Mode)
 const state = {
   currentRoute: 'dashboard',
-  currentTheme: localStorage.getItem('bankdash_theme') || 'sapphire'
+  currentTheme: 'light'
 };
 
 const routePageMap = {
@@ -33,37 +34,49 @@ const routePageMap = {
   'setting': { title: 'Setting', render: renderSettingPage }
 };
 
-// Initialize Theme
+// Initialize Theme: Strictly Light Mode (Burgundy Default) & Dark Mode (Burgundy Dark)
 function applyTheme(theme) {
+  if (theme !== 'dark') {
+    theme = 'light';
+  }
   state.currentTheme = theme;
   document.documentElement.setAttribute('data-theme', theme);
   localStorage.setItem('bankdash_theme', theme);
 
-  const themeLabel = document.getElementById('theme-label');
-  if (themeLabel) {
-    const labelNames = {
-      sapphire: 'Sapphire',
-      dark: 'Dark',
-      indigo: 'Indigo',
-      emerald: 'Emerald'
-    };
-    themeLabel.innerText = labelNames[theme] || 'Sapphire';
+  const themeBtn = document.getElementById('theme-toggle-btn');
+  if (themeBtn) {
+    const isDark = theme === 'dark';
+    themeBtn.setAttribute('title', isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode');
+    const sunSvg = `
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+    `;
+    const moonSvg = `
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    `;
+    themeBtn.innerHTML = `
+      ${isDark ? moonSvg : sunSvg}
+      <span id="theme-label" style="text-transform: capitalize;">${isDark ? 'Dark' : 'Light'}</span>
+    `;
   }
 }
 
 function cycleTheme() {
-  const themes = ['sapphire', 'dark', 'indigo', 'emerald'];
-  const nextIdx = (themes.indexOf(state.currentTheme) + 1) % themes.length;
-  const newTheme = themes[nextIdx];
+  const newTheme = state.currentTheme === 'dark' ? 'light' : 'dark';
   applyTheme(newTheme);
-
-  const friendlyNames = {
-    sapphire: 'Electric Sapphire Blue (Default)',
-    dark: 'Midnight Obsidian Dark Theme',
-    indigo: 'Nordic Cobalt Theme',
-    emerald: 'Emerald Luxe Theme'
-  };
-  showToast('Theme Changed', `Switched to ${friendlyNames[newTheme]}`, 'info', 2000);
+  const friendlyName = newTheme === 'dark' ? 'Smoky Pine Dark Mode' : 'Smoke Green Light Mode';
+  showToast('Theme Changed', `Switched to ${friendlyName}`, 'info', 2000);
 }
 
 // ==========================================================================
@@ -166,15 +179,15 @@ function openMobileSidebar() {
 
 // Bootstrap Application
 function initApp() {
-  // Apply Electric Sapphire Blue theme as default
-  const savedTheme = localStorage.getItem('bankdash_theme');
-  const activeTheme = (!savedTheme || savedTheme === 'emerald') ? 'sapphire' : savedTheme;
-  applyTheme(activeTheme);
+  // Strictly default to Light Mode
+  localStorage.setItem('bankdash_theme', 'light');
+  applyTheme('light');
 
   // Initial Route from URL Hash
-  const hash = window.location.hash.replace('#', '');
-  if (hash && routePageMap[hash]) {
-    state.currentRoute = hash;
+  const rawHash = window.location.hash.replace('#', '');
+  const initialRoute = rawHash.split('?')[0];
+  if (initialRoute && routePageMap[initialRoute]) {
+    state.currentRoute = initialRoute;
   }
 
   // Render Sidebar
@@ -188,6 +201,16 @@ function initApp() {
     currentTheme: state.currentTheme,
     onThemeChange: cycleTheme
   });
+
+  setTimeout(() => {
+    const av = document.querySelector('.user-avatar');
+    console.log('AVATAR_DEBUG: ' + JSON.stringify(av ? {
+      rect: av.getBoundingClientRect(),
+      parentDisplay: window.getComputedStyle(av.parentElement).display,
+      rightDisplay: window.getComputedStyle(document.querySelector('.header-right')).display,
+      actionsDisplay: window.getComputedStyle(document.querySelector('.header-actions')).display
+    } : 'NO_AVATAR'));
+  }, 100);
 
   // Bind Header Button Events
   const mobileToggleBtn = document.getElementById('mobile-toggle-btn');
@@ -212,24 +235,34 @@ function initApp() {
 
   // Listen to Hash Changes
   window.addEventListener('hashchange', () => {
-    const newHash = window.location.hash.replace('#', '');
-    if (newHash && newHash !== state.currentRoute && routePageMap[newHash]) {
-      navigateTo(newHash);
+    const rawNew = window.location.hash.replace('#', '');
+    const newRoute = rawNew.split('?')[0];
+    if (newRoute && routePageMap[newRoute]) {
+      navigateTo(newRoute);
     }
   });
 
-  // Initial Render of Content
-  navigateTo(state.currentRoute);
+  // Initial Render of Content (support direct URL hash like #credit-cards or #/credit-cards)
+  const initialHash = window.location.hash.replace(/^#\/?/, '').split('?')[0];
+  const startRoute = initialHash && routePageMap[initialHash] ? initialHash : 'dashboard';
+  navigateTo(startRoute);
 
-  // Welcome Toast
-  setTimeout(() => {
-    showToast(
-      'Welcome to BankDash',
-      'Electric Sapphire Blue theme active. Use the top Theme Switcher to test Dark, Indigo, and Emerald modes!',
-      'success',
-      4500
-    );
-  }, 600);
+  // Welcome Toast - Only show when refreshing/loading directly on the dashboard
+  if (state.currentRoute === 'dashboard') {
+    setTimeout(() => {
+      const isDark = state.currentTheme === 'dark';
+      showToast(
+        'Welcome to BankDash',
+        'Smoke Green & Luminous Mint theme active. Toggle Light or Dark mode anytime!',
+        'success',
+        6000,
+        {
+          actionText: isDark ? '☀️ Switch to Light' : '🌙 Switch to Dark',
+          onAction: () => cycleTheme()
+        }
+      );
+    }, 600);
+  }
 }
 
 // Start application when DOM is ready

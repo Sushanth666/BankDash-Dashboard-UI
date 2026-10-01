@@ -12,7 +12,10 @@ import { currentUser } from '../data/mockData.js';
 import { showToast } from '../components/Toast.js';
 
 export function renderSettingPage(container) {
-  let activeTab = 'profile'; // 'profile', 'preferences', 'security'
+  const hashParts = window.location.hash.split('?');
+  const hashParams = new URLSearchParams(hashParts[1] || '');
+  const urlParams = new URLSearchParams(window.location.search || '');
+  let activeTab = hashParams.get('tab') || urlParams.get('tab') || 'profile'; // 'profile', 'preferences', 'security'
 
   function updateView() {
     container.innerHTML = `
@@ -130,16 +133,7 @@ export function renderSettingPage(container) {
               </div>
               <div class="form-group">
                 <label class="form-label">Time Zone</label>
-                <div style="position: relative;">
-                  <select class="form-select" id="pref-timezone" style="width: 100%; cursor: pointer;">
-                    <option selected>(GMT-12:00) International Date Line West</option>
-                    <option>(GMT-08:00) Pacific Time (US & Canada)</option>
-                    <option>(GMT-05:00) Eastern Time (US & Canada)</option>
-                    <option>(GMT+00:00) Greenwich Mean Time</option>
-                    <option>(GMT+05:30) India Standard Time</option>
-                    <option>(GMT+09:00) Tokyo Standard Time</option>
-                  </select>
-                </div>
+                <input type="text" class="form-input" id="pref-timezone" value="${currentUser.timeZone}" placeholder="Time Zone" />
               </div>
             </div>
 

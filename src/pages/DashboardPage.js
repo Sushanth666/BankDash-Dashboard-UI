@@ -15,7 +15,7 @@ import {
   balanceHistoryData
 } from '../data/mockData.js';
 
-import { createCreditCardHtml, bindCardInteractions } from '../components/CardComponent.js';
+import { createCreditCardHtml, bindCardInteractions } from '../components/Card.js';
 import {
   renderWeeklyActivityChart,
   renderExpensePieChart,
@@ -59,7 +59,7 @@ export function renderDashboardPage(container, onNavigate) {
                   </div>
                 </div>
                 <div class="transaction-amount ${tx.amount > 0 ? 'positive' : 'negative'}">
-                  ${tx.amount > 0 ? '+' : '-'}$${Math.abs(tx.amount).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                  ${tx.amount > 0 ? '+' : '-'}$${Math.abs(tx.amount).toLocaleString()}
                 </div>
               </div>
             `).join('')}
@@ -97,24 +97,31 @@ export function renderDashboardPage(container, onNavigate) {
           <div class="section-header">
             <h2 class="section-title">Quick Transfer</h2>
           </div>
-          <div class="widget-box">
-            <div class="quick-transfer-contacts" id="quick-transfer-contacts-list">
-              ${quickTransferContacts.map(c => `
-                <div class="contact-card ${c.id === selectedContactId ? 'selected' : ''}" data-contact-id="${c.id}">
-                  <img class="contact-avatar" src="${c.avatar}" alt="${c.name}" />
-                  <span class="contact-name">${c.name}</span>
-                  <span class="contact-role">${c.role}</span>
-                </div>
-              `).join('')}
+          <div class="widget-box quick-transfer-widget">
+            <div class="quick-transfer-contacts-wrapper">
+              <div class="quick-transfer-contacts" id="quick-transfer-contacts-list">
+                ${quickTransferContacts.map(c => `
+                  <div class="contact-card ${c.id === selectedContactId ? 'selected' : ''}" data-contact-id="${c.id}">
+                    <img class="contact-avatar" src="${c.avatar}" alt="${c.name}" />
+                    <span class="contact-name">${c.name}</span>
+                    <span class="contact-role">${c.role}</span>
+                  </div>
+                `).join('')}
+              </div>
+              <button class="quick-transfer-next-btn" id="quick-transfer-next-btn" aria-label="Next contact" title="Next contact">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#718EBF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
             </div>
 
             <div class="quick-transfer-form">
               <span class="quick-transfer-label">Write Amount</span>
               <div class="quick-transfer-input-group">
-                <input type="number" id="quick-transfer-amount" class="quick-transfer-input" value="525.50" min="1" step="0.5" />
+                <input type="text" id="quick-transfer-amount" class="quick-transfer-input" value="525.50" />
                 <button id="quick-transfer-send-btn" class="quick-transfer-btn">
                   <span>Send</span>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="22" y1="2" x2="11" y2="13"></line>
                     <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                   </svg>
@@ -158,6 +165,20 @@ export function renderDashboardPage(container, onNavigate) {
   const balanceBox = container.querySelector('#balance-history-chart-box');
   renderBalanceHistoryChart(balanceBox, balanceHistoryData);
 
+  // Quick Transfer Next Button Carousel Scroll
+  const nextContactBtn = container.querySelector('#quick-transfer-next-btn');
+  const contactsScrollList = container.querySelector('#quick-transfer-contacts-list');
+  if (nextContactBtn && contactsScrollList) {
+    nextContactBtn.addEventListener('click', () => {
+      const scrollStep = 100;
+      if (contactsScrollList.scrollLeft + contactsScrollList.clientWidth >= contactsScrollList.scrollWidth - 10) {
+        contactsScrollList.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        contactsScrollList.scrollBy({ left: scrollStep, behavior: 'smooth' });
+      }
+    });
+  }
+
   // Quick Transfer Contact Click Selection
   const contactCards = container.querySelectorAll('.contact-card');
   contactCards.forEach(card => {
@@ -173,7 +194,8 @@ export function renderDashboardPage(container, onNavigate) {
   // Quick Transfer Send Action
   const sendBtn = container.querySelector('#quick-transfer-send-btn');
   const amountInput = container.querySelector('#quick-transfer-amount');
-  sendBtn.addEventListener('click', () => {
+  if (sendBtn && amountInput) {
+    sendBtn.addEventListener('click', () => {
     const amt = parseFloat(amountInput.value);
     if (!amt || amt <= 0) {
       showToast('Invalid Amount', 'Please enter a valid transfer amount.', 'error');
@@ -208,29 +230,46 @@ export function renderDashboardPage(container, onNavigate) {
         if (balEl) balEl.innerText = `$${userCards[0].balance.toLocaleString()}`;
       }
     }, 600);
-  });
+    });
+  }
 }
 
 function getTransactionIconSvg(iconType) {
-  if (iconType === 'card') {
-    return `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-      <line x1="1" y1="10" x2="23" y2="10"></line>
+  if (iconType === 'sync') {
+    // Spotify / Sync clean circular arrows (previous logo)
+    return `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="23 4 23 10 17 10"></polyline>
+      <polyline points="1 20 1 14 7 14"></polyline>
+      <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+    </svg>`;
+  } else if (iconType === 'tool') {
+    // Mobile Service / Tools clean wrench (previous logo)
+    return `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+    </svg>`;
+  } else if (iconType === 'card') {
+    // Stacked Cards logo matching Figma Recent Transactions
+    return `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="5.5" y="4" width="15" height="11" rx="2.2" />
+      <line x1="5.5" y1="8" x2="20.5" y2="8" />
+      <rect x="3" y="8.5" width="15" height="11" rx="2.2" fill="#FFF5D9" />
+      <line x1="3" y1="12.5" x2="18" y2="12.5" />
     </svg>`;
   } else if (iconType === 'paypal') {
-    return `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M10 13l2.5-10h6a4.5 4.5 0 0 1 0 9h-4.5L12 21H7l3-8z"></path>
-    </svg>`;
-  } else if (iconType === 'user') {
-    return `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-      <circle cx="12" cy="7" r="4"></circle>
+    // Exact PayPal logo from Figma asset
+    return `<img src="/assets/icons/tx-paypal.png" alt="PayPal" style="width: 100%; height: 100%; object-fit: cover; display: block;" />`;
+  } else if (iconType === 'coin') {
+    // Coin logo with inner dotted circle & dollar symbol matching Figma
+    return `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9.5"></circle>
+      <circle cx="12" cy="12" r="6.2" stroke-dasharray="1.8 1.8" stroke-width="1.3"></circle>
+      <path d="M12 8.5v7M13.5 10.2c0-.7-.6-1.1-1.5-1.1s-1.5.4-1.5 1.1 1.5.9 1.5 1.6-.6 1.2-1.5 1.2-1.5-.4-1.5-1.1" stroke-width="1.5"></path>
     </svg>`;
   } else {
-    return `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="9" cy="21" r="1"></circle>
-      <circle cx="20" cy="21" r="1"></circle>
-      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+    // User / Transfer clean silhouette (previous logo)
+    return `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+      <circle cx="12" cy="7" r="4"></circle>
     </svg>`;
   }
 }

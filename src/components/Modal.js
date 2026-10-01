@@ -58,3 +58,14 @@ export function openModal({ title, contentHtml, onConfirm, confirmText = 'Confir
   modalRoot.appendChild(backdrop);
   return { backdrop, closeModal };
 }
+
+export function closeModal() {
+  const modalRoot = document.getElementById('modal-root');
+  if (modalRoot) {
+    const backdrop = modalRoot.querySelector('.modal-backdrop');
+    if (backdrop) {
+      backdrop.style.opacity = '0';
+      setTimeout(() => backdrop.remove(), 200);
+    }
+  }
+}
