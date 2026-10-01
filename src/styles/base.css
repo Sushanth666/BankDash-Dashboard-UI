@@ -308,6 +308,50 @@ img, svg {
   }
 }
 
+@keyframes buttonShimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes avatarPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 9px rgba(5, 150, 105, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(5, 150, 105, 0);
+  }
+}
+
+@keyframes badgePulseSubtle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.92;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+    filter: drop-shadow(0 0 4px var(--primary));
+  }
+}
+
+@keyframes gearSpinSlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes borderGlowPulse {
+  0%, 100% {
+    border-color: var(--border-default);
+  }
+  50% {
+    border-color: var(--primary);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

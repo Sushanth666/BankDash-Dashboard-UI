@@ -7,6 +7,9 @@
   min-height: 100vh;
   position: relative;
   background-color: var(--bg-app);
+  background-image: var(--bg-pattern);
+  background-size: var(--bg-pattern-size);
+  background-attachment: fixed;
 }
 
 /* --------------------------------------------------------------------------
@@ -133,14 +136,14 @@
 
 .nav-item:hover {
   color: var(--primary);
-  background-color: transparent;
+  background: linear-gradient(90deg, rgba(5, 150, 105, 0.06) 0%, transparent 100%);
   transform: translateX(3px);
 }
 
 .nav-item.active {
   color: var(--primary);
   font-weight: 600;
-  background-color: transparent;
+  background: linear-gradient(90deg, var(--primary-tint) 0%, transparent 100%);
 }
 
 .nav-item.active::before {
@@ -199,6 +202,14 @@
 [data-theme="dark"] .nav-item:hover,
 [data-theme="dark"] .nav-item.active {
   color: var(--primary);
+}
+
+[data-theme="dark"] .nav-item:hover {
+  background: linear-gradient(90deg, rgba(52, 211, 153, 0.08) 0%, transparent 100%);
+}
+
+[data-theme="dark"] .nav-item.active {
+  background: linear-gradient(90deg, rgba(52, 211, 153, 0.16) 0%, transparent 100%);
 }
 
 [data-theme="dark"] .nav-item.active::before,

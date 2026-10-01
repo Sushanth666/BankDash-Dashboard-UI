@@ -83,9 +83,27 @@
   z-index: 5;
 }
 
+.credit-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--card-pattern-overlay);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.9;
+  border-radius: 25px;
+}
+
+.card-top,
+.card-middle,
+.card-footer {
+  position: relative;
+  z-index: 2;
+}
+
 .credit-card:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 36px -8px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 20px 36px -8px rgba(5, 150, 105, 0.32);
 }
 
 .credit-card:hover::before {
@@ -1821,3 +1839,97 @@
 .privilege-status-badge {
   animation: smokeGlowPulse 4s infinite ease-in-out;
 }
+
+/* Quick Transfer Contact Hover & Selection Glow */
+.contact-card .contact-avatar {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+}
+
+.contact-card:hover .contact-avatar {
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+.contact-card.selected .contact-avatar {
+  box-shadow: 0 0 0 3px var(--primary), 0 0 16px rgba(5, 150, 105, 0.4);
+  animation: avatarPulse 2.4s infinite ease-out;
+}
+
+[data-theme="dark"] .contact-card.selected .contact-avatar {
+  box-shadow: 0 0 0 3px var(--primary), 0 0 18px rgba(52, 211, 153, 0.5);
+}
+
+/* Quick Transfer Send Button paper-plane micro-animation */
+.quick-transfer-btn:hover svg {
+  transform: translateX(4px) translateY(-2px) rotate(-6deg);
+}
+
+/* Table Row Smooth Highlight without layout displacement */
+.data-table tbody tr,
+.tx-table tbody tr,
+.loans-table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.data-table tbody tr:hover,
+.tx-table tbody tr:hover,
+.loans-table tbody tr:hover {
+  background-color: var(--bg-surface-subtle);
+}
+
+/* Primary Button Ambient Shimmer & Glow on Hover */
+.btn-primary,
+.quick-transfer-btn,
+.loans-repay-btn,
+.bank-service-btn,
+.privilege-ticket-btn,
+.privilege-concierge-btn,
+.settings-save-btn {
+  background-size: 150% auto;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-position 0.5s ease, box-shadow 0.25s ease, background-color 0.2s ease;
+}
+
+.btn-primary:hover,
+.quick-transfer-btn:hover,
+.loans-repay-btn:hover,
+.bank-service-btn:hover,
+.privilege-ticket-btn:hover,
+.privilege-concierge-btn:hover,
+.settings-save-btn:hover {
+  box-shadow: 0 6px 20px var(--primary-glow);
+}
+
+/* SVG Chart Elements Interactive Micro-States */
+.chart-bar-withdraw,
+.chart-bar-deposit {
+  cursor: pointer;
+}
+
+.chart-bar-withdraw:hover,
+.chart-bar-deposit:hover {
+  filter: brightness(1.16) drop-shadow(0 0 4px rgba(16, 185, 129, 0.4));
+}
+
+.pie-slices path:hover {
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.22));
+}
+
+/* Header Avatar Glow on Hover */
+.header-user-btn:hover .user-avatar {
+  box-shadow: 0 0 0 3px var(--primary-glow), 0 4px 12px rgba(5, 150, 105, 0.18);
+}
+
+[data-theme="dark"] .header-user-btn:hover .user-avatar {
+  box-shadow: 0 0 0 3px var(--primary-glow), 0 0 16px rgba(52, 211, 153, 0.3);
+}
+
+/* Header Search Focus Glow */
+.header-search-wrap:focus-within {
+  box-shadow: 0 0 0 3px var(--primary-tint), 0 4px 14px -2px rgba(5, 150, 105, 0.12);
+  border-radius: var(--radius-full);
+}
+
+.header-search-wrap:focus-within .header-search-input {
+  border-color: var(--primary);
+}
+
