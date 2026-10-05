@@ -17,6 +17,7 @@ import {
 import { createCreditCardHtml, bindCardInteractions } from '../components/Card.js';
 import { openModal } from '../components/Modal.js';
 import { showToast } from '../components/Toast.js';
+import { animateAllCounters } from '../utils/animations.js';
 
 export function renderAccountsPage(container, onNavigate) {
   const primaryCard = userCards[0] || {
@@ -156,6 +157,21 @@ export function renderAccountsPage(container, onNavigate) {
   // Render Debit & Credit Weekly Grouped Bar Chart
   const chartBox = container.querySelector('#accounts-debit-credit-box');
   renderWeeklyDebitCreditChart(chartBox, debitCreditWeeklyData);
+
+  // Invoices interactive actions & counter animations
+  const invoiceItems = container.querySelectorAll('.accounts-invoice-item');
+  invoiceItems.forEach((item, idx) => {
+    const invData = invoicesSentData[idx];
+    if (invData) {
+      item.style.cursor = 'pointer';
+      item.setAttribute('title', `Click to view ${invData.company} invoice`);
+      item.addEventListener('click', () => {
+        showToast(`Invoice #${invData.id.toUpperCase()} for ${invData.company} ($${invData.amount}) details copied!`, 'success');
+      });
+    }
+  });
+
+  animateAllCounters(container);
 }
 
 /**

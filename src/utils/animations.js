@@ -73,7 +73,8 @@ export function animateAllCounters(container) {
     '.privilege-metric-val',
     '.investments-kpi-value',
     '.loans-kpi-value',
-    '.loans-summary-val'
+    '.loans-summary-val',
+    '.accounts-invoice-amount'
   ];
 
   const elements = container.querySelectorAll(selectors.join(', '));

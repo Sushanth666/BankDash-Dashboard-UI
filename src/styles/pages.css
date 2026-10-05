@@ -1842,7 +1842,7 @@
   color: #FE5C73;
 }
 
-/* Invoices Sent in Accounts */
+/* Invoices Sent in Accounts with High-End Animations */
 .accounts-invoices-box {
   padding: 22px 24px;
   display: flex;
@@ -1859,17 +1859,70 @@
   gap: 16px;
 }
 
+@keyframes invoiceItemEntrance {
+  0% {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes invoiceShimmer {
+  0% {
+    left: -80%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
 .accounts-invoice-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 4px 0;
+  padding: 8px 12px;
+  border-radius: 16px;
   border-bottom: none;
-  transition: transform var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+              background-color 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: invoiceItemEntrance 0.55s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+.accounts-invoice-item:nth-child(1) { animation-delay: 0.08s; }
+.accounts-invoice-item:nth-child(2) { animation-delay: 0.16s; }
+.accounts-invoice-item:nth-child(3) { animation-delay: 0.24s; }
+.accounts-invoice-item:nth-child(4) { animation-delay: 0.32s; }
+
+.accounts-invoice-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transform: skewX(-20deg);
+  pointer-events: none;
 }
 
 .accounts-invoice-item:hover {
-  transform: translateX(4px);
+  transform: translateX(6px);
+  background: rgba(16, 185, 129, 0.05);
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.08);
+}
+
+.accounts-invoice-item:hover::after {
+  animation: invoiceShimmer 0.75s ease forwards;
+}
+
+.accounts-invoice-item:active {
+  transform: translateX(3px) scale(0.99);
 }
 
 .accounts-invoice-item:last-child {
@@ -1891,6 +1944,13 @@
   justify-content: center;
   flex-shrink: 0;
   overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.35s ease;
+}
+
+.accounts-invoice-item:hover .accounts-invoice-icon {
+  transform: scale(1.1) rotate(-4deg);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
 .accounts-invoice-name {
@@ -1898,6 +1958,11 @@
   font-weight: 500;
   color: var(--text-primary);
   margin-bottom: 3px;
+  transition: color 0.2s ease;
+}
+
+.accounts-invoice-item:hover .accounts-invoice-name {
+  color: var(--text-primary);
 }
 
 .accounts-invoice-time {
@@ -1909,6 +1974,22 @@
   font-size: 1rem;
   font-weight: 500;
   color: #718EBF;
+  font-variant-numeric: tabular-nums;
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 10px;
+  transition: color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              text-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.accounts-invoice-item:hover .accounts-invoice-amount {
+  color: var(--primary);
+  background: rgba(16, 185, 129, 0.1);
+  transform: scale(1.1) translateX(-3px);
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+  font-weight: 600;
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
