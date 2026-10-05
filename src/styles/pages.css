@@ -4314,27 +4314,51 @@
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .loans-kpi-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 16px !important;
   }
   .loans-kpi-card {
-    padding: 14px 10px;
-    gap: 10px;
-    border-radius: 18px;
+    padding: 18px 20px !important;
+    gap: 16px !important;
+    border-radius: 22px !important;
+    display: flex !important;
+    align-items: center !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
   }
   .loans-kpi-icon {
-    width: 44px;
-    height: 44px;
+    width: 50px !important;
+    height: 50px !important;
+    min-width: 50px !important;
+    border-radius: 50% !important;
+    flex-shrink: 0 !important;
   }
-  .loans-kpi-icon svg {
-    width: 22px;
-    height: 22px;
+  .loans-kpi-icon img {
+    width: 50px !important;
+    height: 50px !important;
+    display: block !important;
+  }
+  .loans-kpi-info {
+    display: flex !important;
+    flex-direction: column !important;
+    min-width: 0 !important;
+    gap: 4px !important;
   }
   .loans-kpi-label {
-    font-size: 0.8125rem;
+    font-size: 0.875rem !important;
+    color: #718EBF !important;
+    font-weight: 400 !important;
+    white-space: nowrap !important;
   }
   .loans-kpi-value {
-    font-size: 1.0625rem;
+    font-size: 1.125rem !important;
+    font-weight: 700 !important;
+    color: var(--text-primary) !important;
+    white-space: nowrap !important;
+  }
+  .loans-kpi-action {
+    color: var(--primary) !important;
+    white-space: nowrap !important;
   }
   .loans-table-card {
     padding: 16px 12px 20px 12px;
