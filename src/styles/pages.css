@@ -3649,7 +3649,59 @@
   gap: 30px;
 }
 
+/* Keyframe: Staggered Entrance */
+@keyframes loanKpiFadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.008);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Card 1: Personal Loans (User Avatar Nod / Bounce) */
+@keyframes personalUserNod {
+  0%, 100% { transform: scale(1) translateY(0); }
+  25% { transform: scale(1.15) translateY(-5px); }
+  50% { transform: scale(0.96) translateY(2px); }
+  75% { transform: scale(1.08) translateY(-1px); }
+}
+
+/* Card 2: Corporate Loans (Briefcase Swing) */
+@keyframes corporateBriefcaseTilt {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  20% { transform: rotate(-10deg) scale(1.15); }
+  45% { transform: rotate(10deg) scale(1.15); }
+  70% { transform: rotate(-5deg) scale(1.08); }
+  85% { transform: rotate(3deg) scale(1.04); }
+}
+
+/* Card 3: Business Loans (Bar Surge Pulse) */
+@keyframes businessGrowthPulse {
+  0%, 100% { transform: scale(1) translateY(0); }
+  30% { transform: scale(1.18) translateY(-6px); }
+  60% { transform: scale(0.95) translateY(2px); }
+  85% { transform: scale(1.1) translateY(-2px); }
+}
+
+/* Card 4: Custom Loans (Crossed Tools Click / Wiggle) */
+@keyframes customToolsWiggle {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  20% { transform: rotate(-14deg) scale(1.18); }
+  40% { transform: rotate(14deg) scale(1.18); }
+  60% { transform: rotate(-7deg) scale(1.1); }
+  80% { transform: rotate(4deg) scale(1.05); }
+}
+
 .loans-kpi-card {
+  position: relative;
+  overflow: hidden;
   background-color: var(--bg-surface);
   border: 1px solid var(--border-default);
   border-radius: 25px;
@@ -3658,12 +3710,44 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  animation: loanKpiFadeSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+  will-change: transform, box-shadow;
+}
+
+/* Staggered entrance delays */
+.loans-kpi-card:nth-child(1) { animation-delay: 0.04s; }
+.loans-kpi-card:nth-child(2) { animation-delay: 0.12s; }
+.loans-kpi-card:nth-child(3) { animation-delay: 0.20s; }
+.loans-kpi-card:nth-child(4) { animation-delay: 0.28s; }
+
+/* Metallic Shimmer Sweep Light Beam on Hover */
+.loans-kpi-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 100%
+  );
+  transform: skewX(-22deg);
+  pointer-events: none;
+  transition: left 0.75s ease-in-out;
 }
 
 .loans-kpi-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.08);
+  transform: translateY(-5px);
+  border-color: rgba(16, 185, 129, 0.45);
+  box-shadow: 0 16px 32px -4px rgba(5, 150, 105, 0.14), 0 4px 12px -2px rgba(0, 0, 0, 0.04);
+}
+
+.loans-kpi-card:hover::after {
+  left: 170%;
 }
 
 .loans-kpi-icon {
@@ -3674,6 +3758,36 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+}
+
+.loans-kpi-card:hover .loans-kpi-icon {
+  transform: scale(1.08);
+  box-shadow: 0 6px 16px -2px rgba(5, 150, 105, 0.2);
+}
+
+/* Card 1: Personal Loans icon animation on hover */
+.loans-kpi-card-user:hover .loan-icon-user,
+.loans-kpi-card:nth-child(1):hover .loan-icon-img {
+  animation: personalUserNod 0.75s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Card 2: Corporate Loans icon animation on hover */
+.loans-kpi-card-briefcase:hover .loan-icon-briefcase,
+.loans-kpi-card:nth-child(2):hover .loan-icon-img {
+  animation: corporateBriefcaseTilt 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Card 3: Business Loans icon animation on hover */
+.loans-kpi-card-chart:hover .loan-icon-chart,
+.loans-kpi-card:nth-child(3):hover .loan-icon-img {
+  animation: businessGrowthPulse 0.75s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Card 4: Custom Loans icon animation on hover */
+.loans-kpi-card-tool:hover .loan-icon-tool,
+.loans-kpi-card:nth-child(4):hover .loan-icon-img {
+  animation: customToolsWiggle 0.85s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .loans-kpi-info {
@@ -3691,9 +3805,30 @@
 
 .loans-kpi-value {
   font-size: 1.375rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-primary);
   white-space: nowrap;
+  letter-spacing: -0.01em;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.loans-kpi-card:hover .loans-kpi-value {
+  color: var(--primary);
+  transform: translateX(2px);
+}
+
+/* Custom Loans actionable value "Choose Money" */
+.loans-kpi-action {
+  color: var(--primary);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.loans-kpi-card:hover .loans-kpi-action {
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 /* Active Loans Overview Table */

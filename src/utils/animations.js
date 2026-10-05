@@ -72,6 +72,7 @@ export function animateAllCounters(container) {
     '.privilege-metric-value',
     '.privilege-metric-val',
     '.investments-kpi-value',
+    '.loans-kpi-value',
     '.loans-summary-val'
   ];
 
