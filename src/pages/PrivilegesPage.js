@@ -523,6 +523,8 @@ export function renderPrivilegesPage(container) {
           }
         });
       });
+    }
+
     // Trigger counter tickers on metrics
     animateAllCounters(container);
   }
