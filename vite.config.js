@@ -1,3 +1,4 @@
+// BankDash Dashboard UI - Vite Configuration
 import { defineConfig } from 'vite';
 
 export default defineConfig({

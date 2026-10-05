@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="public/assets/logo.svg" alt="BankDash Logo" width="280" />
+</p>
+
 # BankDash — Modern Fintech & Smart Banking Dashboard UI
 
 A state-of-the-art, responsive banking and fintech admin dashboard UI based on the **BankDash Dashboard UI Kit**, engineered with an ultra-modern **"Smoke Green & Luminous Mint"** design system, full interactivity, accessible pure SVG data visualizations, complete module implementation, and seamless responsiveness across all screen sizes.
@@ -36,13 +40,13 @@ A state-of-the-art, responsive banking and fintech admin dashboard UI based on t
 BankDash Dashboard UI/
 ├── public/                       # Static public assets served directly
 │   ├── assets/
+│   │   ├── logo.svg              # Brand vector logo (dual theme)
+│   │   ├── avatar.png            # Current user profile avatar
 │   │   ├── avatars/              # Contact and quick-transfer avatars
-│   │   ├── icons/                # Navigation, stock, and KPI icons
-│   │   ├── logo.png              # Brand light mode logo
-│   │   ├── logo-dark.png         # Brand dark mode logo
-│   │   └── logo-icon.png         # High-resolution smoke green app icon
+│   │   └── icons/                # Navigation, stock, and KPI icons
 │   ├── favicon.svg               # Vector SVG browser tab favicon
-│   └── favicon.png               # High-res PNG browser tab favicon
+│   ├── favicon.png               # High-res PNG browser tab favicon
+│   └── favicon.ico               # Standard browser tab icon
 │
 ├── src/                          # Core frontend application source code
 │   ├── components/               # Reusable UI & Layout Components
@@ -83,7 +87,8 @@ BankDash Dashboard UI/
 ├── screenshots/                  # High-resolution multi-device screenshot captures
 │   ├── desktop/                  # 11 Desktop view screenshots (1920×1080)
 │   ├── tablet/                   # 11 Tablet view screenshots (963px iPad)
-│   └── mobile/                   # 11 Mobile view screenshots (357px Smartphone)
+│   ├── mobile/                   # 11 Mobile view screenshots (357px Smartphone)
+│   └── locators/                 # Visual animation & interaction locator guides for all 9 pages
 │
 ├── index.html                    # Single HTML5 entrypoint
 ├── vite.config.js                # Vite configuration
@@ -121,6 +126,7 @@ BankDash is fully responsive and meticulously optimized across desktop, tablet, 
 - [🖥️ 1. Desktop View Screenshots (1920 × 1080)](#-1-desktop-view-screenshots)
 - [📱 2. Tablet View Screenshots (iPad / 963px)](#-2-tablet-view-screenshots)
 - [📲 3. Mobile View Screenshots (Smartphone / 357px)](#-3-mobile-view-screenshots)
+- [🎯 4. Interactive Animation & Feature Locators](#-4-interactive-animation--feature-locators)
 
 ---
 
@@ -251,6 +257,24 @@ Captured at **357px (Smartphone / Portrait Viewport)**, demonstrating the compac
 | 11. Setting — Security & 2FA |
 | :---: |
 | <img src="screenshots/mobile/11-setting-security.png" width="340" alt="Mobile Setting Security" /><br><sub><b>11. Security & 2FA</b></sub> |
+
+---
+
+### 🎯 4. Interactive Animation & Feature Locators
+
+Dedicated visual locator guides mapping all key interactive zones, micro-interactions, hardware-accelerated transforms, and dynamic animation triggers across every single application view. Located in the separate [`screenshots/locators/`](screenshots/locators/) directory:
+
+| Module Page | High-Resolution Locator Diagram | Key Highlights & Interactive Features |
+| :--- | :--- | :--- |
+| **01. Dashboard** | [01-dashboard-locator.svg](screenshots/locators/01-dashboard-locator.svg) | 3D Parallax Tilt, Row Hover Glide, Weekly Bar Spring, Donut Pop, Confetti Burst & Radar Beacon |
+| **02. Transactions** | [02-transactions-locator.svg](screenshots/locators/02-transactions-locator.svg) | Dual Card Tilt, Monthly Expense Stagger, Sliding Category Tabs, Debounced Search & Receipt Modal |
+| **03. Accounts** | [03-accounts-locator.svg](screenshots/locators/03-accounts-locator.svg) | KPI Rolling Counters, Transaction Feed Glide, Holographic Card Glare, Dual Bar Spring & Invoices |
+| **04. Investments** | [04-investments-locator.svg](screenshots/locators/04-investments-locator.svg) | Valuation Tickers, Gradient Spline Area Shimmer, Peak Line Beacon & Stock Buy/Sell Modals |
+| **05. Credit Cards** | [05-credit-cards-locator.svg](screenshots/locators/05-credit-cards-locator.svg) | 3-Card Multi-Tier 3D Carousel, Donut Slice Pop-Out, Live 2×2 Card Form & Security Toggles |
+| **06. Loans** | [06-loans-locator.svg](screenshots/locators/06-loans-locator.svg) | Loan Summary Tickers, Full Table Row Hover Glide, Repay Button Modal Drawer & Grand Total |
+| **07. Services** | [07-services-locator.svg](screenshots/locators/07-services-locator.svg) | Highlight Cards Soft Elevation, Squircle Icon Zoom, Service Rows & View Details Modal |
+| **08. My Privileges** | [08-privileges-locator.svg](screenshots/locators/08-privileges-locator.svg) | 3D Luxury Metallic Card, Foil Shimmer, Tier Selector, Confetti Voucher Redemption & QR Pass |
+| **09. Settings** | [09-settings-locator.svg](screenshots/locators/09-settings-locator.svg) | Fluid Tab Switcher, Photo Upload Preview, 10-Field Form Focus Glow & 2FA Switch Animations |
 
 ---
 

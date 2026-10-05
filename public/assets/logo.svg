@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" fill="none" width="220" height="48">
+  <defs>
+    <linearGradient id="logoBackGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#047857" />
+      <stop offset="100%" stop-color="#022C22" />
+    </linearGradient>
+    <linearGradient id="logoFrontGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <filter id="logoShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#059669" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <style>
+    .logo-text-bank { fill: #1A332B; font-weight: 800; }
+    .logo-text-dash { fill: #059669; font-weight: 800; }
+    .logo-text-dot { fill: #10B981; font-weight: 900; }
+    @media (prefers-color-scheme: dark) {
+      .logo-text-bank { fill: #F0FDF4; }
+      .logo-text-dash { fill: #34D399; }
+      .logo-text-dot { fill: #34D399; }
+    }
+  </style>
+
+  <g transform="translate(6, 6) scale(1.18)">
+    <!-- Back Card (Forest Pine) -->
+    <rect x="7" y="4.5" width="24" height="17" rx="3.5" fill="url(#logoBackGrad)" stroke="#34D399" stroke-width="1.8" />
+    <line x1="7" y1="8.5" x2="31" y2="8.5" stroke="#022C22" stroke-width="2" />
+
+    <!-- Front Card (Luminous Emerald & Jade Mint) -->
+    <g filter="url(#logoShadow)">
+      <rect x="2.5" y="9.5" width="26" height="19" rx="3.5" fill="url(#logoFrontGrad)" stroke="#FFFFFF" stroke-width="1.8" />
+      
+      <!-- Magnetic Stripe -->
+      <rect x="2.5" y="13.5" width="26" height="3.2" fill="#047857" />
+      
+      <!-- EMV Chip -->
+      <rect x="5.5" y="19" width="6.5" height="5" rx="1" fill="#FBBF24" stroke="#B45309" stroke-width="0.5" />
+      <line x1="8.75" y1="19" x2="8.75" y2="24" stroke="#B45309" stroke-width="0.5" />
+      <line x1="5.5" y1="21.5" x2="12" y2="21.5" stroke="#B45309" stroke-width="0.5" />
+
+      <!-- Contactless Wave -->
+      <path d="M19 19.5 A 3 3 0 0 1 19 23.5" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.95" />
+      <path d="M21 18.5 A 5 5 0 0 1 21 24.5" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.95" />
+    </g>
+
+    <!-- Brand Typography -->
+    <text x="38" y="24.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Inter', Helvetica, Arial, sans-serif" font-size="19" letter-spacing="-0.4">
+      <tspan class="logo-text-bank">Bank</tspan><tspan class="logo-text-dash">Dash</tspan><tspan class="logo-text-dot">.</tspan>
+    </text>
+  </g>
+</svg>

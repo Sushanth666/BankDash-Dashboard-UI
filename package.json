@@ -1,7 +1,7 @@
 {
   "name": "bankdash-dashboard-ui",
   "version": "1.0.0",
-  "description": "BankDash Fintech Dashboard UI with Modern Theme",
+  "description": "BankDash Fintech & Smart Banking Dashboard UI",
   "type": "module",
   "scripts": {
     "dev": "vite",

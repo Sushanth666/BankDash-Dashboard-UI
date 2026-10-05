@@ -267,3 +267,4 @@ if (document.readyState === 'loading') {
 } else {
   initApp();
 }
+// BankDash Application Bootstrap Complete

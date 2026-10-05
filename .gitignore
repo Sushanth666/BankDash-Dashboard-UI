@@ -1,4 +1,9 @@
+# Dependencies
 node_modules/
+
+# Production build artifacts
 dist/
+
+# OS and log files
 .DS_Store
 *.log
