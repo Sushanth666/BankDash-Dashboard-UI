@@ -7,6 +7,7 @@
    ========================================================================== */
 
 import { investmentsData } from '../data/mockData.js';
+import { animateAllCounters } from '../utils/animations.js';
 
 export function renderInvestmentsPage(container) {
   container.innerHTML = `
@@ -129,6 +130,9 @@ export function renderInvestmentsPage(container) {
   // Render Right Chart: Monthly Revenue
   const revenueBox = container.querySelector('#monthly-revenue-box');
   renderMonthlyRevenueWaveChart(revenueBox, investmentsData.monthlyRevenueCurve);
+
+  // Trigger smooth numeric counter animations on KPI values
+  animateAllCounters(container);
 }
 
 /**
@@ -328,14 +332,14 @@ function renderMonthlyRevenueWaveChart(container, data) {
 function getInvestmentsKpiIconSvg(iconType) {
   if (iconType === 'bag') {
     return `
-      <svg width="44" height="44" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="kpi-icon-svg kpi-icon-bag" width="44" height="44" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M11.5 10.5 C10.8 9.2 9.2 7.8 10 6.6 C10.8 5.6 12 7.2 12.8 8.2 C13.4 6.8 14.2 5 15 5 C15.8 5 16.6 6.8 17.2 8.2 C18 7.2 19.2 5.6 20 6.6 C20.8 7.8 19.2 9.2 18.5 10.5 C21.6 11.8 24 14.5 24 18 C24 22.5 20.2 25.5 15 25.5 C9.8 25.5 6 22.5 6 18 C6 14.5 8.4 11.8 11.5 10.5 Z" fill="#16DBCC"/>
         <text x="15" y="18.5" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="800" fill="#FFFFFF" text-anchor="middle" dominant-baseline="central">$</text>
       </svg>
     `;
   } else if (iconType === 'pie-split') {
     return `
-      <svg width="44" height="44" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="kpi-icon-svg kpi-icon-pie" width="44" height="44" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M 16 3.5 A 11.5 11.5 0 0 1 16 26.5 Z" fill="#FF82AC"/>
         <text x="21" y="15" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" font-weight="800" fill="#FFFFFF" text-anchor="middle" dominant-baseline="central">$</text>
         <path d="M 14 3.5 A 11.5 11.5 0 0 0 3.5 14 L 14 14 Z" fill="#FF82AC"/>
@@ -345,7 +349,7 @@ function getInvestmentsKpiIconSvg(iconType) {
     `;
   } else {
     return `
-      <svg width="44" height="44" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="kpi-icon-svg kpi-icon-cycle" width="44" height="44" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M 8.5 14.5 C 8.5 12 10 11 13 11 L 17.5 11" stroke="var(--primary)" stroke-width="3.4" stroke-linecap="round"/>
         <polygon points="16.5,6.8 23,11 16.5,15.2" fill="var(--primary)" stroke="var(--primary)" stroke-width="1" stroke-linejoin="round"/>
         <path d="M 21.5 15.5 C 21.5 18 20 19 17 19 L 12.5 19" stroke="var(--primary)" stroke-width="3.4" stroke-linecap="round"/>

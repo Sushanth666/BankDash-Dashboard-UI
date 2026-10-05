@@ -21,6 +21,7 @@ export function animateCounter(element, duration = 850) {
 
   const prefix = match[1] || '';
   const numClean = match[2].replace(/,/g, '');
+  const hasPlusSign = numClean.startsWith('+');
   const suffix = match[3] || '';
   const targetVal = parseFloat(numClean);
   if (isNaN(targetVal) || targetVal === 0) return;
@@ -40,9 +41,9 @@ export function animateCounter(element, duration = 850) {
 
     let formattedVal;
     if (isDecimal) {
-      formattedVal = currentVal.toFixed(decimalPlaces);
+      formattedVal = (hasPlusSign ? '+' : '') + currentVal.toFixed(decimalPlaces);
     } else {
-      formattedVal = Math.round(currentVal).toLocaleString();
+      formattedVal = (hasPlusSign ? '+' : '') + Math.round(currentVal).toLocaleString();
     }
 
     element.textContent = `${prefix}${formattedVal}${suffix}`;
@@ -69,6 +70,8 @@ export function animateAllCounters(container) {
     '.stat-value',
     '.privilege-status-points',
     '.privilege-metric-value',
+    '.privilege-metric-val',
+    '.investments-kpi-value',
     '.loans-summary-val'
   ];
 
