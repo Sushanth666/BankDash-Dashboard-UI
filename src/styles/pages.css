@@ -1186,12 +1186,7 @@
 
 .tx-amount-cell {
   font-variant-numeric: tabular-nums;
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 8px;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              text-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
 }
 
 .tx-amount-cell.positive {
@@ -1204,17 +1199,11 @@
   font-weight: 600 !important;
 }
 
-.tx-clean-table tbody tr:hover .tx-amount-cell {
-  transform: scale(1.1) translateX(2px);
-}
-
 .tx-clean-table tbody tr:hover .tx-amount-cell.positive {
-  background: rgba(22, 219, 170, 0.12);
   text-shadow: 0 0 10px rgba(22, 219, 170, 0.35);
 }
 
 .tx-clean-table tbody tr:hover .tx-amount-cell.negative {
-  background: rgba(254, 92, 115, 0.12);
   text-shadow: 0 0 10px rgba(254, 92, 115, 0.35);
 }
 
@@ -1388,7 +1377,8 @@
   }
   .tx-table-card-box {
     padding: 6px 16px 14px;
-    overflow-x: hidden;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
   /* Fix table column widths and font sizes for tablet */
   .tx-clean-table {
@@ -1397,11 +1387,12 @@
   }
   .tx-clean-table th,
   .tx-clean-table td {
-    padding: 12px 8px;
-    font-size: 0.8rem;
+    padding: 12px 6px;
+    font-size: 0.8125rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    vertical-align: middle;
   }
   /* Hide Transaction ID column in tablet — saves space */
   .tx-clean-table th:nth-child(2),
@@ -1410,17 +1401,25 @@
   }
   /* Column widths: Description | Category | Card | Date | Amount | Download */
   .tx-clean-table th:nth-child(1),
-  .tx-clean-table td:nth-child(1) { width: 28%; }
+  .tx-clean-table td:nth-child(1) { width: 25%; }
   .tx-clean-table th:nth-child(3),
   .tx-clean-table td:nth-child(3) { width: 13%; }
   .tx-clean-table th:nth-child(4),
-  .tx-clean-table td:nth-child(4) { width: 15%; }
+  .tx-clean-table td:nth-child(4) { width: 13%; }
   .tx-clean-table th:nth-child(5),
-  .tx-clean-table td:nth-child(5) { width: 18%; }
+  .tx-clean-table td:nth-child(5) { width: 17%; }
   .tx-clean-table th:nth-child(6),
-  .tx-clean-table td:nth-child(6) { width: 13%; }
+  .tx-clean-table td:nth-child(6) { width: 18%; }
   .tx-clean-table th:nth-child(7),
-  .tx-clean-table td:nth-child(7) { width: 13%; }
+  .tx-clean-table td:nth-child(7) { width: 14%; }
+  /* Ensure Amount numbers are always fully visible on tablet without clipping */
+  .tx-clean-table td.tx-amount-cell {
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    font-size: 0.8125rem !important;
+    font-weight: 600 !important;
+  }
   /* Compact description cell */
   .tx-desc-cell {
     gap: 8px;
