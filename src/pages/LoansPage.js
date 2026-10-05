@@ -16,14 +16,14 @@ export function renderLoansPage(container) {
     <div class="loans-page-container">
       <!-- ROW 1: 4 LOAN KPI SUMMARY CARDS -->
       <section class="loans-kpi-grid">
-        ${loansData.kpis.map((kpi, idx) => `
-          <div class="loans-kpi-card loans-kpi-card-${kpi.iconType}">
+        ${loansData.kpis.map(kpi => `
+          <div class="loans-kpi-card">
             <div class="loans-kpi-icon" style="background-color: transparent;">
               ${getLoanKpiIconSvg(kpi.iconType)}
             </div>
             <div class="loans-kpi-info">
               <span class="loans-kpi-label">${kpi.label}</span>
-              <span class="loans-kpi-value ${kpi.value.includes('$') ? '' : 'loans-kpi-action'}">${kpi.value}</span>
+              <span class="loans-kpi-value">${kpi.value}</span>
             </div>
           </div>
         `).join('')}
@@ -192,5 +192,5 @@ function getLoanKpiIconSvg(type) {
     'tool': '/assets/icons/loan-custom.png',
   };
   const src = iconMap[type] || '/assets/icons/loan-personal.png';
-  return `<img src="${src}?v=1" alt="${type}" class="loan-icon-img loan-icon-${type}" style="width: 100%; height: 100%; object-fit: contain; display: block;" />`;
+  return `<img src="${src}?v=1" alt="${type}" style="width: 100%; height: 100%; object-fit: contain; display: block;" />`;
 }
