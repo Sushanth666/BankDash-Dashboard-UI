@@ -672,6 +672,7 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    position: relative;
   }
 
   .header-left {
@@ -681,8 +682,18 @@
   }
 
   .page-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    text-align: center;
+    white-space: nowrap;
     font-size: 1.25rem;
     font-weight: 700;
+    pointer-events: none;
+    max-width: calc(100% - 100px);
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .header-right {
@@ -754,6 +765,7 @@
 
   .page-title {
     font-size: 1.125rem;
+    max-width: calc(100% - 90px);
   }
 
   .header-right {
