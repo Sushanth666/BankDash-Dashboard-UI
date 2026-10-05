@@ -13,6 +13,7 @@
 import { privilegesData, currentUser } from '../data/mockData.js';
 import { showToast } from '../components/Toast.js';
 import { openModal } from '../components/Modal.js';
+import { animateAllCounters } from '../utils/animations.js';
 
 export function renderPrivilegesPage(container) {
   let selectedCategory = 'all';
@@ -178,9 +179,9 @@ export function renderPrivilegesPage(container) {
              ==================================================================== -->
         <section class="privilege-metrics-strip">
           
-          <div class="privilege-metric-box">
+          <div class="privilege-metric-box privilege-metric-box-rewards">
             <div class="privilege-metric-icon" style="background-color: var(--primary-light); color: var(--primary);">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="privilege-icon-svg privilege-icon-star" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
               </svg>
             </div>
@@ -190,9 +191,9 @@ export function renderPrivilegesPage(container) {
             </div>
           </div>
 
-          <div class="privilege-metric-box">
+          <div class="privilege-metric-box privilege-metric-box-savings">
             <div class="privilege-metric-icon" style="background-color: #FFF5D9; color: #FFBB38;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="privilege-icon-svg privilege-icon-dollar" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
               </svg>
             </div>
@@ -202,9 +203,9 @@ export function renderPrivilegesPage(container) {
             </div>
           </div>
 
-          <div class="privilege-metric-box">
+          <div class="privilege-metric-box privilege-metric-box-lifetime">
             <div class="privilege-metric-icon" style="background-color: var(--primary-light); color: var(--primary);">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="privilege-icon-svg privilege-icon-trend" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
                 <polyline points="17 6 23 6 23 12"/>
               </svg>
@@ -215,15 +216,17 @@ export function renderPrivilegesPage(container) {
             </div>
           </div>
 
-          <div class="privilege-metric-box">
+          <div class="privilege-metric-box privilege-metric-box-banker">
             <div class="privilege-metric-icon" style="background-color: #DCFAF8; color: #16DBCC;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="privilege-icon-svg privilege-icon-bell" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3zm0 0v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-2"/>
               </svg>
             </div>
             <div>
               <div class="privilege-metric-val" style="font-size: 1.15rem;">Private Banker</div>
-              <div class="privilege-metric-lbl" style="color: #10B981; font-weight: 600;">● Online • Concierge 24/7</div>
+              <div class="privilege-metric-lbl privilege-banker-status">
+                <span class="privilege-status-dot"></span>Online • Concierge 24/7
+              </div>
             </div>
           </div>
 
@@ -520,7 +523,8 @@ export function renderPrivilegesPage(container) {
           }
         });
       });
-    }
+    // Trigger counter tickers on metrics
+    animateAllCounters(container);
   }
 
   updateView();

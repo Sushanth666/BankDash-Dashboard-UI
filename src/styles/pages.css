@@ -4911,6 +4911,69 @@
   }
 }
 
+/* Keyframe: Staggered Entrance */
+@keyframes privilegeCardFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.008);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Card 1: Star Sparkle Spin Pop */
+@keyframes starSparkleSpin {
+  0% { transform: rotate(0deg) scale(1); }
+  35% { transform: rotate(180deg) scale(1.28); }
+  70% { transform: rotate(370deg) scale(0.94); }
+  100% { transform: rotate(360deg) scale(1.12); }
+}
+
+/* Card 2: Dollar Buoyant Bounce */
+@keyframes dollarBouncePop {
+  0%, 100% { transform: scale(1) translateY(0); }
+  25% { transform: scale(1.24) translateY(-4px) rotate(-6deg); }
+  55% { transform: scale(0.95) translateY(2px) rotate(4deg); }
+  80% { transform: scale(1.1) translateY(-1px); }
+}
+
+/* Card 3: Upward Trend Arrow Surge */
+@keyframes trendArrowSurge {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  35% { transform: translate(3px, -5px) scale(1.22); }
+  70% { transform: translate(-1px, 2px) scale(0.96); }
+  100% { transform: translate(2px, -2px) scale(1.1); }
+}
+
+/* Card 4: Concierge Desk Bell Ring */
+@keyframes conciergeBellRing {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  15% { transform: rotate(-14deg) scale(1.15); }
+  30% { transform: rotate(14deg) scale(1.15); }
+  45% { transform: rotate(-10deg) scale(1.1); }
+  60% { transform: rotate(10deg) scale(1.1); }
+  75% { transform: rotate(-4deg) scale(1.05); }
+  90% { transform: rotate(2deg) scale(1.02); }
+}
+
+/* Live Online Status Dot Pulse */
+@keyframes onlineDotBreathe {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+  }
+  50% {
+    transform: scale(1.25);
+    box-shadow: 0 0 0 5px rgba(16, 185, 129, 0);
+  }
+}
+
 .privilege-metric-box {
   background-color: var(--bg-surface);
   border: 1px solid var(--border-default);
@@ -4920,15 +4983,46 @@
   display: flex;
   align-items: center;
   gap: 16px;
+  animation: privilegeCardFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
   position: relative;
   overflow: hidden;
+  will-change: transform, box-shadow;
+}
+
+/* Staggered entrance delays */
+.privilege-metric-box:nth-child(1) { animation-delay: 0.04s; }
+.privilege-metric-box:nth-child(2) { animation-delay: 0.12s; }
+.privilege-metric-box:nth-child(3) { animation-delay: 0.20s; }
+.privilege-metric-box:nth-child(4) { animation-delay: 0.28s; }
+
+/* Metallic Shimmer Sweep Light Beam on Hover */
+.privilege-metric-box::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 100%
+  );
+  transform: skewX(-22deg);
+  pointer-events: none;
+  transition: left 0.75s ease-in-out;
 }
 
 .privilege-metric-box:hover {
-  transform: translateY(-4px);
-  border-color: rgba(16, 185, 129, 0.4);
-  box-shadow: 0 14px 28px -4px rgba(5, 150, 105, 0.12), 0 4px 10px rgba(0, 0, 0, 0.04);
+  transform: translateY(-5px);
+  border-color: rgba(16, 185, 129, 0.45);
+  box-shadow: 0 16px 32px -4px rgba(5, 150, 105, 0.14), 0 4px 12px -2px rgba(0, 0, 0, 0.04);
+}
+
+.privilege-metric-box:hover::after {
+  left: 170%;
 }
 
 .privilege-metric-icon {
@@ -4939,19 +5033,72 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+}
+
+.privilege-metric-box:hover .privilege-metric-icon {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px -2px rgba(5, 150, 105, 0.2);
+}
+
+/* Card 1: Star sparkle spin on hover */
+.privilege-metric-box-rewards:hover .privilege-icon-star,
+.privilege-metric-box:nth-child(1):hover .privilege-icon-star {
+  animation: starSparkleSpin 0.75s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Card 2: Dollar bounce pop on hover */
+.privilege-metric-box-savings:hover .privilege-icon-dollar,
+.privilege-metric-box:nth-child(2):hover .privilege-icon-dollar {
+  animation: dollarBouncePop 0.75s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Card 3: Trend arrow surge on hover */
+.privilege-metric-box-lifetime:hover .privilege-icon-trend,
+.privilege-metric-box:nth-child(3):hover .privilege-icon-trend {
+  animation: trendArrowSurge 0.75s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Card 4: Concierge bell ring on hover */
+.privilege-metric-box-banker:hover .privilege-icon-bell,
+.privilege-metric-box:nth-child(4):hover .privilege-icon-bell {
+  animation: conciergeBellRing 0.85s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .privilege-metric-val {
   font-size: 1.35rem;
   font-weight: 800;
-  color: #232323;
+  color: var(--text-primary);
   line-height: 1.2;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.privilege-metric-box:hover .privilege-metric-val {
+  color: var(--primary);
+  transform: translateX(2px);
 }
 
 .privilege-metric-lbl {
   font-size: 0.8125rem;
-  color: #718EBF;
+  color: var(--text-muted);
   margin-top: 3px;
+}
+
+.privilege-banker-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #10B981 !important;
+  font-weight: 600;
+}
+
+.privilege-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #10B981;
+  display: inline-block;
+  animation: onlineDotBreathe 2s infinite ease-in-out;
 }
 
 /* Filter Tabs Navigation */
