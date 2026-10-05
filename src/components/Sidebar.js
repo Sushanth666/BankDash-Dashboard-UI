@@ -65,24 +65,46 @@ export function renderSidebar(container, activeId, onNavigate) {
   container.innerHTML = `
     <div class="sidebar-header">
       <a href="#dashboard" class="sidebar-logo" aria-label="BankDash">
-        <svg class="sidebar-logo-svg" viewBox="0 0 165 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="BankDash">
-          <!-- Back Card -->
-          <path d="M8 5.5h20a3.5 3.5 0 0 1 3.5 3.5v9a3.5 3.5 0 0 1-3.5 3.5" stroke="var(--primary)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" />
-          
-          <!-- Front Card -->
-          <rect x="2.5" y="8.5" width="27" height="19.5" rx="3.5" fill="#FFFFFF" stroke="var(--primary)" stroke-width="2.8" stroke-linejoin="round" />
-          
-          <!-- Front Card Stripe -->
-          <line x1="6" y1="13" x2="25.5" y2="13" stroke="var(--primary)" stroke-width="2.4" stroke-linecap="round" />
-          
-          <!-- Front Card Left Margin -->
-          <line x1="5.5" y1="14" x2="5.5" y2="24" stroke="#CBD5E1" stroke-width="1.8" stroke-linecap="round" />
-          
-          <!-- Front Card Smoke Mint Accent Chip -->
-          <rect x="13.5" y="20" width="8.5" height="3.5" rx="1.75" fill="#10B981" />
+        <svg class="sidebar-logo-svg" viewBox="0 0 175 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="BankDash">
+          <defs>
+            <linearGradient id="sidebarLogoBackGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#047857" />
+              <stop offset="100%" stop-color="#022C22" />
+            </linearGradient>
+            <linearGradient id="sidebarLogoFrontGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#10B981" />
+              <stop offset="100%" stop-color="#059669" />
+            </linearGradient>
+            <filter id="sidebarLogoShadow" x="-10%" y="-10%" width="120%" height="120%">
+              <feDropShadow dx="0" dy="2" stdDeviation="1.5" flood-color="#059669" flood-opacity="0.25" />
+            </filter>
+          </defs>
+
+          <!-- Back Card (Forest Pine) -->
+          <rect x="7" y="4.5" width="24" height="17" rx="3.5" fill="url(#sidebarLogoBackGrad)" stroke="#34D399" stroke-width="1.8" />
+          <line x1="7" y1="8.5" x2="31" y2="8.5" stroke="#022C22" stroke-width="2" />
+
+          <!-- Front Card (Vibrant Emerald & Jade Mint) -->
+          <g filter="url(#sidebarLogoShadow)">
+            <rect x="2.5" y="9.5" width="26" height="19" rx="3.5" fill="url(#sidebarLogoFrontGrad)" stroke="#FFFFFF" stroke-width="1.8" />
+            
+            <!-- Stripe -->
+            <rect x="2.5" y="13.5" width="26" height="3.2" fill="#047857" />
+            
+            <!-- EMV Chip -->
+            <rect x="5.5" y="19" width="6.5" height="5" rx="1" fill="#FBBF24" stroke="#B45309" stroke-width="0.5" />
+            <line x1="8.75" y1="19" x2="8.75" y2="24" stroke="#B45309" stroke-width="0.5" />
+            <line x1="5.5" y1="21.5" x2="12" y2="21.5" stroke="#B45309" stroke-width="0.5" />
+
+            <!-- Wave contactless indicator -->
+            <path d="M19 19.5 A 3 3 0 0 1 19 23.5" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.9" />
+            <path d="M21 18.5 A 5 5 0 0 1 21 24.5" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.9" />
+          </g>
 
           <!-- BankDash. text -->
-          <text x="36" y="24.5" class="logo-text">BankDash.</text>
+          <text x="38" y="25" class="logo-text">
+            <tspan class="logo-text-bank">Bank</tspan><tspan class="logo-text-dash">Dash</tspan><tspan class="logo-text-dot">.</tspan>
+          </text>
         </svg>
       </a>
       <button id="sidebar-close-btn" class="sidebar-close-btn" aria-label="Close sidebar">

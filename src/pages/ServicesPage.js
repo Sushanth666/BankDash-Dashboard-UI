@@ -131,8 +131,8 @@ function getServiceHighlightSvg(type) {
     // Life Insurance: Solid blue shield with white heart outline and white medical cross inside (Image 3 & 4)
     return `
       <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Blue Shield Body -->
-        <path d="M15 4.5L23.5 7.5V14.5C23.5 20.2 19.8 23.5 15 25.5C10.2 23.5 6.5 20.2 6.5 14.5V7.5L15 4.5Z" fill="#2D60FF"/>
+        <!-- Shield Body (Theme Primary) -->
+        <path d="M15 4.5L23.5 7.5V14.5C23.5 20.2 19.8 23.5 15 25.5C10.2 23.5 6.5 20.2 6.5 14.5V7.5L15 4.5Z" fill="var(--primary)"/>
         <!-- White Heart Outline -->
         <path d="M15 19.8C15 19.8 10 16.5 10 13.2C10 11.2 11.5 10 13.2 10C14.2 10 14.8 10.6 15 10.8C15.2 10.6 15.8 10 16.8 10C18.5 10 20 11.2 20 13.2C20 16.5 15 19.8 15 19.8Z" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
         <!-- Centered White Cross -->

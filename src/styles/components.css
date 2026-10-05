@@ -1024,7 +1024,7 @@
   color: var(--primary);
   background-color: var(--primary-light);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(45, 96, 255, 0.15);
+  box-shadow: 0 4px 12px var(--primary-glow);
 }
 
 .table-action-btn:active {

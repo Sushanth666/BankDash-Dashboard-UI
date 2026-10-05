@@ -70,26 +70,46 @@
   transform: scale(1.02);
 }
 
-/* Logo text: bold dark navy on light themes */
+/* Logo text: bold modern typography */
 .sidebar-logo-svg .logo-text {
   font-family: 'Inter', 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 20px;
   font-weight: 800;
   letter-spacing: -0.4px;
-  fill: #343c6a;
+}
+
+.sidebar-logo-svg .logo-text-bank {
+  fill: var(--text-primary);
+  font-weight: 800;
   transition: fill var(--transition-normal);
 }
 
-/* Light theme: deep navy text on light sidebar */
-:root .sidebar-logo-svg .logo-text,
-[data-theme="burgundy"] .sidebar-logo-svg .logo-text,
-[data-theme="light"] .sidebar-logo-svg .logo-text {
-  fill: #343c6a;
+.sidebar-logo-svg .logo-text-dash {
+  fill: var(--primary);
+  font-weight: 800;
+  transition: fill var(--transition-normal);
 }
 
-/* Dark mode: white text on dark navy sidebar */
-[data-theme="dark"] .sidebar-logo-svg .logo-text {
-  fill: #ffffff;
+.sidebar-logo-svg .logo-text-dot {
+  fill: #10B981;
+  font-weight: 900;
+  filter: drop-shadow(0 0 4px rgba(16, 185, 129, 0.5));
+}
+
+/* Light themes: dark forest pine Bank text, Emerald Dash text */
+:root .sidebar-logo-svg .logo-text-bank,
+[data-theme="burgundy"] .sidebar-logo-svg .logo-text-bank,
+[data-theme="light"] .sidebar-logo-svg .logo-text-bank {
+  fill: #1A332B;
+}
+
+/* Dark mode: crisp white Bank text, mint Dash text */
+[data-theme="dark"] .sidebar-logo-svg .logo-text-bank {
+  fill: #F0FDF4;
+}
+
+[data-theme="dark"] .sidebar-logo-svg .logo-text-dash {
+  fill: #34D399;
 }
 
 .sidebar-close-btn {

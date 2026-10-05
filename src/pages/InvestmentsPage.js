@@ -346,10 +346,10 @@ function getInvestmentsKpiIconSvg(iconType) {
   } else {
     return `
       <svg width="44" height="44" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 8.5 14.5 C 8.5 12 10 11 13 11 L 17.5 11" stroke="#2D60FF" stroke-width="3.4" stroke-linecap="round"/>
-        <polygon points="16.5,6.8 23,11 16.5,15.2" fill="#2D60FF" stroke="#2D60FF" stroke-width="1" stroke-linejoin="round"/>
-        <path d="M 21.5 15.5 C 21.5 18 20 19 17 19 L 12.5 19" stroke="#2D60FF" stroke-width="3.4" stroke-linecap="round"/>
-        <polygon points="13.5,14.8 7,19 13.5,23.2" fill="#2D60FF" stroke="#2D60FF" stroke-width="1" stroke-linejoin="round"/>
+        <path d="M 8.5 14.5 C 8.5 12 10 11 13 11 L 17.5 11" stroke="var(--primary)" stroke-width="3.4" stroke-linecap="round"/>
+        <polygon points="16.5,6.8 23,11 16.5,15.2" fill="var(--primary)" stroke="var(--primary)" stroke-width="1" stroke-linejoin="round"/>
+        <path d="M 21.5 15.5 C 21.5 18 20 19 17 19 L 12.5 19" stroke="var(--primary)" stroke-width="3.4" stroke-linecap="round"/>
+        <polygon points="13.5,14.8 7,19 13.5,23.2" fill="var(--primary)" stroke="var(--primary)" stroke-width="1" stroke-linejoin="round"/>
       </svg>
     `;
   }

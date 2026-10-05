@@ -524,8 +524,8 @@ export const creditCardsPageData = {
       bank: 'DBL Bank',
       cardNumber: '**** **** 5600',
       namainCard: 'William',
-      iconBg: '#E7EDFF',
-      iconColor: '#2D60FF'
+      iconBg: '#ECFDF5',
+      iconColor: '#059669'
     },
     {
       id: 'cl-2',
@@ -597,8 +597,8 @@ export const loansData = {
       label: 'Personal Loans',
       value: '$50,000',
       iconType: 'user',
-      iconBg: '#E7EDFF',
-      iconColor: '#2D60FF'
+      iconBg: '#ECFDF5',
+      iconColor: '#059669'
     },
     {
       id: 'kpi-corporate',
@@ -652,8 +652,8 @@ export const servicesPageData = {
       title: 'Life Insurance',
       desc: 'Unlimited protection',
       iconType: 'shield-heart',
-      iconBg: '#E7EDFF',
-      iconColor: '#2D60FF'
+      iconBg: '#ECFDF5',
+      iconColor: '#059669'
     },
     {
       id: 'hl-2',
@@ -889,10 +889,10 @@ export const privilegesData = {
       icon: 'globe',
       category: 'travel',
       badge: 'GLOBAL COMMERCE',
-      badgeBg: 'rgba(45, 96, 255, 0.1)',
-      badgeColor: '#2563EB',
-      iconBg: '#E7EDFF',
-      iconColor: '#2D60FF'
+      badgeBg: 'rgba(5, 150, 105, 0.14)',
+      badgeColor: '#059669',
+      iconBg: '#ECFDF5',
+      iconColor: '#059669'
     },
     {
       id: 'pk-5',

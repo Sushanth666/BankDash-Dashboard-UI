@@ -198,7 +198,7 @@ export function renderExpensePieChart(container, data) {
     {
       label: 'Entertainment',
       value: 30,
-      color: '#343C6A',
+      color: '#064E3B',
       startDeg: 198,
       endDeg: 306,
       midDeg: 252,
@@ -428,14 +428,15 @@ export function renderBalanceHistoryChart(container, data) {
     <div style="position: relative; width: 100%;">
       <svg viewBox="0 0 ${width} ${height}" style="width: 100%; height: auto; overflow: visible;">
         <defs>
-          <linearGradient id="balanceHistoryBlueGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="var(--primary, #10B981)" stop-opacity="0.3" />
-            <stop offset="100%" stop-color="var(--primary, #10B981)" stop-opacity="0.0" />
+          <linearGradient id="balanceHistoryGreenGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="var(--primary, #059669)" stop-opacity="0.35" />
+            <stop offset="60%" stop-color="var(--primary, #10B981)" stop-opacity="0.12" />
+            <stop offset="100%" stop-color="var(--primary, #059669)" stop-opacity="0.0" />
           </linearGradient>
         </defs>
         ${gridHtml}
         <!-- Area gradient fill -->
-        <path class="chart-spline-area" d="${splineAreaPath}" fill="url(#balanceHistoryBlueGrad)" />
+        <path class="chart-spline-area" d="${splineAreaPath}" fill="url(#balanceHistoryGreenGrad)" />
         <!-- Sharp vivid curve -->
         <path class="chart-spline-line" d="${splineLinePath}" fill="none" stroke="var(--primary, #10B981)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
         ${xLabelsHtml}
