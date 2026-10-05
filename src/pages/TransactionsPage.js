@@ -10,7 +10,7 @@ import { userCards, recentTransactions } from '../data/mockData.js';
 import { createCreditCardHtml, bindCardInteractions } from '../components/Card.js';
 import { openModal } from '../components/Modal.js';
 import { showToast } from '../components/Toast.js';
-import { animateAllCounters } from '../utils/animations.js';
+import { animateAllCounters, animateCounter } from '../utils/animations.js';
 
 // Expanded transactions dataset matching Figma design
 const allTransactionsData = [
@@ -478,6 +478,33 @@ export function renderTransactionsPage(container) {
           bar.style.transform = 'scaleY(1)';
         });
       });
+    });
+
+    // Animate initial active label
+    const initialLabel = container.querySelector('.tx-expense-bar.active .tx-expense-bar-label');
+    if (initialLabel) {
+      animateCounter(initialLabel, 800);
+    }
+
+    // Interactive Expense Bars
+    bars.forEach((bar, idx) => {
+      const data = monthlyExpenseData[idx];
+      if (data) {
+        bar.addEventListener('click', () => {
+          bars.forEach(b => {
+            b.classList.remove('active');
+            const oldLabel = b.querySelector('.tx-expense-bar-label');
+            if (oldLabel) oldLabel.remove();
+          });
+          bar.classList.add('active');
+          const label = document.createElement('span');
+          label.className = 'tx-expense-bar-label';
+          label.textContent = `$${data.amount.toLocaleString()}`;
+          bar.appendChild(label);
+          animateCounter(label, 650);
+          showToast(`Expense for ${data.month}`, `$${data.amount.toLocaleString()} spent in ${data.month}`, 'info');
+        });
+      }
     });
   }, 100);
 

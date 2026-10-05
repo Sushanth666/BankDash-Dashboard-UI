@@ -82,7 +82,13 @@ export function animateAllCounters(container) {
     '.trending-stock-price',
     '.trending-stock-return',
     '.badge-positive',
-    '.badge-negative'
+    '.badge-negative',
+    '.loans-td-money',
+    '.loans-td-left',
+    '.loans-td-rate',
+    '.loans-td-inst',
+    '.loans-total-val',
+    '.tx-expense-bar-label'
   ];
 
   const elements = container.querySelectorAll(selectors.join(', '));

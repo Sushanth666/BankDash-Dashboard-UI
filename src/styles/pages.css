@@ -941,24 +941,46 @@
   position: relative;
 }
 
+@keyframes activeBarPulseGlow {
+  0%, 100% {
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);
+  }
+  50% {
+    box-shadow: 0 6px 26px rgba(16, 185, 129, 0.65), 0 0 12px rgba(16, 185, 129, 0.4);
+  }
+}
+
+@keyframes labelFloating {
+  0% {
+    transform: translateX(-50%) translateY(0);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-4px);
+  }
+}
+
 .tx-expense-bar {
   width: 32px;
-  border-radius: 10px;
+  border-radius: 12px;
   background-color: #EDF0F7;
   position: relative;
   cursor: pointer;
-  transition: opacity var(--transition-fast), transform var(--transition-fast);
-  min-height: 12px;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.25s ease,
+              box-shadow 0.25s ease,
+              opacity 0.2s ease;
+  min-height: 14px;
 }
 
 .tx-expense-bar:hover {
-  opacity: 0.9;
-  transform: scaleY(1.02);
+  transform: translateY(-4px) scale(1.04);
+  background-color: #DFE5F2;
+  opacity: 1;
 }
 
 .tx-expense-bar.active {
   background-color: #10B981;
-  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+  animation: activeBarPulseGlow 3s ease-in-out infinite;
 }
 
 .tx-expense-bar-label {
@@ -966,11 +988,26 @@
   bottom: calc(100% + 8px);
   left: 50%;
   transform: translateX(-50%);
-  font-size: 0.8125rem;
-  font-weight: 600;
+  font-size: 0.875rem;
+  font-weight: 700;
   color: var(--text-primary);
   white-space: nowrap;
   pointer-events: none;
+  font-variant-numeric: tabular-nums;
+  animation: labelFloating 2.4s ease-in-out infinite alternate;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+[data-theme="dark"] .tx-expense-bar {
+  background-color: #1A3E34;
+}
+
+[data-theme="dark"] .tx-expense-bar:hover {
+  background-color: #24584A;
+}
+
+[data-theme="dark"] .tx-expense-bar-label {
+  color: #FFFFFF;
 }
 
 .tx-expense-month {
@@ -979,6 +1016,12 @@
   color: #718EBF;
   font-weight: 500;
   text-align: center;
+  transition: color 0.2s ease;
+}
+
+.tx-expense-bar-col:hover .tx-expense-month {
+  color: var(--primary);
+  font-weight: 600;
 }
 
 /* ---- Recent Transactions Table Section (Matching Figma) ---- */
@@ -4183,10 +4226,39 @@
   border: 1px solid #1C4E41;
 }
 
+@keyframes loanRowCascade {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .loans-table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
+}
+
+.loans-table tbody tr {
+  transition: background-color 0.25s ease, transform 0.25s ease;
+  animation: loanRowCascade 0.45s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+.loans-table tbody tr:nth-child(1) { animation-delay: 0.04s; }
+.loans-table tbody tr:nth-child(2) { animation-delay: 0.08s; }
+.loans-table tbody tr:nth-child(3) { animation-delay: 0.12s; }
+.loans-table tbody tr:nth-child(4) { animation-delay: 0.16s; }
+.loans-table tbody tr:nth-child(5) { animation-delay: 0.20s; }
+.loans-table tbody tr:nth-child(6) { animation-delay: 0.24s; }
+.loans-table tbody tr:nth-child(7) { animation-delay: 0.28s; }
+.loans-table tbody tr:nth-child(8) { animation-delay: 0.32s; }
+
+.loans-table tbody tr:hover {
+  background-color: rgba(16, 185, 129, 0.04);
 }
 
 .loans-table th {
@@ -4219,6 +4291,49 @@
 
 [data-theme="dark"] .loans-td-sl {
   color: #FFFFFF;
+}
+
+.loans-td-money,
+.loans-td-left,
+.loans-td-duration,
+.loans-td-rate,
+.loans-td-inst {
+  font-variant-numeric: tabular-nums;
+  display: inline-block;
+  padding: 3px 6px;
+  border-radius: 6px;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.25s ease,
+              background-color 0.25s ease,
+              text-shadow 0.25s ease;
+}
+
+.loans-table tbody tr:hover .loans-td-money {
+  transform: scale(1.08);
+  color: var(--primary) !important;
+  font-weight: 600 !important;
+}
+
+.loans-table tbody tr:hover .loans-td-left {
+  transform: scale(1.08);
+  color: #16DBAA !important;
+  font-weight: 600 !important;
+}
+
+.loans-table tbody tr:hover .loans-td-duration {
+  transform: scale(1.06);
+}
+
+.loans-table tbody tr:hover .loans-td-rate {
+  transform: scale(1.08);
+  color: #FFBB38 !important;
+  font-weight: 600 !important;
+}
+
+.loans-table tbody tr:hover .loans-td-inst {
+  transform: scale(1.08);
+  color: var(--text-primary) !important;
+  font-weight: 600 !important;
 }
 
 /* Default Repay Button (Rows 02-08): Dark/Charcoal border & text */
@@ -4262,6 +4377,14 @@
   background: var(--primary-tint);
 }
 
+.loans-total-row {
+  transition: background-color 0.25s ease;
+}
+
+.loans-total-row:hover {
+  background-color: rgba(254, 92, 115, 0.06);
+}
+
 .loans-total-row td {
   padding: 20px 14px 12px 14px;
   border-bottom: none;
@@ -4280,8 +4403,18 @@
 .loans-total-text,
 .loans-total-val {
   color: #FE5C73 !important;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.9375rem;
+  display: inline-block;
+  padding: 3px 6px;
+  border-radius: 6px;
+  font-variant-numeric: tabular-nums;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.25s ease;
+}
+
+.loans-total-row:hover .loans-total-val {
+  transform: scale(1.08);
+  text-shadow: 0 0 10px rgba(254, 92, 115, 0.4);
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {

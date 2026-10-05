@@ -50,7 +50,7 @@ export function renderLoansPage(container) {
             </thead>
             <tbody>
               ${loansData.activeLoans.map((loan, idx) => `
-                <tr>
+                <tr class="loans-table-row">
                   <td class="loans-td-sl">${loan.sl}</td>
                   <td class="loans-td-money">${loan.money}</td>
                   <td class="loans-td-left">${loan.left}</td>
@@ -163,7 +163,21 @@ export function renderLoansPage(container) {
     });
   });
 
-  // Trigger smooth numeric counter animations on KPI values
+  // Interactive Loan rows
+  const loanRows = container.querySelectorAll('.loans-table-row');
+  loanRows.forEach((row, idx) => {
+    const loan = loansData.activeLoans[idx];
+    if (loan) {
+      row.style.cursor = 'pointer';
+      row.setAttribute('title', `Click to view Loan ${loan.sl} details`);
+      row.addEventListener('click', (e) => {
+        if (e.target.closest('.loans-repay-btn')) return;
+        showToast(`Loan ${loan.sl} (${loan.money})`, `Left to repay: ${loan.left} • Rate: ${loan.rate}`, 'info');
+      });
+    }
+  });
+
+  // Trigger smooth numeric counter animations on KPI values and loans table
   animateAllCounters(container);
 }
 
