@@ -409,6 +409,21 @@ export function renderBalanceHistoryChart(container, data) {
     `;
   });
 
+  const lastMc = monthCoords[monthCoords.length - 1];
+  const lastVal = monthDataValues[lastMc.month];
+  const lastY = padding.top + chartHeight - (lastVal / 800) * chartHeight;
+  const beaconHtml = `
+    <!-- Live Sonar Radar Beacon on Latest Point -->
+    <circle
+      cx="${lastMc.x}"
+      cy="${lastY}"
+      r="6"
+      fill="none"
+      stroke="var(--primary, #10B981)"
+      style="pointer-events: none; animation: beaconPing 2.2s infinite cubic-bezier(0, 0.2, 0.8, 1);"
+    />
+  `;
+
   container.innerHTML = `
     <div style="position: relative; width: 100%;">
       <svg viewBox="0 0 ${width} ${height}" style="width: 100%; height: auto; overflow: visible;">
@@ -425,6 +440,7 @@ export function renderBalanceHistoryChart(container, data) {
         <path class="chart-spline-line" d="${splineLinePath}" fill="none" stroke="var(--primary, #10B981)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
         ${xLabelsHtml}
         ${hitTargetsHtml}
+        ${beaconHtml}
       </svg>
       <div class="chart-tooltip"></div>
     </div>

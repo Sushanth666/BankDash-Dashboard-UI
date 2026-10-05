@@ -63,24 +63,25 @@
   cursor: pointer;
   box-sizing: border-box;
   user-select: none;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .credit-card::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    60deg,
-    rgba(255, 255, 255, 0) 25%,
-    rgba(255, 255, 255, 0.22) 50%,
-    rgba(255, 255, 255, 0) 75%
+  inset: 0;
+  background: radial-gradient(
+    circle 320px at var(--glare-x, 50%) var(--glare-y, 50%),
+    rgba(255, 255, 255, 0.42) 0%,
+    rgba(255, 255, 255, 0.12) 35%,
+    transparent 70%
   );
-  transform: translateX(-150%) rotate(25deg);
+  opacity: var(--glare-opacity, 0);
+  transition: opacity 0.25s ease;
   pointer-events: none;
   z-index: 5;
+  border-radius: 25px;
 }
 
 .credit-card::after {
@@ -865,7 +866,7 @@
 .chart-bar-withdraw, .chart-bar-deposit {
   transform-box: fill-box;
   transform-origin: bottom;
-  animation: barGrowUp 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation: barSpringUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
   transition: filter var(--transition-fast), transform var(--transition-fast);
 }
 

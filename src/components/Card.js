@@ -62,6 +62,30 @@ export function bindCardInteractions(container) {
   if (!container) return;
   const cards = container.querySelectorAll('.credit-card');
   cards.forEach(cardEl => {
+    // Interactive 3D Parallax Tilt & Dynamic Light Glare Tracking
+    cardEl.addEventListener('mousemove', (e) => {
+      const rect = cardEl.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -11;
+      const rotateY = ((x - centerX) / centerX) * 13;
+      const glareX = (x / rect.width) * 100;
+      const glareY = (y / rect.height) * 100;
+
+      cardEl.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-8px) scale3d(1.025, 1.025, 1.025)`;
+      cardEl.style.setProperty('--glare-x', `${glareX.toFixed(1)}%`);
+      cardEl.style.setProperty('--glare-y', `${glareY.toFixed(1)}%`);
+      cardEl.style.setProperty('--glare-opacity', '0.65');
+    });
+
+    cardEl.addEventListener('mouseleave', () => {
+      cardEl.style.transform = '';
+      cardEl.style.setProperty('--glare-opacity', '0');
+    });
+
+    // Click to copy card number
     cardEl.addEventListener('click', () => {
       const cardNum = cardEl.querySelector('.card-number').innerText;
       if (navigator.clipboard) {

@@ -22,6 +22,7 @@ import {
   renderBalanceHistoryChart
 } from '../components/Charts.js';
 import { showToast } from '../components/Toast.js';
+import { triggerSendConfetti, animateCounter } from '../utils/animations.js';
 
 export function renderDashboardPage(container, onNavigate) {
   let selectedContactId = quickTransferContacts[0].id;
@@ -210,11 +211,14 @@ export function renderDashboardPage(container, onNavigate) {
       sendBtn.disabled = false;
       sendBtn.innerHTML = `
         <span>Send</span>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="plane-flying" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="animation: planeFlight 0.65s ease;">
           <line x1="22" y1="2" x2="11" y2="13"></line>
           <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
         </svg>
       `;
+
+      // Eye-catching sparkling particle burst
+      triggerSendConfetti(sendBtn);
 
       showToast(
         'Transfer Complete',
@@ -223,11 +227,14 @@ export function renderDashboardPage(container, onNavigate) {
         4000
       );
 
-      // Decrement first card balance
+      // Decrement first card balance with animated counter
       if (userCards[0].balance >= amt) {
         userCards[0].balance -= amt;
         const balEl = container.querySelector('.card-dark .card-balance-value');
-        if (balEl) balEl.innerText = `$${userCards[0].balance.toLocaleString()}`;
+        if (balEl) {
+          balEl.innerText = `$${userCards[0].balance.toLocaleString()}`;
+          animateCounter(balEl, 650);
+        }
       }
     }, 600);
     });

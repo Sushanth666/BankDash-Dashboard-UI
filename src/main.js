@@ -4,6 +4,7 @@
 
 import './styles/index.css';
 import { renderSidebar, NAV_ITEMS, renderHeader, showToast } from './components/index.js';
+import { animateAllCounters, initGlobalRipple } from './utils/animations.js';
 import {
   renderDashboardPage,
   renderTransactionsPage,
@@ -156,6 +157,7 @@ function navigateTo(routeId) {
     mainContent.innerHTML = '';
     routePageMap[routeId].render(mainContent, navigateTo);
     mainContent.classList.add('page-enter');
+    animateAllCounters(mainContent);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -193,6 +195,9 @@ function initApp() {
   // Render Sidebar
   const sidebarContainer = document.getElementById('app-sidebar');
   renderSidebar(sidebarContainer, state.currentRoute, navigateTo);
+
+  // Initialize interactive ripple effects across action buttons
+  initGlobalRipple();
 
   // Render Header
   const headerContainer = document.getElementById('app-header');

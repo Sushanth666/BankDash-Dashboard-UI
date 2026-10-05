@@ -352,6 +352,81 @@ img, svg {
   }
 }
 
+@keyframes barSpringUp {
+  0% {
+    transform: scaleY(0);
+    opacity: 0.1;
+  }
+  70% {
+    transform: scaleY(1.08);
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@keyframes beaconPing {
+  0% {
+    r: 6;
+    opacity: 0.85;
+    stroke-width: 3;
+  }
+  65% {
+    r: 16;
+    opacity: 0;
+    stroke-width: 1.5;
+  }
+  100% {
+    r: 18;
+    opacity: 0;
+    stroke-width: 0;
+  }
+}
+
+@keyframes rippleExpand {
+  0% {
+    transform: scale(0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+@keyframes planeFlight {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  30% {
+    transform: translate(8px, -4px) scale(1.15) rotate(-14deg);
+  }
+  60% {
+    transform: translate(24px, -12px) scale(0.9) rotate(-18deg);
+    opacity: 0.8;
+  }
+  80% {
+    transform: translate(-16px, 6px) scale(0.6) rotate(0deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes badgeFloatGlow {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.35);
+  }
+  50% {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.65);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
