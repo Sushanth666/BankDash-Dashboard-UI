@@ -4204,17 +4204,6 @@
   border: 1px solid #1C4E41;
 }
 
-@keyframes loanRowCascade {
-  0% {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .loans-table {
   width: 100%;
   border-collapse: collapse;
@@ -4222,18 +4211,8 @@
 }
 
 .loans-table tbody tr {
-  transition: background-color 0.25s ease, transform 0.25s ease;
-  animation: loanRowCascade 0.45s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  transition: background-color 0.2s ease;
 }
-
-.loans-table tbody tr:nth-child(1) { animation-delay: 0.04s; }
-.loans-table tbody tr:nth-child(2) { animation-delay: 0.08s; }
-.loans-table tbody tr:nth-child(3) { animation-delay: 0.12s; }
-.loans-table tbody tr:nth-child(4) { animation-delay: 0.16s; }
-.loans-table tbody tr:nth-child(5) { animation-delay: 0.20s; }
-.loans-table tbody tr:nth-child(6) { animation-delay: 0.24s; }
-.loans-table tbody tr:nth-child(7) { animation-delay: 0.28s; }
-.loans-table tbody tr:nth-child(8) { animation-delay: 0.32s; }
 
 .loans-table tbody tr:hover {
   background-color: rgba(16, 185, 129, 0.04);
@@ -4269,39 +4248,6 @@
 
 [data-theme="dark"] .loans-td-sl {
   color: #FFFFFF;
-}
-
-.loans-td-money,
-.loans-td-left,
-.loans-td-duration,
-.loans-td-rate,
-.loans-td-inst {
-  font-variant-numeric: tabular-nums;
-  transition: color 0.25s ease, text-shadow 0.25s ease;
-}
-
-.loans-table tbody tr:hover .loans-td-money {
-  color: var(--primary) !important;
-  font-weight: 600 !important;
-}
-
-.loans-table tbody tr:hover .loans-td-left {
-  color: #16DBAA !important;
-  font-weight: 600 !important;
-}
-
-.loans-table tbody tr:hover .loans-td-duration {
-  color: var(--text-primary);
-}
-
-.loans-table tbody tr:hover .loans-td-rate {
-  color: #FFBB38 !important;
-  font-weight: 600 !important;
-}
-
-.loans-table tbody tr:hover .loans-td-inst {
-  color: var(--text-primary) !important;
-  font-weight: 600 !important;
 }
 
 /* Default Repay Button (Rows 02-08): Dark/Charcoal border & text */
@@ -4345,14 +4291,6 @@
   background: var(--primary-tint);
 }
 
-.loans-total-row {
-  transition: background-color 0.25s ease;
-}
-
-.loans-total-row:hover {
-  background-color: rgba(254, 92, 115, 0.06);
-}
-
 .loans-total-row td {
   padding: 20px 14px 12px 14px;
   border-bottom: none;
@@ -4371,14 +4309,8 @@
 .loans-total-text,
 .loans-total-val {
   color: #FE5C73 !important;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.9375rem;
-  font-variant-numeric: tabular-nums;
-  transition: text-shadow 0.25s ease;
-}
-
-.loans-total-row:hover .loans-total-val {
-  text-shadow: 0 0 10px rgba(254, 92, 115, 0.4);
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {

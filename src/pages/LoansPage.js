@@ -50,7 +50,7 @@ export function renderLoansPage(container) {
             </thead>
             <tbody>
               ${loansData.activeLoans.map((loan, idx) => `
-                <tr class="loans-table-row">
+                <tr>
                   <td class="loans-td-sl">${loan.sl}</td>
                   <td class="loans-td-money">${loan.money}</td>
                   <td class="loans-td-left">${loan.left}</td>
@@ -164,7 +164,7 @@ export function renderLoansPage(container) {
   });
 
   // Interactive Loan rows
-  const loanRows = container.querySelectorAll('.loans-table-row');
+  const loanRows = container.querySelectorAll('.loans-table tbody tr');
   loanRows.forEach((row, idx) => {
     const loan = loansData.activeLoans[idx];
     if (loan) {
@@ -177,7 +177,7 @@ export function renderLoansPage(container) {
     }
   });
 
-  // Trigger smooth numeric counter animations on KPI values and loans table
+  // Trigger smooth numeric counter animations on KPI values
   animateAllCounters(container);
 }
 
