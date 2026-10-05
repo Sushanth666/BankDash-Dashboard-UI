@@ -110,8 +110,8 @@ export function renderInvestmentsPage(container) {
                   <tr class="trending-stock-row" style="cursor: pointer;" title="Click to view ${stock.name} stock details">
                     <td class="text-mono" style="color: var(--text-muted);">${stock.sl}</td>
                     <td style="font-weight: 500; color: var(--text-primary);">${stock.name}</td>
-                    <td class="trending-stock-price" style="font-weight: 500; color: var(--text-primary);">${stock.price}</td>
-                    <td style="font-weight: 700; text-align: right;" class="trending-stock-return ${stock.positive ? 'badge-positive' : 'badge-negative'}">
+                    <td style="font-weight: 500; color: var(--text-primary);">${stock.price}</td>
+                    <td style="font-weight: 700; text-align: right;" class="${stock.positive ? 'badge-positive' : 'badge-negative'}">
                       ${stock.returnVal}
                     </td>
                   </tr>
