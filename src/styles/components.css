@@ -503,18 +503,68 @@
   height: 0;
 }
 
+@keyframes txItemEntrance {
+  0% {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes txItemShimmer {
+  0% {
+    left: -80%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
 .transaction-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 10px;
+  padding: 8px 12px;
   border-radius: var(--radius-md);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+              background-color 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: txItemEntrance 0.55s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+.transaction-item:nth-child(1) { animation-delay: 0.08s; }
+.transaction-item:nth-child(2) { animation-delay: 0.16s; }
+.transaction-item:nth-child(3) { animation-delay: 0.24s; }
+
+.transaction-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transform: skewX(-20deg);
+  pointer-events: none;
 }
 
 .transaction-item:hover {
   transform: translateX(6px);
-  background-color: var(--bg-surface-subtle);
+  background-color: rgba(16, 185, 129, 0.05);
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.08);
+}
+
+.transaction-item:hover::after {
+  animation: txItemShimmer 0.75s ease forwards;
+}
+
+.transaction-item:active {
+  transform: translateX(3px) scale(0.99);
 }
 
 .transaction-left {
@@ -531,11 +581,12 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
 }
 
 .transaction-item:hover .transaction-icon-box {
-  transform: scale(1.06);
+  transform: scale(1.1) rotate(-4deg);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
 .transaction-title {
@@ -544,6 +595,7 @@
   color: var(--text-primary);
   margin-bottom: 3px;
   white-space: nowrap;
+  transition: color 0.2s ease;
 }
 
 .transaction-date {
@@ -554,9 +606,16 @@
 
 .transaction-amount {
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 600;
   text-align: right;
   white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 10px;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              text-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .transaction-amount.positive {
@@ -565,6 +624,20 @@
 
 .transaction-amount.negative {
   color: var(--accent-rose, #FE5C73);
+}
+
+.transaction-item:hover .transaction-amount {
+  transform: scale(1.1) translateX(-3px);
+}
+
+.transaction-item:hover .transaction-amount.positive {
+  background: rgba(16, 185, 129, 0.12);
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.35);
+}
+
+.transaction-item:hover .transaction-amount.negative {
+  background: rgba(254, 92, 115, 0.12);
+  text-shadow: 0 0 10px rgba(254, 92, 115, 0.35);
 }
 
 /* --------------------------------------------------------------------------

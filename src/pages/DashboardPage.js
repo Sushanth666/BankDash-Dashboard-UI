@@ -22,7 +22,7 @@ import {
   renderBalanceHistoryChart
 } from '../components/Charts.js';
 import { showToast } from '../components/Toast.js';
-import { triggerSendConfetti, animateCounter } from '../utils/animations.js';
+import { triggerSendConfetti, animateCounter, animateAllCounters } from '../utils/animations.js';
 
 export function renderDashboardPage(container, onNavigate) {
   let selectedContactId = quickTransferContacts[0].id;
@@ -239,6 +239,21 @@ export function renderDashboardPage(container, onNavigate) {
     }, 600);
     });
   }
+
+  // Recent Transactions click & counter animations
+  const txItems = container.querySelectorAll('.transaction-item');
+  txItems.forEach((item, idx) => {
+    const tx = recentTransactions[idx];
+    if (tx) {
+      item.style.cursor = 'pointer';
+      item.setAttribute('title', `Click to view ${tx.title} details`);
+      item.addEventListener('click', () => {
+        showToast(`${tx.title}`, `Amount: ${tx.amount > 0 ? '+' : ''}$${Math.abs(tx.amount).toLocaleString()} • ${tx.date}`, 'info');
+      });
+    }
+  });
+
+  animateAllCounters(container);
 }
 
 function getTransactionIconSvg(iconType) {

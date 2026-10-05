@@ -15,13 +15,12 @@ export function animateCounter(element, duration = 850) {
   if (!element || element.dataset.animating === 'true') return;
 
   const rawText = element.textContent.trim();
-  // Regex to extract prefix, number (with optional +/-), and suffix
-  const match = rawText.match(/^([^\d\-+]*)([\-+]?[\d,]+(?:\.\d+)?)(.*)$/);
+  // Regex to extract prefix (e.g., -$, +$, $, +, -), number, and suffix (e.g., %)
+  const match = rawText.match(/^([^\d]*?)([\d,]+(?:\.\d+)?)(.*)$/);
   if (!match) return;
 
   const prefix = match[1] || '';
   const numClean = match[2].replace(/,/g, '');
-  const hasPlusSign = numClean.startsWith('+');
   const suffix = match[3] || '';
   const targetVal = parseFloat(numClean);
   if (isNaN(targetVal) || targetVal === 0) return;
@@ -41,9 +40,9 @@ export function animateCounter(element, duration = 850) {
 
     let formattedVal;
     if (isDecimal) {
-      formattedVal = (hasPlusSign ? '+' : '') + currentVal.toFixed(decimalPlaces);
+      formattedVal = currentVal.toFixed(decimalPlaces);
     } else {
-      formattedVal = (hasPlusSign ? '+' : '') + Math.round(currentVal).toLocaleString();
+      formattedVal = Math.round(currentVal).toLocaleString();
     }
 
     element.textContent = `${prefix}${formattedVal}${suffix}`;
@@ -74,14 +73,23 @@ export function animateAllCounters(container) {
     '.investments-kpi-value',
     '.loans-kpi-value',
     '.loans-summary-val',
-    '.accounts-invoice-amount'
+    '.accounts-invoice-amount',
+    '.transaction-amount',
+    '.tx-amount-cell',
+    '.accounts-tx-amount',
+    '.my-inv-val',
+    '.my-inv-rate',
+    '.trending-stock-price',
+    '.trending-stock-return',
+    '.badge-positive',
+    '.badge-negative'
   ];
 
   const elements = container.querySelectorAll(selectors.join(', '));
   elements.forEach((el, index) => {
     setTimeout(() => {
-      animateCounter(el, 750 + Math.min(index * 40, 300));
-    }, index * 25);
+      animateCounter(el, 750 + Math.min(index * 35, 300));
+    }, index * 20);
   });
 }
 

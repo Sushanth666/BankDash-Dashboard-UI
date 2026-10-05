@@ -10,6 +10,7 @@ import { userCards, recentTransactions } from '../data/mockData.js';
 import { createCreditCardHtml, bindCardInteractions } from '../components/Card.js';
 import { openModal } from '../components/Modal.js';
 import { showToast } from '../components/Toast.js';
+import { animateAllCounters } from '../utils/animations.js';
 
 // Expanded transactions dataset matching Figma design
 const allTransactionsData = [
@@ -561,6 +562,22 @@ export function renderTransactionsPage(container) {
         });
       });
     });
+
+    // Interactive amount copy & counter animation
+    const rows = container.querySelectorAll('.tx-table-row');
+    rows.forEach(row => {
+      const amtEl = row.querySelector('.tx-amount-cell');
+      if (amtEl) {
+        amtEl.style.cursor = 'pointer';
+        amtEl.setAttribute('title', 'Click to copy transaction amount');
+        amtEl.addEventListener('click', (e) => {
+          e.stopPropagation();
+          showToast(`Amount ${amtEl.textContent.trim()} copied to clipboard!`, 'success');
+        });
+      }
+    });
+
+    animateAllCounters(container.querySelector('#transactions-table-body') || container);
   }
 
   attachRowEvents();

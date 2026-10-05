@@ -1054,6 +1054,32 @@
   white-space: nowrap;
 }
 
+@keyframes txRowCascade {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tx-clean-table tbody tr {
+  transition: background-color 0.25s ease, transform 0.25s ease;
+  animation: txRowCascade 0.45s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+.tx-clean-table tbody tr:nth-child(1) { animation-delay: 0.05s; }
+.tx-clean-table tbody tr:nth-child(2) { animation-delay: 0.10s; }
+.tx-clean-table tbody tr:nth-child(3) { animation-delay: 0.15s; }
+.tx-clean-table tbody tr:nth-child(4) { animation-delay: 0.20s; }
+.tx-clean-table tbody tr:nth-child(5) { animation-delay: 0.25s; }
+
+.tx-clean-table tbody tr:hover {
+  background-color: rgba(16, 185, 129, 0.04);
+}
+
 .tx-clean-table td {
   padding: 16px 12px;
   font-size: 0.9375rem;
@@ -1087,6 +1113,14 @@
   justify-content: center;
 }
 
+.tx-circle-icon svg {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tx-clean-table tbody tr:hover .tx-circle-icon svg {
+  transform: scale(1.15);
+}
+
 .tx-desc-info {
   display: flex;
   flex-direction: column;
@@ -1107,14 +1141,38 @@
   display: none;
 }
 
+.tx-amount-cell {
+  font-variant-numeric: tabular-nums;
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              text-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .tx-amount-cell.positive {
   color: #16DBAA !important;
-  font-weight: 500 !important;
+  font-weight: 600 !important;
 }
 
 .tx-amount-cell.negative {
   color: #FE5C73 !important;
-  font-weight: 500 !important;
+  font-weight: 600 !important;
+}
+
+.tx-clean-table tbody tr:hover .tx-amount-cell {
+  transform: scale(1.1) translateX(2px);
+}
+
+.tx-clean-table tbody tr:hover .tx-amount-cell.positive {
+  background: rgba(22, 219, 170, 0.12);
+  text-shadow: 0 0 10px rgba(22, 219, 170, 0.35);
+}
+
+.tx-clean-table tbody tr:hover .tx-amount-cell.negative {
+  background: rgba(254, 92, 115, 0.12);
+  text-shadow: 0 0 10px rgba(254, 92, 115, 0.35);
 }
 
 .tx-download-btn {
@@ -1751,18 +1809,57 @@
   justify-content: space-around;
 }
 
+@keyframes accountsTxEntrance {
+  0% {
+    opacity: 0;
+    transform: translateX(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .accounts-tx-row {
   display: grid;
   grid-template-columns: minmax(190px, 2.2fr) minmax(85px, 1.2fr) minmax(90px, 1.2fr) minmax(90px, 1fr) minmax(70px, 0.9fr);
   align-items: center;
-  padding: 4px 0;
+  padding: 8px 12px;
+  border-radius: 16px;
   border-bottom: none;
   gap: 16px;
-  transition: transform var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+              background-color 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: accountsTxEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+.accounts-tx-row:nth-child(1) { animation-delay: 0.08s; }
+.accounts-tx-row:nth-child(2) { animation-delay: 0.16s; }
+.accounts-tx-row:nth-child(3) { animation-delay: 0.24s; }
+
+.accounts-tx-row::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transform: skewX(-20deg);
+  pointer-events: none;
 }
 
 .accounts-tx-row:hover {
-  transform: translateX(4px);
+  transform: translateX(6px);
+  background: rgba(16, 185, 129, 0.04);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.08);
+}
+
+.accounts-tx-row:hover::after {
+  animation: invoiceShimmer 0.75s ease forwards;
 }
 
 .accounts-tx-row:last-child {
@@ -1784,6 +1881,12 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+}
+
+.accounts-tx-row:hover .accounts-tx-icon {
+  transform: scale(1.1) rotate(-4deg);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
 .accounts-tx-title {
@@ -1829,9 +1932,16 @@
 
 .accounts-tx-amount {
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 600;
   text-align: right;
   white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              text-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .accounts-tx-amount.positive {
@@ -1840,6 +1950,20 @@
 
 .accounts-tx-amount.negative {
   color: #FE5C73;
+}
+
+.accounts-tx-row:hover .accounts-tx-amount {
+  transform: scale(1.1) translateX(-3px);
+}
+
+.accounts-tx-row:hover .accounts-tx-amount.positive {
+  background: rgba(22, 219, 170, 0.12);
+  text-shadow: 0 0 10px rgba(22, 219, 170, 0.35);
+}
+
+.accounts-tx-row:hover .accounts-tx-amount.negative {
+  background: rgba(254, 92, 115, 0.12);
+  text-shadow: 0 0 10px rgba(254, 92, 115, 0.35);
 }
 
 /* Invoices Sent in Accounts with High-End Animations */
@@ -2489,6 +2613,17 @@
   justify-content: space-between;
 }
 
+@keyframes myInvEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .my-investment-card {
   flex: 1;
   background-color: var(--bg-surface);
@@ -2500,13 +2635,42 @@
   justify-content: space-between;
   gap: 20px;
   box-shadow: var(--shadow-card);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 0.28s ease,
+              border-color 0.25s ease;
+  animation: myInvEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+.my-investment-card:nth-child(1) { animation-delay: 0.08s; }
+.my-investment-card:nth-child(2) { animation-delay: 0.16s; }
+.my-investment-card:nth-child(3) { animation-delay: 0.24s; }
+
+.my-investment-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transform: skewX(-20deg);
+  pointer-events: none;
 }
 
 .my-investment-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.08);
-  border-color: var(--border-strong);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px -4px rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.my-investment-card:hover::after {
+  animation: invoiceShimmer 0.75s ease forwards;
+}
+
+.my-investment-card:active {
+  transform: translateY(-1px) scale(0.99);
 }
 
 .my-inv-left {
@@ -2525,11 +2689,12 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
 }
 
 .my-investment-card:hover .my-inv-icon {
-  transform: scale(1.1) rotate(3deg);
+  transform: scale(1.12) rotate(4deg);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
 .my-inv-title {
@@ -2556,6 +2721,14 @@
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 2px;
+  font-variant-numeric: tabular-nums;
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease;
+}
+
+.my-investment-card:hover .my-inv-val {
+  color: var(--primary);
+  transform: scale(1.06);
 }
 
 .my-inv-col-return {
@@ -2567,6 +2740,13 @@
   font-size: 1rem;
   font-weight: 700;
   margin-bottom: 2px;
+  font-variant-numeric: tabular-nums;
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 8px;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              text-shadow 0.25s ease,
+              background-color 0.25s ease;
 }
 
 .my-inv-rate.positive {
@@ -2575,6 +2755,20 @@
 
 .my-inv-rate.negative {
   color: var(--accent-rose);
+}
+
+.my-investment-card:hover .my-inv-rate {
+  transform: scale(1.12);
+}
+
+.my-investment-card:hover .my-inv-rate.positive {
+  background: rgba(16, 185, 129, 0.12);
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.35);
+}
+
+.my-investment-card:hover .my-inv-rate.negative {
+  background: rgba(254, 92, 115, 0.12);
+  text-shadow: 0 0 10px rgba(254, 92, 115, 0.35);
 }
 
 .my-inv-sublabel {
@@ -2597,9 +2791,35 @@
   box-sizing: border-box;
 }
 
+@keyframes stockRowCascade {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .trending-stock-table {
   width: 100%;
   border-collapse: collapse;
+}
+
+.trending-stock-table tbody tr {
+  transition: background-color 0.25s ease, transform 0.25s ease;
+  animation: stockRowCascade 0.45s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+.trending-stock-table tbody tr:nth-child(1) { animation-delay: 0.05s; }
+.trending-stock-table tbody tr:nth-child(2) { animation-delay: 0.10s; }
+.trending-stock-table tbody tr:nth-child(3) { animation-delay: 0.15s; }
+.trending-stock-table tbody tr:nth-child(4) { animation-delay: 0.20s; }
+.trending-stock-table tbody tr:nth-child(5) { animation-delay: 0.25s; }
+
+.trending-stock-table tbody tr:hover {
+  background-color: rgba(16, 185, 129, 0.045);
 }
 
 .trending-stock-table th {
@@ -2619,6 +2839,32 @@
   vertical-align: middle;
 }
 
+.trending-stock-price {
+  font-variant-numeric: tabular-nums;
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease;
+}
+
+.trending-stock-table tbody tr:hover .trending-stock-price {
+  transform: scale(1.08);
+  color: var(--primary) !important;
+  font-weight: 600 !important;
+}
+
+.trending-stock-return {
+  font-variant-numeric: tabular-nums;
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 8px;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              text-shadow 0.25s ease,
+              background-color 0.25s ease;
+}
+
+.trending-stock-table tbody tr:hover .trending-stock-return {
+  transform: scale(1.12);
+}
+
 .trending-stock-table td.badge-positive {
   color: #16DBAA;
   font-weight: 700;
@@ -2627,6 +2873,16 @@
 .trending-stock-table td.badge-negative {
   color: #FE5C73;
   font-weight: 700;
+}
+
+.trending-stock-table tbody tr:hover .badge-positive {
+  background: rgba(22, 219, 170, 0.12);
+  text-shadow: 0 0 8px rgba(22, 219, 170, 0.35);
+}
+
+.trending-stock-table tbody tr:hover .badge-negative {
+  background: rgba(254, 92, 115, 0.12);
+  text-shadow: 0 0 8px rgba(254, 92, 115, 0.35);
 }
 
 .trending-stock-table tbody tr:last-child td {

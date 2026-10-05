@@ -8,6 +8,7 @@
 
 import { investmentsData } from '../data/mockData.js';
 import { animateAllCounters } from '../utils/animations.js';
+import { showToast } from '../components/Toast.js';
 
 export function renderInvestmentsPage(container) {
   container.innerHTML = `
@@ -106,11 +107,11 @@ export function renderInvestmentsPage(container) {
               </thead>
               <tbody>
                 ${investmentsData.trendingStocks.map(stock => `
-                  <tr>
+                  <tr class="trending-stock-row" style="cursor: pointer;" title="Click to view ${stock.name} stock details">
                     <td class="text-mono" style="color: var(--text-muted);">${stock.sl}</td>
                     <td style="font-weight: 500; color: var(--text-primary);">${stock.name}</td>
-                    <td style="font-weight: 500; color: var(--text-primary);">${stock.price}</td>
-                    <td style="font-weight: 700; text-align: right;" class="${stock.positive ? 'badge-positive' : 'badge-negative'}">
+                    <td class="trending-stock-price" style="font-weight: 500; color: var(--text-primary);">${stock.price}</td>
+                    <td style="font-weight: 700; text-align: right;" class="trending-stock-return ${stock.positive ? 'badge-positive' : 'badge-negative'}">
                       ${stock.returnVal}
                     </td>
                   </tr>
@@ -131,7 +132,31 @@ export function renderInvestmentsPage(container) {
   const revenueBox = container.querySelector('#monthly-revenue-box');
   renderMonthlyRevenueWaveChart(revenueBox, investmentsData.monthlyRevenueCurve);
 
-  // Trigger smooth numeric counter animations on KPI values
+  // Interactive My Investment cards
+  const myInvCards = container.querySelectorAll('.my-investment-card');
+  myInvCards.forEach((card, idx) => {
+    const inv = investmentsData.myInvestments[idx];
+    if (inv) {
+      card.style.cursor = 'pointer';
+      card.setAttribute('title', `Click to view ${inv.title} performance`);
+      card.addEventListener('click', () => {
+        showToast(`${inv.title}`, `Value: ${inv.value} • Return: ${inv.returnRate}`, 'info');
+      });
+    }
+  });
+
+  // Interactive Trending Stocks
+  const stockRows = container.querySelectorAll('.trending-stock-row');
+  stockRows.forEach((row, idx) => {
+    const stock = investmentsData.trendingStocks[idx];
+    if (stock) {
+      row.addEventListener('click', () => {
+        showToast(`${stock.name} Stock`, `Price: ${stock.price} • Return: ${stock.returnVal}`, 'info');
+      });
+    }
+  });
+
+  // Trigger smooth numeric counter animations on KPI values, investments, and stocks
   animateAllCounters(container);
 }
 

@@ -171,6 +171,19 @@ export function renderAccountsPage(container, onNavigate) {
     }
   });
 
+  // Last Transaction interactive actions
+  const txRows = container.querySelectorAll('.accounts-tx-row');
+  txRows.forEach((row, idx) => {
+    const tx = accountsLastTransactions[idx];
+    if (tx) {
+      row.style.cursor = 'pointer';
+      row.setAttribute('title', `Click to view ${tx.title} details`);
+      row.addEventListener('click', () => {
+        showToast(`${tx.title}`, `Amount: ${tx.amount > 0 ? '+' : ''}$${Math.abs(tx.amount)} • Status: ${tx.status}`, 'info');
+      });
+    }
+  });
+
   animateAllCounters(container);
 }
 
